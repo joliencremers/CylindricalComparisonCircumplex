@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\usepackage{color}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{bending}
+\usetikzlibrary{patterns}
+
+\usepackage{gensymb}
+
+
+\begin{document}
+	\begin{tikzpicture}[scale=2,cap=round]
+
+
+
+
+\draw[{Bar[scale=2]}-{Bar[scale=2]}] (-2.0,0) -- node[below=5pt,pos=0] {-$\infty$} node[below=5pt,pos=1] {+$\infty$} +(2.0,0);
+
+\coordinate (c) at (2,0);
+\draw (c) circle (1cm);
+
+
+\node[left] at (0.975,0) {$180\degree$};
+\node[right] at (3.025,0) {$0$ \textbf{and} $360\degree$};
+\node[below] at (2.025,-1) {$270\degree$};
+\node[above] at (2.025,1) {$90\degree$};  
+
+\fill[fill=black!50] (-1.5,0) circle (1pt);
+\node[above] at (-1.46,0) {$0\degree$};
+\fill[fill=black!50] (-0.4,0) circle (1pt);
+\node[above] at (-0.36,0) {$360\degree$};
+
+\coordinate (p1) at ($(c)+(0:1cm)$);
+
+
+\fill[fill=black!50] (p1) circle (1pt);
+\end{tikzpicture}
+\end{document}

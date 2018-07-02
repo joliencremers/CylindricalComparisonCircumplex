@@ -1,0 +1,15 @@
+base
+circular
+bpnreg
+haven
+tikzDevice
+plotrix
+tidyr
+dplyr
+MASS
+kableExtra
+coda
+MCMCpack
+truncnorm
+bayesm
+mvtnorm
