@@ -1,0 +1,267 @@
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{multirow}
+\usepackage{appendix}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\setlength\parindent{24pt}
+\usepackage{setspace}\doublespacing
+
+\begin{document}
+
+\section{Supplementary Material}\label{Appendix}
+
+In this Supplementary Material we outline the MCMC procedures to fit the
+cylindrical regression models. R-code for the MCMC sampler and the
+analysis of the teacher data can be found here:
+\url{https://github.com/joliencremers/CylindricalComparisonCircumplex}.
+Note that the dimensions of the objects (design matrices, mean vectors,
+etc.) are those that were used in the analysis of the teacher data where
+we have 1 circular outcome, 1 linear outcome and estimate an intercept
+and regression coefficient for the covariate self-efficacy. Note that
+for the regression of the linear component in the CL-PN and CL-GPN
+models we also have the sine and cosine of the circular outcome in the
+regression equation, this makes the vector with regression coefficients,
+\(\boldsymbol{\gamma}\), four-dimensional.
+
+\subsection{Bayesian Model and MCMC procedure for the modified CL-PN model}\label{A1}
+
+We use the following algorithm to obtain posterior estimates from the
+model:
+
+\begin{enumerate}
+\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}^k_{n \times 2}$ (for $k \in \{I,II\}$) and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear outcome respectively, in a training (90\%) and holdout (10\%) set. 
+\item Define the prior parameters for the training set. In this paper we use:
+
+\begin{itemize}
+\item Prior for $\boldsymbol{\gamma}$: $N_4(\boldsymbol{\mu}_{0}, \boldsymbol{\Lambda}_{0})$, with  $\boldsymbol{\mu}_{0} = (0,0,0,0)^t$ and  $\boldsymbol{\Lambda}_{0} = 10^{-4}\boldsymbol{I}_4$.
+\item Prior for $\sigma^2$: $IG(\alpha_{0}, \beta_{0})$, an inverse gamma prior with $\alpha_{0} = 0.001$ and  $\beta_{0} = 0.001$.
+\item Prior for $\boldsymbol{\beta^{k}}$: $N_2(\boldsymbol{\mu}_{0}, \boldsymbol{\Lambda}_{0})$, with $\boldsymbol{\mu}_{0} = (0,0)^t$ and  $\boldsymbol{\Lambda}_{0} = 10^{-4}\boldsymbol{I}_2$ for $k \in \{I,II\}$.
+\end{itemize}
+
+\item Set starting values $\boldsymbol{\gamma} = (0,0,0,0)^t$, $\sigma^2 = 1$ and $\boldsymbol{\beta^{k}} = (0,0)^t$ for $k \in \{I,II\}$. Also set starting values $r_i = 1$ in the training and holdout set. 
+\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+$$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i)\\  r_i\sin (\theta_i)\end{bmatrix}.$$
+\item Sample $\boldsymbol{\gamma}$, $\sigma^2$ and $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$ for the training dataset from their conditional posteriors:
+
+\begin{itemize}
+\item Posterior for $\boldsymbol{\gamma}$: $N_4(\boldsymbol{\mu}_n, \sigma^2\boldsymbol{\Lambda}^{-1}_n)$, with $\boldsymbol{\mu}_n = (\boldsymbol{X}^t\boldsymbol{X} + \boldsymbol{\Lambda}_0)^{-1}(\boldsymbol{\Lambda}_0\boldsymbol{\mu}_0 + \boldsymbol{X}^t\boldsymbol{y})$ and $\boldsymbol{\Lambda}_n = (\boldsymbol{X}^t\boldsymbol{X} + \boldsymbol{\Lambda}_0)$.
+\item Posterior for $\sigma^2$: $IG(\alpha_{n}, \beta_{n})$, an inverse gamma posterior with $\alpha_{n} = \alpha_0 + n/2$ and $\beta_{n} = \beta_0 + \frac{1}{2}(\boldsymbol{y}^t\boldsymbol{y} + \boldsymbol{\mu}_{0}^t\boldsymbol{\Lambda}_0\boldsymbol{\mu}_{0} + \boldsymbol{\mu}_{n}^t\boldsymbol{\Lambda}_n\boldsymbol{\mu}_{n})$.
+\item Posterior for $\boldsymbol{\beta^{k}}$: $N_2(\boldsymbol{\mu}_n, \boldsymbol{\Lambda}_n)$, with $\boldsymbol{\mu}_n = ((\boldsymbol{Z}^k)^t\boldsymbol{Z}^k + \boldsymbol{\Lambda}_0)^{-1}(\boldsymbol{\Lambda}_0\boldsymbol{\mu}_0 + (\boldsymbol{Z}^k)^t\boldsymbol{s}^k)$ and $\boldsymbol{\Lambda}_n = ((\boldsymbol{Z}^k)^t\boldsymbol{Z}^k + \boldsymbol{\Lambda}_0)$.
+\end{itemize}
+
+\item Sample new $r_i$ for the training and holdout dataset from the following posterior:
+$$f(r_i \mid \theta_i, \boldsymbol{\mu}_i) \propto r_i \exp{\left(-\frac{1}{2}(r_i)^2 + b_ir_i\right)}$$ 
+where $b_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\mu}_i$, $\boldsymbol{\mu}_i = \boldsymbol{B}^t\boldsymbol{z_i}$ and $\boldsymbol{B} = (\boldsymbol{\beta}^{I}, \boldsymbol{\beta}^{II})$. 
+\noindent We can sample from this posterior using a slice sampling technique (Cremers et al., 2018): 
+
+\begin{itemize}
+\item In a slice sampler the joint density for an auxiliary variable $v_{i}$ with $r_{i}$ is
+$$p(r_{i}, v_{i}\mid \theta_{i}, \boldsymbol{\mu}_{i}=\boldsymbol{B}^t\boldsymbol{z}_{i}) \propto r_{i} \textbf{I}\left(0 < v_i < \exp\left\{ -\frac{1}{2}(r_{i} - b_{i})^2\right\}\right)\textbf{I}(r_i > 0).$$
+\noindent The full conditional for $v_{i}$, $p(v_{i} \mid r_{i},\boldsymbol{\mu}_{i}, \theta_{i})$, is
+$$U\left(0, \exp\left\{-\frac{1}{2}(r_{i} -  b _{i})^2\right\}\right)$$
+and the full conditional for $r_i$, $p(r_{i} \mid v_{i},\boldsymbol{\mu}_{i}, \theta_{i})$, is proportional to
+$$r_{i} \textbf{I}\left(b_{i} + \max\left\{-b_{i}, -\sqrt{-2\ln v_{i}}\right\} < r_{i} < b_{i} + \sqrt{-2\ln v_{i}}\right).$$
+\noindent We thus sample $v_{i}$ from the uniform distribution specified above. Independently we sample a value $m$ from $U(0,1)$. We obtain a new value for $r_{i}$ by computing $ r_{i} = \sqrt{(r_{i_{2}}^{2}-r_{i_{1}}^{2})m + r_{i_{1}}^{2}}$ where $r_{i_{1}}=b_{i} +\max\left\{-b_{i}, -\sqrt{-2\ln v_{i}}\right\}$ and $ r_{i_{2}}= b_{i} + \sqrt{-2\ln v_{i}}$.
+\end{itemize}
+\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$ and $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$ for the training dataset.
+\item Repeat steps 4 to 7 until the sampled parameter estimates have converged. We assess convergence visually using traceplots.
+\end{enumerate}
+
+\newpage
+
+\subsection{Bayesian Model and MCMC procedure for the modified CL-GPN model}\label{A2}
+
+We use the following algorithm to obtain posterior estimates from the
+model:
+
+\begin{enumerate}
+\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}_{n \times 2}$  and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear outcome respectively, in a training (90\%) and holdout (10\%) set. 
+\item Define the prior parameters for the training set. In this paper we use:
+
+\begin{itemize}
+\item Prior for $\boldsymbol{\gamma}$: $N_4(\boldsymbol{\mu}_{0}, \boldsymbol{\Lambda}_{0})$, with $\boldsymbol{\mu}_{0} = (0,0,0,0)^t$ and $\boldsymbol{\Lambda}_{0} = 10^{-4}\boldsymbol{I}_4$.
+\item Prior for $\sigma^2$: $IG(\alpha_{0}, \beta_{0})$, an inverse gamma prior with $\alpha_{0} = 0.001$ and $\beta_{0} = 0.001$.
+\item Prior for $\boldsymbol{\beta}_{j}$: $N_2(\boldsymbol{\mu}_{0}, \boldsymbol{\Lambda}_0)$, with $\boldsymbol{\mu}_{0} = (0,0)^t$ and  $\boldsymbol{\Sigma}_{0} = 10^{5}\boldsymbol{I}_2$ for $j \in \{0, \dots, p\}$ where $p$ is the number of covariates, 1, in $\boldsymbol{Z}$.
+\item Prior for $\rho$: $N(\mu_0, \sigma^2)$, with $\mu_0 = 0$ and $\sigma^2 = 10^{4}$.
+\item Prior for $\tau$: $IG(\alpha_{0}, \beta_{0})$, an inverse gamma prior with $\alpha_{0} = 0.01$ and $\beta_{0} = 0.01$.
+\end{itemize}
+
+\item Set starting values $\boldsymbol{\gamma} = (0,0,0,0)^t$, $\sigma^2 = 1$, $\boldsymbol{\beta}_j = (0,0)^t$ for $j \in \{0,1\}$, $\rho = 0$, $\tau = 1$ and $\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \rho^2 & \rho\\ \rho & 1 \end{bmatrix}$. Also set starting values $r_i = 1$ in the training and holdout set. 
+\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+$$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i) \\  r_i\sin (\theta_i)\end{bmatrix}.$$
+\item Sample $\boldsymbol{\gamma}$, $\sigma^2$, $\boldsymbol{\beta}_j$ for $j \in \{0,1\}$, $\rho$ and $\tau$ for the training dataset from their conditional posteriors:
+
+\begin{itemize}
+\item Posterior for $\boldsymbol{\gamma}$: $N_4(\boldsymbol{\mu}_n, \sigma^2\boldsymbol{\Lambda}^{-1}_n)$, with $\boldsymbol{\mu}_n = (\boldsymbol{X}^t\boldsymbol{X} + \boldsymbol{\Lambda}_0)^{-1}(\boldsymbol{\Lambda}_0\boldsymbol{\mu}_0 + \boldsymbol{X}^t\boldsymbol{y})$ and $\boldsymbol{\Lambda}_n = (\boldsymbol{X}^t\boldsymbol{X} + \boldsymbol{\Lambda}_0)$.
+\item Posterior for $\sigma^2$: $IG(\alpha_{n}, \beta_{n})$, an inverse gamma posterior where $\alpha_{n} = \alpha_0 + n/2$ and $\beta_{n} = \beta_0 + \frac{1}{2}(\boldsymbol{y}^t\boldsymbol{y} + \boldsymbol{\mu}_{0}^t\boldsymbol{\Lambda}_0\boldsymbol{\mu}_{0} + \boldsymbol{\mu}_{n}^t\boldsymbol{\Lambda}_n\boldsymbol{\mu}_{n})$.
+\item Posterior for $\boldsymbol{\beta}_j$: $N_2(\boldsymbol{\mu}_{j_{n}}, \boldsymbol{\Sigma}_{j_{n}})$, with $\boldsymbol{\mu}_{j_{n}} = \boldsymbol{\Sigma}_{j_{n}}\boldsymbol{\Sigma}^{-1}\Bigg(-\sum_{i=1}^{n}z_{i,j-1}\sum_{l\neq j}z_{i,l-1}\boldsymbol{\beta}_l + \sum_{i=1}^{n}z_{i,j-1}r_i\begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}\Bigg)$ and  $\boldsymbol{\Sigma}_{j_{n}} = \Big(\sum_{i=1}^{n}z_{i,j-1}^2\boldsymbol{\Sigma}^{-1}+\boldsymbol{\Lambda}_0\Big)^{-1}$ for $j \in \{0, \dots, p\}$ where $p$ is the number of covariates, 1, in $\boldsymbol{Z}$.
+\item Posterior for $\rho$: $N(\mu_n, \sigma^2_n)$, with $\mu_n = \frac{\tau^{-2} \sum_{i=1}^{n}(s^{I}_{i} - \mu_i^{I})(s^{II}_{i} - \mu_i^{II}) + \mu_0\sigma_0^{-2}}{\tau^{-2}\sum_{i=1}^{n}(s^{II}_{i} - \mu_i^{II})^2 + \sigma_0^{-2}}$ and $\sigma_n^2 = \frac{1}{\tau^{-2}\sum_{i=1}^{n}(s^{II}_{i} - \mu_i^{II})^2 + \sigma_0^{-2}}$ where $\mu_i^{I} = (\boldsymbol{\beta}^{I})^t\boldsymbol{z}_i$ and $\mu_i^{II} = (\boldsymbol{\beta}^{II})^t\boldsymbol{z}_i$. 
+\item Posterior for $\tau$: $IG(\alpha_n, \beta_n)$, an inverse gamma posterior with $\alpha_n = \frac{n}{2} + \alpha_0$ and $\beta_n = \sum\limits_{i = 1}^{n}(s^{I}_{i} - \{\mu_i^{I} + \rho(s^{II}_{i} - \mu_i^{II})\})^2 + \beta_0$
+\end{itemize}
+
+\item Sample new $r_i$ for the training and holdout dataset from the following posterior:
+$$f(r_i \mid \theta_i, \boldsymbol{\mu}_i) \propto r_i \exp{\left\{-\frac{1}{2}A_i\bigg(r_i-\frac{B_i}{A_i}\bigg)^2\right\}}$$ 
+where $B_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}_i$, $\boldsymbol{\mu}_i = \boldsymbol{B}^t\boldsymbol{z_i}$, $\boldsymbol{B} = (\boldsymbol{\beta}^{I}, \boldsymbol{\beta}^{II})$ and $A_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}^{-1}\begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}$.
+\noindent We can sample from this posterior using a slice sampling technique (Hernandez-Stumpfhauser et al. 2018):
+
+\begin{itemize}
+\item In a slice sampler the joint density for an auxiliary variable $v_{i}$ with $r_{i}$ is
+$$p(r_{i}, v_{i}\mid \theta_{i}, \boldsymbol{\mu}_{i}=\boldsymbol{B}^t\boldsymbol{z}_{i}) \propto r_{i} \textbf{I}\bigg(0 < v_i < \exp\left\{ -\frac{1}{2} A_i\left(r_{i} - \frac{B_i}{A_i}\right)^2\right\}\bigg)\textbf{I}(r_i > 0).$$
+\item The full conditional for $v_{i}$, $p(v_{i} \mid r_{i},\boldsymbol{\mu}_{i}, \boldsymbol{\Sigma}, \theta_{i})$, is
+$$U\Bigg(0, \exp\left\{-\frac{1}{2}A_i\bigg(r_i -  \frac{B_{i}}{A_i}\bigg)^2\right\}\Bigg)$$
+and the full conditional for $r_i$, $p(r_{i} \mid v_{i},\boldsymbol{\mu}_{i}, \boldsymbol{\Sigma}, \theta_{i})$, is proportional to
+$$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\frac{-2\ln v_{i}}{A_i}}\right\} < r_{i} < \frac{B_i}{A_i} + \sqrt{\frac{-2\ln v_{i}}{A_i}}\right).$$
+\item We thus sample $v_{i}$ from the uniform distribution specified above. Independently we sample a value $m$ from $U(0,1)$. We obtain a new value for $r_{i}$ by computing $r_{i} = \sqrt{(r_{i_{2}}^{2}-r_{i_{1}}^{2})m + r_{i_{1}}^{2}}$ where $r_{i_{1}}=\frac{B_i}{A_i} +\max\left\{-\frac{B_i}{A_i}, -\sqrt{\frac{-2\ln v_{i}}{A_i}}\right\}$ and $ r_{i_{2}}= \frac{B_i}{A_i} + \sqrt{\frac{-2\ln v_{i}}{A_i}}$.
+\end{itemize}
+
+\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$, $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$, $\rho$ and $\tau$ for the training dataset. 
+\item Repeat steps 4 to 7 until the sampled parameter estimates have converged. We visually assess convergence using traceplots.
+\end{enumerate}
+
+\newpage
+
+\subsection{Bayesian Model and MCMC procedure for the modified GPN-SSN model}\label{A3}
+
+\begin{enumerate}
+\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrix $\boldsymbol{X}_{n \times 2}$ in a training (90\%) and holdout (10\%) set. Note that in this paper we have only one circular outcome and one linear outcome and the MCMC procedure outlined here is specified for this situation. It can however be generalized to a situation with multiple circular and linear outcomes without too much effort. 
+\item Define the prior parameters for the training set. Since we have only one circular outcome, one linear outcome and one covariate, we have $m = 1$, $w = 1$ and $g = 1$. In this paper we use the following priors:
+
+\begin{itemize}
+\item Prior for $\boldsymbol{\Sigma}$: $IW(\boldsymbol{\Psi}_0, \nu_0)$, an inverse Wishart with $\boldsymbol{\Psi}_0 = 10^{-4}\boldsymbol{I}_{2m + w}$ and $\nu_0 = 1$.   
+\item Prior for $\boldsymbol{B}$ in vectorized form: $N_{(g + 1)(2m + w)}(\boldsymbol{\beta}_0, \boldsymbol{\Sigma}  \otimes \boldsymbol{\kappa}_0)$, where $\otimes$ stands for the Kronecker product, $\boldsymbol{\beta}_0 = \text{vec}(\boldsymbol{B}_0)$, the matrix with prior values for the regression coefficients. We choose $\boldsymbol{\beta}_0 = \boldsymbol{0}_{(g + 1)(2m + w)}$, $\boldsymbol{B}_0 = \boldsymbol{0}_{(g + 1) \times (2m + w)}$ and $\boldsymbol{\kappa}_0 = 10^{-4}\boldsymbol{I}_{g + 1}$.
+\item Prior for $\lambda$: $N(\gamma_0, \omega_0)$, with $\gamma_0 = 0$ and $\omega_0 = 10000$.
+\end{itemize}
+
+\item Set starting values $\boldsymbol{\beta} = (0,0,0,0,0,0)^t$, $\boldsymbol{\Sigma} = \boldsymbol{I}_3$ and $\lambda = 0$. Also set starting values $r_i = 1$ and $d_i = 1$ in the training and holdout set. 
+\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+$$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i) \\  r_i\sin (\theta_i)\end{bmatrix}.$$
+\item Compute the latent outcomes $\tilde{y}_i$ underlying the linear outcome for the holdout and training dataset as follows:
+$$\tilde{y}_i = \lambda d_i. $$
+\item Compute $\boldsymbol{\eta}_i$ defined as follows for each individual $i$:
+$$\boldsymbol{\eta}_i = (\boldsymbol{s}_i^t,y_i)^t - (\boldsymbol{0}_{2m}^t, \lambda d_i)^{t}.$$
+
+\item Sample $\boldsymbol{B}$, $\boldsymbol{\Sigma}$ and $\lambda$ for the training dataset from their conditional posteriors: 
+
+\begin{itemize}
+\item Posterior for $\boldsymbol{\Sigma}$: $IW(\boldsymbol{\Psi}_n, \nu_n)$, an inverse Wishart with $\boldsymbol{\Psi}_n = \boldsymbol{\Psi}_0 + (\boldsymbol{\eta} - \boldsymbol{X}^t\boldsymbol{B})^t(\boldsymbol{\eta} - \boldsymbol{X}^t\boldsymbol{B}) + (\boldsymbol{B} - \boldsymbol{B}_0)^t\boldsymbol{\kappa}_0(\boldsymbol{B} - \boldsymbol{B}_0)$ and $\nu_n = \nu_0 + n$ where $n$ is the sample size.
+\item Posterior for $\boldsymbol{B}$ in matrix form: $MN(\boldsymbol{B}_n,   \boldsymbol{\kappa}_n, \boldsymbol{\Sigma})$, with $\boldsymbol{B}_n = \boldsymbol{\kappa}_n^{-1}\boldsymbol{X}^t\boldsymbol{\eta} + \boldsymbol{\kappa}_0\boldsymbol{B}_0$ and $\boldsymbol{\kappa}_n = \boldsymbol{X}^t\boldsymbol{X} + \boldsymbol{\kappa}_0$.
+\item Posterior for $\lambda$: $N(\gamma_n, \omega_n)$, with $\omega_n = \big(\sum_{i = 1}^{n}d_i^2\sigma^{-2}_{y|s} + \omega_0^{-1}\big)^{-1}$ and $\gamma_n = \omega_n \big(\sum_{i = 1}^{n}d_i\sigma^{-2}_{y|s}(y_i - \mu_{y_i|s_i}) + \omega_0^{-1}\gamma_0 \big)$ where $\mu_{y_i|s_i} = \mu_y + \boldsymbol{\Sigma}_{sy}^{t}\boldsymbol{\Sigma}_{s}^{-1}(\boldsymbol{s_i - \boldsymbol{\mu}_s)}$ and $\sigma^2_{y|s} = \sigma^2_{y} - \boldsymbol{\Sigma}_{sy}^{t}\boldsymbol{\Sigma}_{s}^{-1}\boldsymbol{\Sigma}_{sy}$.
+\end{itemize}
+
+\item Sample new $d_i$ for the training and holdout dataset from the following posterior:
+$$f(d_i) \propto \phi(y_i|\mu_{y_i|s_i} + \lambda d_i, \sigma^2_{y|s})\phi(d_i|0, 1),$$
+where $\mu_{y_i|s_i} = \boldsymbol{B}_{y_i|s_i}^t\boldsymbol{x}_i$. We can see each $d_i$ as a positive regressor with $\lambda$ as covariate and $\phi(d_i|0, 1)$ as prior (Mastrantonio, 2018). The full conditional is then truncated normal with support $\mathbb{R}^{+}$ as follows:
+$$N(m_{d_i}, v),$$ 
+\noindent where $v = \big(\lambda^2\sigma^{-2}_{y|s} + 1\big)$ and $m_{d_i} = v\lambda\sigma^{-2}_{y|s}\big(y_i - \mu_{y_i|s_i}\big)$. 
+\item Sample new $r_i$ for the training and holdout dataset from the following posterior
+$$f(r_i \mid \theta_i, \boldsymbol{\mu}_i) \propto r_i \exp{\left\{-0.5A_i\bigg(r_i-\frac{B_i}{A_i}\bigg)^2\right\}}$$ 
+where $B_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}_{s_i|y_i}^{-1}\boldsymbol{\mu}_{s_i|y_i}$, $\boldsymbol{\mu}_{s_i|y_i} = \boldsymbol{B}_{s_i|y_i}^t\boldsymbol{x}_i$ and $A_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}_{s_i| y_i}^{-1}\begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}$. The parameters $\boldsymbol{\mu}_{s_i|y_i}$ and $\boldsymbol{\Sigma}_{s_i| y_i}$ are the conditional mean and covariance matrix of $\boldsymbol{s}_i$ assuming that $(\boldsymbol{s}_i^t, y_i)^t \sim N_{2m+w}(\boldsymbol{\mu} + (\boldsymbol{0}_{2m}^t, \lambda d_i)^t, \boldsymbol{\Sigma})$. 
+Because in this paper $\boldsymbol{\theta}$ originates from a bivariate variable that is known we can in this model (where the variance-covariance matrix of the circular outcome is not constrained in the estimation procedure) simply define the $r_i$ as the Euclidean norm of the bivariate datapoints. However, for didactic purposes we continue with the explanation of the sampling procedure. We
+can sample from the posterior for $r_i$ using a slice sampling technique (Hernandez-Stumpfhauser et al. 2018): 
+\begin{itemize}
+\item In a slice sampler the joint density for an auxiliary variable $v_{i}$ with $r_{i}$ is
+$$p(r_{i}, v_{i}\mid \theta_{i}, \boldsymbol{\mu}_{i}=\boldsymbol{B}^{t}\boldsymbol{x}_{i}) \propto r_{i} \textbf{I}\bigg(0 < v_i < \exp\left\{ -\frac{1}{2}A_i\left(r_{i} - \frac{B_i}{A_i}\right)^2\right\}\bigg)\textbf{I}(r_i > 0).$$
+\item The full conditional for $v_{i}$, $p(v_{i} \mid r_{i},\boldsymbol{\mu}_{i}, \boldsymbol{\Sigma}, \theta_{i})$, is
+$$U\Bigg(0, \exp\left\{-\frac{1}{2}A_i\bigg(r_i -  \frac{B_{i}}{A_i}\bigg)^2\right\}\Bigg)$$
+and the full conditional for $r_i$, $p(r_{i} \mid v_{i},\boldsymbol{\mu}_{i}, \boldsymbol{\Sigma}, \theta_{i})$, is proportional to 
+$$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\frac{-2\ln v_{i}}{A_i}}\right\} < r_{i} < \frac{B_i}{A_i} + \sqrt{\frac{-2\ln v_{i}}{A_i}}\right)$$
+\item We thus sample $v_{i}$ from the uniform distribution specified above. Independently we sample a value $m$ from $U(0,1)$. We obtain a new value for $r_{i}$ by computing $r_{i} = \sqrt{(r_{i_{2}}^{2}-r_{i_{1}}^{2})m + r_{i_{1}}^{2}}$ where $r_{i_{1}}=\frac{B_i}{A_i} +\max\left\{-\frac{B_i}{A_i}, -\sqrt{\frac{-2\ln v_{i}}{A_i}}\right\}$ and $ r_{i_{2}}= \frac{B_i}{A_i} + \sqrt{\frac{-2\ln v_{i}}{A_i}}$.
+
+\end{itemize}
+
+\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{B}$, $\boldsymbol{\Sigma}$ and $\lambda$ for the training dataset.
+
+\item Repeat steps 4 to 10 until the sampled parameter estimates have converged.
+
+\item In the MCMC sampler we have estimated an unconstrained $\boldsymbol{\Sigma}$. However, for identification of the model we need to apply  constraints to both $\boldsymbol{\Sigma}$ and $\boldsymbol{\mu}$. Therefore we need the matrix
+$$\boldsymbol{C} = \begin{bmatrix} \boldsymbol{C}_s & \boldsymbol{0}_{2m \times w} \\ \boldsymbol{0}_{2m \times w}^t & \boldsymbol{I}_w \end{bmatrix}$$
+where $\boldsymbol{C}_s$ is a $2m \times 2m$ diagonal matrix with every $(2(j-1) + k)^{th}$ entry $> 0$ where $k \in \{1,2\}$ and $j = 1, \dots, m$ (Mastrantonio, 2018). The estimates $\boldsymbol{\Sigma}$ and $\boldsymbol{\mu}$ can then be related to their constrained versions $\tilde{\boldsymbol{\Sigma}}$ and $\tilde{\boldsymbol{\mu}}$ as follows:
+$$\boldsymbol{\mu} = \boldsymbol{C}\tilde{\boldsymbol{\mu}}$$
+$$\boldsymbol{\Sigma} = \boldsymbol{C}\tilde{\boldsymbol{\Sigma}}\boldsymbol{C}.$$
+
+\end{enumerate}
+
+
+\end{document}
