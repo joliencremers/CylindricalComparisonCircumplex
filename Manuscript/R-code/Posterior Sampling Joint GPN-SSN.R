@@ -278,6 +278,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
   theta_pred_min <- rep(NA, its)
   theta_pred_max <- rep(NA, its)
   theta_pred_mean <- rep(NA, its)
+  theta_pred_median <- rep(NA, its)
   
   ll.lin <- rep(NA, its)
   ll.circ <- rep(NA, its)
@@ -317,6 +318,9 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
     Y_pred <- mvrnorm(1, c(1, max(X[,2]))%*%Betacon.res[,,it]+c(0,0,lambda*D[1,]), Sigmacon.res[,,it])
     theta_pred_max[it] <- atan2(Y_pred[2], Y_pred[1])
     
+    Y_pred <- mvrnorm(1, c(1, median(X[,2]))%*%Betacon.res[,,it]+c(0,0,lambda*D[1,]), Sigmacon.res[,,it])
+    theta_pred_median[it] <- atan2(Y_pred[2], Y_pred[1])
+    
     #compute predicted values
     for(j in 1:N){
       Y_pred <- mvrnorm(1, X[j,]%*%Betacon.res[,,it]+c(0,0,lambda*D[j,]), Sigmacon.res[,,it])
@@ -350,7 +354,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
               "theta_pred" = theta_pred, "y_pred" = y_pred,
               "theta_pred.hold" = theta_pred.hold, "y_pred.hold" = y_pred.hold,
               "theta_pred.min" = theta_pred_min,  "theta_pred.max" = theta_pred_max,
-              "theta_pred.mean" = theta_pred_mean))
+              "theta_pred.mean" = theta_pred_mean, "theta_pred.median" = theta_pred_median))
   
 }
 

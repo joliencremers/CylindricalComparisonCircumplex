@@ -209,6 +209,8 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
   theta_pred_min <- rep(NA, its)
   theta_pred_max <- rep(NA, its)
   theta_pred_mean <- rep(NA, its)
+  theta_pred_median <- rep(NA, its)
+  
 
   ll.lin <- rep(NA, its)
   ll.circ <- rep(NA, its)
@@ -252,6 +254,9 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
 
     Y_pred <- mvrnorm(1, c(c(1, mean(Z[,2]))%*%Beta.I,  c(1, mean(Z[,2]))%*%Beta.II), sigma)
     theta_pred_mean[i] <- atan2(Y_pred[2], Y_pred[1])
+    
+    Y_pred <- mvrnorm(1, c(c(1, median(Z[,2]))%*%Beta.I,  c(1, median(Z[,2]))%*%Beta.II), sigma)
+    theta_pred_median[i] <- atan2(Y_pred[2], Y_pred[1])
 
     #compute predicted values
     for(j in 1:N){
@@ -295,7 +300,7 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
               "theta_pred" = theta_pred, "y_pred" = y_pred,
               "theta_pred.hold" = theta_pred.hold, "y_pred.hold" = y_pred.hold,
               "theta_pred.min" = theta_pred_min,  "theta_pred.max" = theta_pred_max,
-              "theta_pred.mean" = theta_pred_mean))
+              "theta_pred.mean" = theta_pred_mean, "theta_pred.meadian" = theta_pred_median))
   
 }
 
