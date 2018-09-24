@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.2)  2 JUL 2018 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.2)  10 AUG 2018 10:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,11 +417,11 @@ e
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 330.
+(Font)              <7> on input line 360.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 330.
+(Font)              <5> on input line 360.
 
-Overfull \hbox (88.62pt too wide) in paragraph at lines 531--531
+Overfull \hbox (88.62pt too wide) in paragraph at lines 561--561
 [][] 
  []
 
@@ -435,18 +435,18 @@ Non-PDF special ignored!
 Here is how much of TeX's memory you used:
  11409 strings out of 492646
  232434 string characters out of 6133326
- 323313 words of memory out of 5000000
+ 329723 words of memory out of 5000000
  15095 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,7n,54p,400b,630s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on reglinediffSE.pdf (1 page, 40778 bytes).
+s/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb>
+Output written on reglinediffSE.pdf (1 page, 34322 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 16 compressed objects within 1 object stream
+ 19 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
