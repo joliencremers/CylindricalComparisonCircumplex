@@ -1,14 +1,37 @@
+# Posterior Sampling Joint GPN-SSN
+#
+# This script contains functions to sample from the posterior of the joint GPN-SSN model for cylindrical data
+#
+
+
+
+
+
+##### load required packages #####
+
 require(MCMCpack)
 require(truncnorm)
-#require(LaplacesDemon)
 require(bayesm)
 require(mvtnorm)
 
-#Constraint matrix function (for 1 circular and 1 linear variable)
+
+
+
+
+##### define helper functions #####
+
+
+## Helper function to compute the constrained matrix for 1 circular and 1 linear variable ##
+
+# var = the element of the matrix that should be constrained to 1
 
 cmat <- function(var){diag(3)*(c(sqrt(var), sqrt(var), 1))}
 
-#sample from matrix normal (adapted from LaplacesDemon, function is.symmetric.matrix does not work properly; floating point problems...)
+
+## Sample from matrix normal distribution ##
+
+# This function is adapted from LaplacesDemon, 
+# the function is.symmetric.matrix from LaplacesDemon does not work properly due to floating point problems.
 
 rmatrixnorm <- function (M, U, V) 
 {
@@ -35,18 +58,19 @@ rmatrixnorm <- function (M, U, V)
   return(X)
 }
 
-#Functions for posterior distributions
 
-#Sample Beta, a matrix of regression coefficients for the circular and linear 
-#variables
+## Functions to sample from posterior distributions ##
 
-#Y = the circular and linear outcomes
-#X = a design matrix
-#Beta = Beta matrix (previous iteration/starting value)
-#Kappa = Kappa matrix (previous iteration/starting value)
-#Sigma  = Sigma matrix (previous iteration/starting value)
-#p.Beta = 
-#p.Kappa = 
+# Sample Beta, regression coefficient matrix
+
+# input:
+
+# Y = the circular and linear outcomes
+# X = a design matrix (covariate values)
+# Beta = Beta matrix (previous iteration/starting value)
+# Sigma  = Sigma matrix (previous iteration/starting value)
+# p.Kappa = prior scale matrix
+# p.Beta = prior location matrix normal distribution
 
 post.Beta <- function(Y, X, Beta, Sigma, p.Beta, p.Kappa){
 
@@ -59,6 +83,18 @@ return(Beta)
 
 }
 
+# Sample Sigma, the variance-covariance matrix
+
+# input:
+
+# Y = the circular and linear outcomes
+# X = a design matrix (1 covariate)
+# Beta = Beta matrix (previous iteration/starting value)
+# Sigma  = Sigma matrix (previous iteration/starting value)
+# N = sample size
+# p.Kappa = prior Kappa matrix
+# p.Psi = prior scale matrix
+# p.nu = prior degrees of freedom value
 
 post.Sigma <- function(Y, X, N, Beta, Sigma, p.Psi, p.nu, p.Beta, p.Kappa){
   
@@ -71,6 +107,20 @@ return(Sigma)
 
 }
 
+# Sample lambda, skewness parameter
+
+# input:
+
+# rawdata = matrix with columns cosine(theta)*r, ine(theta)*r and y
+# X = a design matrix (1 covariate)
+# D = auxiliary data linear outcome
+# Beta = Beta matrix (previous iteration/starting value)
+# Sigma  = Sigma matrix (previous iteration/starting value)
+# p.Omega = prior variance
+# p.gamma = prior mean
+# m = two times the amount of circular variables + the amount of linear variables
+# c = two times the amount of circular variables
+# N = sample size
 
 post.lambda <- function(rawdata, X, D, Sigma, Beta, p.Omega, p.gamma, m, c, N){
   
@@ -110,7 +160,19 @@ post.lambda <- function(rawdata, X, D, Sigma, Beta, p.Omega, p.gamma, m, c, N){
   
 }
 
+# Sample D, auxiliary data linear outcome
 
+# input:
+
+# rawdata = matrix with columns cosine(theta)*r, ine(theta)*r and y
+# X = a design matrix (1 covariate)
+# D = auxiliary data previouw iteration
+# Beta = Beta matrix (previous iteration/starting value)
+# Sigma  = Sigma matrix (previous iteration/starting value)
+# lambda = skewness parameter (previous iteration/starting value)
+# m = two times the amount of circular variables + the amount of linear variables
+# c = two times the amount of circular variables
+# N = sample size
 
 post.d <- function(X, rawdata, Beta, D, lambda, Sigma, m, c, N){
   
@@ -137,6 +199,19 @@ post.d <- function(X, rawdata, Beta, D, lambda, Sigma, m, c, N){
   
 }
 
+# Sample r
+
+# input:
+
+# rawdata = matrix with columns cosine(theta)*r, ine(theta)*r and y
+# X = a design matrix (1 covariate)
+# D = auxiliary data previouw iteration
+# Beta = Beta matrix (previous iteration/starting value)
+# Sigma  = Sigma matrix (previous iteration/starting value)
+# r = r (previous iteration/starting value)
+# m = two times the amount of circular variables + the amount of linear variables
+# p = amount of circular variables
+# N = sample size
 
 post.r <- function(X, rawdata, r, Sigma, Beta, m, p, N){
   
@@ -176,6 +251,12 @@ post.r <- function(X, rawdata, r, Sigma, Beta, m, p, N){
 }
 
 
+## Functions to compute linear and circular likelihoods ##
+
+# loglikelihood linear outcome
+# input
+# see descriptions above
+
 llik.lin <- function(X, y, rawdata, lambda, D, Sigma, Beta, N){
 
   ll <- 0
@@ -200,6 +281,10 @@ llik.lin <- function(X, y, rawdata, lambda, D, Sigma, Beta, N){
   return(ll)
   
 }
+
+# loglikelihood circular outcome
+# input
+# see descriptions above
 
 llik.circ <- function(X, theta, y, rawdata, lambda, D, Sigma, Beta, N){
   
@@ -228,8 +313,40 @@ llik.circ <- function(X, theta, y, rawdata, lambda, D, Sigma, Beta, N){
 }
 
 
-#p = amount of circular variables
-#q amount of linear variables
+
+
+
+##### Define the wrapper function for sampling from the joint GPN-SSN model #####
+
+# input:
+
+# theta = circular outcome
+# y = linear outcome 
+# X = design matrix (1 covariate)
+# theta.hold = circular outcome holdout set
+# y.hold = linear outcome holdout set
+# X.hold = design matrix holdout set (1 covariate)
+# its = amount of iterations for the MCMC sampler
+# p = amount of circular variables
+# q amount of linear variables
+
+# output:
+
+# lambda = posterior samples for lambda
+# Beta = posterior samples for Beta (unconstrained)
+# Sigma = posterior samples for Sigma (unconstrained)
+# Betacon = posterior samples for Beta (constrained)
+# Sigmacon = posterior samples for Sigma (constrained)
+# ll.circ = circular loglikelihood
+# ll.lin = linear loglikelihood
+# theta_pred = posterior predictive values for theta (using actual covariate values)
+# y_pred = posterior predictive values for y (using actual covariate values)
+# theta_pred.hold = posterior predictive values for theta in the holdout set (using actual covariate values)
+# y_pred.hold = posterior predictive values for y in the holdout set (using actual covariate values)
+# theta_pred.min = posterior predictive values for theta in the holdout set (using the minimum covariate value)
+# theta_pred.max = posterior predictive values for theta in the holdout set (using the maximum covariate value)
+# theta_pred.mean = posterior predictive values for theta in the holdout set (using the mean covariate value)
+# theta_pred.median = posterior predictive values for theta in the holdout set (using the median covariate value)
 
 JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
   
@@ -240,7 +357,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
   m <- c+q
   k <- ncol(X)
   
-  #priors
+  #set priors
   p.Kappa <- diag(k)*0.0001
   p.Beta <- matrix(0, k, m)
   
@@ -250,7 +367,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
   p.Omega <- diag(m-c)*10000
   p.gamma  <- 0
   
-  #starting values:
+  #set starting values:
   D <- as.matrix(rep(1, (m-c)*N), N, m-c)
   D.hold <- as.matrix(rep(1, (m-c)*N.hold), N.hold, m-c)
   r <- matrix(rep(1, p*N), N, p)
@@ -260,7 +377,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
   Beta <- matrix(0, k, m)
   lambda <- 0
   
-  rawdata <- cbind(cos(theta)*r,sin(theta)*r,y)
+  rawdata <- cbind(cos(theta)*r, sin(theta)*r, y)
   Y <- (rawdata) - cbind(matrix(0, N, 2*p), D%*%(diag(m-c)*lambda))
   
   rawdata.hold <- cbind(cos(theta.hold)*r.hold, sin(theta.hold)*r.hold, y.hold)
@@ -292,7 +409,7 @@ JGPNSSN <- function(theta, y, X, its, p, q, theta.hold, y.hold, X.hold){
     D <- post.d(X, rawdata, Beta, D, lambda, Sigma, m, c, N)
     D.hold <- post.d(X.hold, rawdata.hold, Beta, D.hold, lambda, Sigma, m, c, N.hold)
     #r <- post.r(X, rawdata, r, Sigma, Beta, m, p, N)
-    r <- y #hij lijkt niet te werken omdat (lin var) y == r.... op deze manier werkt het wel
+    r <- y #y == r for circumplex data
     r.hold <- y.hold
     
     #save results in matrices

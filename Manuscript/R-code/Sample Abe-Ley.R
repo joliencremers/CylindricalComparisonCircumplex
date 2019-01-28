@@ -1,4 +1,16 @@
-#simulate from wrapped cauchy distribution
+# Sample Abe-Ley 
+#
+# This script contains helper functions for sampling from the Abe-Ley model for cylindrical data
+#
+
+
+## simulate from wrapped cauchy distribution ##
+
+# input
+
+# n = sample size
+# mu = circular mean
+# rho = circular concentration
 
 rwcauchy <- function(n, mu, rho){
   
@@ -14,8 +26,14 @@ rwcauchy <- function(n, mu, rho){
   
 }
 
-#simulate from abe-ley distribution
-rweiSSVM <- function(n, beta = 1, alpha = 1, mu = pi, kappa = 1, lambda = 0){
+## simulate from Abe-Ley distribution ##
+
+# input
+
+# n = sample size
+# nu, alpha, mu, kappa, lambda = parameters Abe-Ley distribution
+
+rweiSSVM <- function(n, nu = 1, alpha = 1, mu = pi, kappa = 1, lambda = 0){
   
   theta <- c()
   x <- c()
@@ -33,11 +51,11 @@ rweiSSVM <- function(n, beta = 1, alpha = 1, mu = pi, kappa = 1, lambda = 0){
       theta[i] <- -theta.1
     }
     
-    shape <- beta * (1-tanh(kappa)*cos(theta-mu))^(1/alpha)
-    #compute scale parameter for different parametrization,
-    #shape = (scale_parWeibull in R)^(-alpha) = 1/(scale_parWeibull in R)^alpha dus 
-    #scale_parWeibull in R = kth root(1/shape) dus
-    #scale_parWeibull in R = (1/b)^(1/alpha)
+    shape <- nu * (1-tanh(kappa)*cos(theta-mu))^(1/alpha)
+    # We compute the scale parameter for a different parametrization,
+    # shape = (scale_parWeibull in R)^(-alpha) = 1/(scale_parWeibull in R)^alpha so,
+    # scale_parWeibull in R = kth root(1/shape) so,
+    # scale_parWeibull in R = (1/b)^(1/alpha)
     scale <- (1/shape)^(1/alpha) 
     
     x[i] <- rweibull(1, shape = alpha, scale = scale)

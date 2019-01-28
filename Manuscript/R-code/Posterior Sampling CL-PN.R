@@ -1,16 +1,30 @@
-#Functions for posterior distributions
+# Posterior Sampling CL-PN
+#
+# This script contains functions to sample from the posterior of the CL-PN model for cylindrical data
+#
 
-#Sampling Gamma and Sigma, the regression coefficients and residual variance of 
-#the regression on the linear outcome y.
 
-#N = sample size
-#X = design matrix
-#y = linear outcome
-#sigma = residual variance (starting value or value from previous iteration)
-#p.gamma.mu = prior mean vector for the regression coefficients
-#p.gamma.prec = prior precision for the regression coefficients
-#p.sigma.shape = prior shape parameter for the residual variance
-#p.sigma.scale = prior scale parameter for the residual variance
+
+
+
+##### define helper functions #####
+
+
+## Functions to sample from posterior distributions ##
+
+# Sample Gamma and Sigma, the regression coefficients and residual variance of 
+# the regression on the linear outcome y.
+
+# input
+
+# N = sample size
+# X = design matrix
+# y = linear outcome
+# sig = residual variance (starting value / previous iteration)
+# p.gamma.mu = prior mean vector for the regression coefficients
+# p.gamma.prec = prior precision for the regression coefficients
+# p.sig.shape = prior shape parameter for the residual variance
+# p.sig.scale = prior scale parameter for the residual variance
 
 post.gamma.sigma <- function(N, X, y, sigma, p.gamma.mu, p.gamma.prec, p.sigma.shape, p.sigma.scale){
   
@@ -30,13 +44,15 @@ post.gamma.sigma <- function(N, X, y, sigma, p.gamma.mu, p.gamma.prec, p.sigma.s
   
 }
 
-#Sampling Beta, the regression coefficients of one component (I, II) of the 
-#regression on the circular outcome theta.
+# Sample Beta, the regression coefficients of one component (I, II) of the 
+# regression on the circular outcome theta.
 
-#Z = design matrix
-#Y = (cos(theta), sin(theta))*r
-#p.beta.mu = prior mean for the regression coefficients
-#p.beta.prec = prior precision for the regression coefficients
+# input
+
+# Z = design matrix
+# Y = (cos(theta), sin(theta))*r (augmented circular outcome)
+# p.beta.mu = prior mean for the regression coefficients
+# p.beta.prec = prior precision for the regression coefficients
 
 
 post.beta <- function(Z, Y, p.beta.mu, p.beta.prec){
@@ -48,15 +64,17 @@ post.beta <- function(Z, Y, p.beta.mu, p.beta.prec){
   
 }
 
-#Sampling r, the latent lengths
+# Sampling r, the latent lengths
 
-#theta = circular outcome
-#beta.I = regression coefficients for the first component
-#beta.II = regression coefficients for the second component
-#ZI = design matrix for the first component
-#ZII = design matrix for the second component
-#N = sample size
-#r = r value (starting value or from the previous iteration)
+# input
+
+# theta = circular outcome
+# beta.I = regression coefficients for the first component (starting value / previous iteration)
+# beta.II = regression coefficients for the second component (starting value / previous iteration)
+# ZI = design matrix for the prediction of the cosine component of the circular outcome
+# ZII = design matrix for the prediction of the sine component of the circular outcome
+# N = sample size
+# r = r value (starting value / previous iteration)
 
 post.r <- function(theta, beta.I, beta.II, ZI, ZII, N, r){
   
@@ -80,11 +98,22 @@ post.r <- function(theta, beta.I, beta.II, ZI, ZII, N, r){
 }
 
 
+## Functions to compute linear and circular likelihoods ##
+
+
+# loglikelihood linear outcome
+# input
+# see descriptions above
+
 llik.lin <- function(y, X, sigma, gamma){
   
   log(1) - log(sqrt(2*pi*sigma^2)) + sum((y-X%*%t(gamma))^2/(2*sigma^2))
   
 }
+
+# loglikelihood circular outcome
+# input
+# see descriptions above
 
 llik.circ <- function(theta, ZI, ZII, beta.I, beta.II, r){
   
@@ -106,14 +135,38 @@ llik.circ <- function(theta, ZI, ZII, beta.I, beta.II, r){
   
 }
 
-#MCMC sampler
 
-#theta = circular outcome
-#y = linear outcome
-#X = design matrix for the linear outcome
-#ZI = design matrix for the first component of the circular outcome
-#ZII = design matrix for the second component of the circular outcome
-#its = amount of iterations
+
+
+
+##### Define the wrapper function for sampling from the CL-GPN model #####
+
+# input
+
+# theta = circular outcome
+# y = linear outcome
+# X = design matrix for the linear outcome
+# ZI = design matrix for the first component of the circular outcome
+# ZII = design matrix for the second component of the circular outcome
+# theta.hold = circular outcome in holdout set
+# y.hold = linear outcome in holdout set
+# X.hold = design matrix for the linear outcome in holdout set
+# ZI = design matrix for the first component of the circular outcome in holdout set
+# ZII = design matrix for the second component of the circular outcome in holdout set
+# its = amount of iterations
+
+# output
+
+# Gamma = posterior samples for Gamma (regression parameters linear outcome)
+# BI = posterior samples for BI (regression parameters first component circular outcome)
+# BII = posterior samples for BI (regression parameters second component circular outcome)
+# Sigma = posterior samples Sigma (error variance linear outcome) 
+# ll.circ = circular loglikelihood
+# ll.lin = linear loglikelihood
+# theta_pred = posterior predictive values for theta (using actual covariate values)
+# y_pred = posterior predictive values for y (using actual covariate values)
+# theta_pred.hold = posterior predictive values for theta in the holdout set (using actual covariate values)
+# y_pred.hold = posterior predictive values for y in the holdout set (using actual covariate values)
 
 CLPN <- function(theta, y, X, ZI, ZII, its, theta.hold, y.hold, X.hold, ZI.hold, ZII.hold){
   
@@ -203,7 +256,6 @@ CLPN <- function(theta, y, X, ZI, ZII, its, theta.hold, y.hold, X.hold, ZI.hold,
     Sigma[i] <- sqrt(sigma)
     
     ll.lin[i] <- llik.lin(y.hold, X.hold, sqrt(sigma), gamma)
-    #ll.circ[i] <- llik.circ(theta.hold, ZI.hold, ZII.hold, Beta.I, Beta.II, y.hold)
     ll.circ[i] <- llik.circ(theta.hold, ZI.hold, ZII.hold, Beta.I, Beta.II, r.hold)
     
     
