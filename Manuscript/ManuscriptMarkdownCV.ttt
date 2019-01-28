@@ -1,0 +1,176 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[h]
+\centering
+\caption{Descriptives for the teacher dataset.}
+\begin{tabular}{lrrrl}
+  \noalign{\smallskip}\hline\noalign{\smallskip}
+Variable & mean/$\bar{\theta}$ & sd/$\hat{\rho}$ & Range & Type \\ \hline\noalign{\smallskip}
+IPC &33.22$^\circ$& 0.76 & - & Circular\\
+strength IPC & 0.43 & 0.15 & 0.08 - 0.80 & Linear\\
+SE & 5.04 & 1.00 & 1.5 - 7.0 & Linear\\
+   \hline
+\multicolumn{5}{l}{Note: For the circular variable IPC we show sample }\\
+\multicolumn{5}{l}{estimates for the circular mean $\bar{\theta}$ and concentration $\hat{\rho}$.}\\
+\multicolumn{5}{l}{For the linear variable we show the sample mean,}\\
+\multicolumn{5}{l}{standard deviation and range.}
+\end{tabular}
+\label{Tableteacherdescriptives}
+\end{table*}
+\efloatseparator
+ 
+\begin{sidewaystable}[h]
+\centering
+\caption{Comparison of the four cylindrical regression models}
+\begin{tabular}{lllll}
+  \noalign{\smallskip}\hline\noalign{\smallskip}
+\multicolumn{1}{l}{Aspect} & CL-PN & CL-GPN  & Abe-Ley  & GPN-SSN \\ \hline\noalign{\smallskip}
+$\Theta$ & &&&\\
+$\:\:$Distribution& PN & GPN & Sine-skewed vM & GPN\\
+$\:\:$Domain & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$\\
+$\:\:$Shape & symmetric, & assymetric, & assymetric, & assymetric, \\
+            & unimodal  & multimodal & unimodal   & multimodal \\\hline\noalign{\smallskip}
+$Y$& &&&\\
+$\:\:$Distribution & Normal & Normal & Weibull & skewed-Normal\\
+$\:\:$Domain & $(-\infty, + \infty)$ & $(-\infty, + \infty)$ & $(0, + \infty)$ & $(0, + \infty)$\\
+$\:\:$Shape & symmetric, & symmetric, & assymetric, & assymetric, \\
+            & unimodal  & unimodal  & unimodal   & unimodal\\\hline\noalign{\smallskip}
+$\Theta$-$Y$ dependence &                                   &                                   & & \\
+                        & $y$ regressed on                  & $y$ regressed on                  & $\alpha$ and $\kappa$ & multivariate \\
+                        & $\sin(\theta)$ and $\cos(\theta)$ & $\sin(\theta)$ and $\cos(\theta)$ & & distribution\\\hline
+\multicolumn{5}{l}{Note: PN and GPN refer to the projected normal and general projected normal distribution.}\\
+\multicolumn{5}{l}{vM refers to the von-Mises distribution}\\
+
+\end{tabular}
+\label{TableModels}
+\end{sidewaystable}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:estCLGPN}Results, cross-validation mean and standard deviation, for the modified CL-PN and CL-GPN models}
+\centering
+\begin{tabular}[t]{lllllll}
+\toprule
+\multicolumn{1}{c}{Parameter} & \multicolumn{3}{c}{CL-PN} & \multicolumn{3}{c}{CL-GPN} \\
+\cmidrule(l{2pt}r{2pt}){1-1} \cmidrule(l{2pt}r{2pt}){2-4} \cmidrule(l{2pt}r{2pt}){5-7}
+  & Mode & HPD LB & HPD UB & Mode & HPD LB & HPD UB\\
+\midrule
+$\beta_0^{I}$ & 1.76 (0.09) & 1.50 (0.07) & 2.03 (0.09) & 2.43 (0.12) & 1.91 (0.10) & 3.05 (0.17)\\
+$\beta_1^{I}$ & 0.65 (0.07) & 0.42 (0.06) & 0.90 (0.08) & 0.84 (0.11) & 0.45 (0.09) & 1.29 (0.15)\\
+$\beta_0^{II}$ & 1.15 (0.05) & 0.92 (0.04) & 1.37 (0.04) & 1.47 (0.05) & 1.16 (0.04) & 1.78 (0.05)\\
+$\beta_1^{II}$ & 0.58 (0.03) & 0.38 (0.04) & 0.79 (0.04) & 0.70 (0.06) & 0.47 (0.05) & 0.96 (0.08)\\
+$\gamma_0$ & 0.38 (0.01) & 0.31 (0.01) & 0.44 (0.01) & 0.37 (0.01) & 0.31 (0.01) & 0.42 (0.01)\\
+\addlinespace
+$\gamma_{cos}$ & 0.04 (0.00) & 0.01 (0.00) & 0.06 (0.00) & 0.03 (0.00) & 0.01 (0.00) & 0.04 (0.00)\\
+$\gamma_{sin}$ & -0.01 (0.00) & -0.04 (0.00) & 0.02 (0.00) & -0.00 (0.00) & -0.03 (0.00) & 0.03 (0.00)\\
+$\gamma_1$ & 0.03 (0.01) & -0.00 (0.00) & 0.07 (0.01) & 0.03 (0.00) & -0.00 (0.00) & 0.06 (0.00)\\
+$\sigma$ & 0.14 (0.00) & 0.12 (0.00) & 0.16 (0.00) & 0.14 (0.00) & 0.12 (0.00) & 0.16 (0.00)\\
+$\sum_{1,1}$ & NA (NA) & NA (NA) & NA (NA) & 3.04 (0.29) & 1.85 (0.13) & 5.00 (0.41)\\
+\addlinespace
+$\sum_{1,2}$ & NA (NA) & NA (NA) & NA (NA) & 0.47 (0.12) & 0.12 (0.12) & 0.80 (0.10)\\
+$\sum_{2,2}$ & NA (NA) & NA (NA) & NA (NA) & 1.00 (0.00) & 1.00 (0.00) & 1.00 (0.00)\\
+\bottomrule
+\multicolumn{7}{l}{Note: $\beta_0^{I}$, $\beta_0^{II}$ and $\gamma_0$ inform us about the type and strength of interpersonal behavior}\\
+\multicolumn{7}{l}{at the average self-efficacy. $\beta_1^{I}$, $\beta_1^{II}$ and $\gamma_1$ inform us about the effect of self-efficacy on the}\\
+\multicolumn{7}{l}{type and strength of interpersonal behavior. $\gamma_{cos}$ and $\gamma_{sin}$ inform us about the dependence}\\
+\multicolumn{7}{l}{ between the type and strength of interpersonal behavior. $\sum_{1,1}$, $\sum_{1,2}$ and $\sum_{2,2}$ are are}\\
+\multicolumn{7}{l}{elements of the variance-covariance matrix of the type of interpersonal behavior in the}\\
+\multicolumn{7}{l}{CL-GPN model and $\sigma$ is the error standard deviation of the strength of interpersonal behavior.}\\
+
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:estAL}Results, cross-validation mean and standard deviation (SD), for the modified Abe-Ley model}
+\centering
+\begin{tabular}[t]{llllllll}
+\toprule
+& $\beta_0$ & $\beta_1$ & $\gamma_0$  & $\gamma_1$ & $\alpha$ & $\kappa$ & $\lambda$\\
+Mean & 0.36 & -0.03 & 1.17 & 0.04 & 3.66 & 1.51 & 0.70 \\
+SD & 0.02) & 0.01 & 0.02 & 0.02 & 0.12 & 0.08 & 0.05\\
+\bottomrule
+\multicolumn{8}{l}{Note: $\beta_0$  and $\gamma_0$ inform us about the type and strength }\\
+\multicolumn{8}{l}{of interpersonal behavior at the average self-efficacy. $\beta_1$ }\\
+\multicolumn{8}{l}{and $\gamma_1$ inform us about the effect of self-efficacy on the}\\
+\multicolumn{8}{l}{type and strength of interpersonal behavior. $\alpha$ is the } \\
+\multicolumn{8}{l}{shape parameter of the distribution of the strength }\\
+\multicolumn{8}{l}{of interpersonal bahavior. $\kappa$ and $\lambda$ are the concentration}\\
+\multicolumn{8}{l}{and skewness parameters for the distribution of the type}\\
+\multicolumn{8}{l}{of interpersonal behavior.}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\caption{\label{tab:estCLGPNM}Results, cross-validation mean and standard deviation, for the GPN-SSN model}
+\centering
+\begin{tabular}[t]{lllllll}
+\toprule
+\multicolumn{1}{c}{Parameter} & \multicolumn{3}{c}{Unconstrained} & \multicolumn{3}{c}{Constrained} \\
+\cmidrule(l{2pt}r{2pt}){1-1} \cmidrule(l{2pt}r{2pt}){2-4} \cmidrule(l{2pt}r{2pt}){5-7}
+  & Mode & HPD LB & HPD UB & Mode & HPD LB & HPD UB\\
+\midrule
+$\beta_{0_s^{I}}$ & 0.30 (0.01) & 0.26 (0.01) & 0.34 (0.01) & 2.11 (0.11) & 1.75 (0.09) & 2.50 (0.11)\\
+$\beta_{0_s^{II}}$ & 0.19 (0.00) & 0.17 (0.01) & 0.21 (0.00) & 1.34 (0.06) & 1.10 (0.05) & 1.57 (0.06)\\
+$\beta_{0_y}$ & 0.33 (0.01) & 0.30 (0.30) & 0.36 (0.01) & 0.33 (0.01) & 0.30 (0.01) & 0.36 (0.01)\\
+\addlinespace
+$\beta_{1_s^{I}}$ & 0.09 (0.01) & 0.05 (0.01) & 0.13 (0.01) & 0.60 (0.06) & 0.33 (0.05) & 0.90 (0.06)\\
+$\beta_{1_s^{II}}$ & 0.07 (0.00) & 0.04 (0.00) & 0.09 (0.01) & 0.48 (0.03) & 0.30 (0.04) & 0.66 (0.04)\\
+$\beta_{1_y}$ & 0.09 (0.01) & 0.06 (0.06) & 0.12 (0.01) & 0.09 (0.01) & 0.06 (0.01) & 0.12 (0.01)\\
+\addlinespace
+$\sum_{s_{1,1}}$ & 0.05 (0.00) & 0.04 (0.00) & 0.06 (0.00) & 2.44 (0.15) & 1.72 (0.07) & 3.46 (0.14)\\
+$\sum_{s_{2,2}}$ & 0.02 (0.00) & 0.02 (0.00) & 0.03 (0.00) & 1.00 (0.00) & 1.00 (0.00) & 1.00 (0.00)\\
+$\sum_{y_{3,3}}$ & 0.03 (0.00) & 0.02 (0.02) & 0.04 (0.00) & 0.03 (0.00) & 0.02 (0.00) & 0.04 (0.00)\\
+$\sum_{s_{1,2}}$ & 0.00 (0.00) & -0.00 (0.00) & 0.01 (0.00) & 0.08 (0.06) & -0.20 (0.06) & 0.34 (0.06)\\
+$\sum_{sy_{1,3}}$ & 0.03 (0.00) & 0.02 (0.00) & 0.04 (0.00) & 0.23 (0.01) & 0.17 (0.00) & 0.32 (0.01)\\
+$\sum_{sy_{2,3}}$ & 0.01 (0.00) & 0.01 (0.01) & 0.02 (0.00) & 0.09 (0.01) & 0.06 (0.01) & 0.12 (0.01)\\
+$\lambda$ & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01) & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01)\\
+\bottomrule
+\multicolumn{7}{l}{Note: $\beta_{0_s^{I}}$, $\beta_{0_s^{II}}$ and $\beta_{0_y}$ inform us about the type and strength of interpersonal behavior}\\
+\multicolumn{7}{l}{at the average self-efficacy. $\beta_{1_s^{I}}$, $\beta_{1_s^{II}}$ and $\beta_{1_y}$ inform us about the effect of self-efficacy }\\
+\multicolumn{7}{l}{on the type and strength of interpersonal behavior. $\sum_{s_{1,1}}$, $\sum_{s_{1,2}}$, $\sum_{s_{2,2}}$, $\sum_{y_{3,3}}$, $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ }\\
+\multicolumn{7}{l}{are elements of the variance-covariance matrix of which $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ inform us about}\\
+\multicolumn{7}{l}{the dependence between the type and strength of interpersonal behavior.}\\
+\multicolumn{7}{l}{$\lambda$ is the skewness parameter of the distribution of the strengths of interpersonal behavior.}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\caption{\label{tab:means}Posterior estimates (in degrees) for the circular mean (at SE = 0) in the CL-PN, CL-GPN and GPN-SSN models}
+\centering
+\begin{tabular}[t]{lrrr}
+\toprule
+  & Mode & HPD LB & HPD UB\\
+  \midrule
+CL-PN & 32.29 & 24.81 & 39.71\\
+CL-GPN & 33.70 & 26.72 & 41.15\\
+GPN-SSN & 35.53 & 28.40 & 43.30\\
+\bottomrule
+\multicolumn{4}{l}{Note that these means are based on}\\
+\multicolumn{4}{l}{their posterior predictive distribution }\\
+\multicolumn{4}{l}{following (Wang and Gelfand, 2013)}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{tab:ModelFit}PLSL criteria, cross-validation mean and standard deviation, for the circular and linear outcome in the four cylindrical models}
+\centering
+\begin{tabular}[t]{lrlrl}
+\toprule
+\multicolumn{1}{c}{Model} & \multicolumn{2}{c}{Circular} & \multicolumn{2}{c}{Linear} \\
+\cmidrule(l{2pt}r{2pt}){1-1} \cmidrule(l{2pt}r{2pt}){2-3} \cmidrule(l{2pt}r{2pt}){4-5}
+  & mean & sd & mean & sd\\
+\midrule
+CL-PN & 82.96 & (9.47) & -17.65 & (3.70)\\
+CL-GPN & 86.05 & (16.63) & -18.30 & (3.00)\\
+Abe-Ley & 31.97 & (22.07) & 25.49 & (17.46)\\
+GPN-SSN & 107.10 & (10.52) & -2.37 & (7.01)\\
+\bottomrule
+\end{tabular}
+\end{table*}

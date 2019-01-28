@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.2)  18 SEP 2018 14:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.2)  11 JAN 2019 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,7 +438,7 @@ Here is how much of TeX's memory you used:
  55i,7n,54p,401b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2018/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr10.pfb>
-Output written on survivaldiffSE.pdf (1 page, 16956 bytes).
+Output written on survivaldiffSE.pdf (1 page, 16859 bytes).
 PDF statistics:
  15 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream

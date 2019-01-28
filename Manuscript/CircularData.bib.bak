@@ -833,19 +833,19 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{garcia2013exploring,
-  author =    {Garc{\'\i}a-Portugu{\'e}s, Eduardo and Crujeiras, Rosa M and Gonz{\'a}lez-Manteiga, Wenceslao},
-  title =     {Exploring wind direction and SO2 concentration by circular--linear density estimation},
-  journal =   {Stochastic Environmental Research and Risk Assessment},
-  year =      {2013},
-  volume =    {27},
-  number =    {5},
-  pages =     {1055--1067},
-  doi =       {10.1007/s00477-012-0642-5},
-  publisher = {Springer}
+  author    = {García-Portugu{\'e}s, Eduardo and Crujeiras, Rosa M and Gonz{\'a}lez-Manteiga, Wenceslao},
+  title     = {Exploring wind direction and {SO2} concentration by circular--linear density estimation},
+  journal   = {Stochastic Environmental Research and Risk Assessment},
+  year      = {2013},
+  volume    = {27},
+  number    = {5},
+  pages     = {1055--1067},
+  doi       = {10.1007/s00477-012-0642-5},
+  publisher = {Springer},
 }
 
 @Article{garcia2014test,
-  author    = {Garc{\'\i}a-Portugu{\'e}s, Eduardo and Barros, Ana MG and Crujeiras, Rosa M and Gonz{\'a}lez-Manteiga, Wenceslao and Pereira, Jos{\'e}},
+  author    = {García-Portugu{\'e}s, Eduardo and Barros, Ana MG and Crujeiras, Rosa M and Gonz{\'a}lez-Manteiga, Wenceslao and Pereira, Jos{\'e}},
   title     = {A test for directional-linear independence, with applications to wildfire orientation and size},
   journal   = {Stochastic Environmental Research and Risk Assessment},
   year      = {2014},
@@ -1616,16 +1616,16 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{mainhard2012mapping,
-  author =    {Mainhard, M. Tim and Pennings, Helena Jo M. and Wubbels, Theo and Brekelmans, Mieke},
-  title =     {Mapping control and affiliation in teacher--student interaction with State Space Grids},
-  journal =   {Teaching and Teacher Education},
-  year =      {2012},
-  volume =    {28},
-  number =    {7},
-  pages =     {1027--1037},
-  owner =     {3463230},
+  author    = {Mainhard, M. Tim and Pennings, Helena Jo M and Wubbels, Theo and Brekelmans, Mieke},
+  title     = {Mapping control and affiliation in teacher--student interaction with State Space Grids},
+  journal   = {Teaching and Teacher Education},
+  year      = {2012},
+  volume    = {28},
+  number    = {7},
+  pages     = {1027--1037},
+  owner     = {3463230},
   publisher = {Elsevier},
-  timestamp = {2015.06.17}
+  timestamp = {2015.06.17},
 }
 
 @Article{mardia1976bayesian,
@@ -2013,7 +2013,7 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{pennings2014nonlinear,
-  author    = {Pennings, Helena Jo M. and Brekelmans, Mieke and Wubbels, Theo and {\VANDER{Want}{Van der}{van der}} Want, Anna C and Claessens, Luce CA and van Tartwijk, Jan},
+  author    = {Pennings, Helena Jo M and Brekelmans, Mieke and Wubbels, Theo and {\VANDER{Want}{Van der}{van der}} Want, Anna C and Claessens, Luce CA and van Tartwijk, Jan},
   title     = {A Nonlinear Dynamical Systems Approach to Real-Time Teacher Behavior: Differences between Teachers.},
   journal   = {Nonlinear dynamics, psychology, and life sciences},
   year      = {2014},
@@ -2025,7 +2025,7 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{pennings2014real,
-  author    = {Pennings, Helena Jo M. and van Tartwijk, Jan and Wubbels, Theo and Claessens, Luce CA and {\VANDER{Want}{Van der}{van der}} Want, Anna C and Brekelmans, Mieke},
+  author    = {Pennings, Helena Jo M and van Tartwijk, Jan and Wubbels, Theo and Claessens, Luce CA and {\VANDER{Want}{Van der}{van der}} Want, Anna C and Brekelmans, Mieke},
   title     = {Real-time teacher--student interactions: A Dynamic Systems approach},
   journal   = {Teaching and Teacher Education},
   year      = {2014},
@@ -2640,14 +2640,15 @@ They provide a method for estimating the mean and kappa and drawing samples from
   publisher = {Elsevier}
 }
 
-@InCollection{wubbels2006interpersonal,
-  author    = {Wubbels, Theo and Brekelmans, Mieke and den Brok, Perry and van Tartwijk, Jan},
-  title     = {An interpersonal perspective on classroom management in secondary classrooms in the {Netherlands}},
-  booktitle = {Handbook of Classroom Management: Research, Practice, and Contemporary Issues},
+@InBook{wubbels2006interpersonal,
+  chapter   = {An interpersonal perspective on classroom management in secondary classrooms in the {Netherlands}},
+  pages     = {1161-1191},
+  title     = {Handbook of classroom management: Research practice and contemporary issues},
   publisher = {Malwah, NJ: Lawrence Erlbaum Associates},
   year      = {2006},
+  author    = {Wubbels, Theo and Brekelmans, Mieke and den Brok, Perry and van Tartwijk, Jan},
   editor    = {Evertson, C. and Weinstein, C. S.},
-  pages     = {1161-1191},
+  booktitle = {Handbook of Classroom Management: Research, Practice, and Contemporary Issues},
 }
 
 @Article{zeger1991generalized,
@@ -2697,21 +2698,87 @@ They provide a method for estimating the mean and kappa and drawing samples from
   publisher = {American Psychological Association}
 }
 
+@InBook{gurtman2011reasoning,
+  chapter   = {Circular reasoning about circular assessment},
+  pages     = {299-311},
+  title     = {Handbook of interpersonal psychology},
+  publisher = {New York: Wiley.},
+  year      = {2011},
+  author    = {Gurtman, Michael B},
+  editor    = {Horowitz, Leonard M and Strack, Stephen},
+}
+
+@Book{leary1957,
+  title     = {An interpersonal diagnosis of personality},
+  publisher = {New York: Ronald Press Company},
+  year      = {1957},
+  author    = {Timothy Leary},
+}
+
+@Article{wiggins1996history,
+  author  = {Wiggins, J.},
+  title   = {An informal history of the interpersonal circumplex tradition},
+  journal = {Journal of Personality Assessment},
+  year    = {1996},
+  volume  = {66},
+  number  = {2},
+  pages   = {217-233},
+}
+
+@InBook{plutchik1997general,
+  chapter   = {The circumplex as a general model of the structure of emotions and personality},
+  pages     = {17--45},
+  title     = {Circumplex models of personality and emotions},
+  publisher = {Washington, DC, US: American Psychological Association},
+  year      = {1997},
+  author    = {Plutchik, Robert},
+  editor    = {Plutchik, Robert., Conte, Hope R.},
+}
+
+@InBook{schwartz1992values,
+  chapter   = {Universals in the content and structure of values: Theoretical advances and empirical tests in 20 countries.},
+  pages     = {1--65},
+  title     = {Advances in experimental social psychology},
+  publisher = {San Diego, CA: Academic Press},
+  year      = {1992},
+  author    = {Schwartz, Shalom H.},
+  editor    = {Zanna, M.P.},
+  volume    = {25},
+}
+
+@Article{pennings2017complexity,
+  author  = {Pennings, Helena Jo M},
+  title   = {Using a Complexity Approach to Study the Interpersonal Dynamics in Teacher-Student Interactions: A Case Study of Two Teachers.},
+  journal = {Complicity: An International Journal of Complexity and Education},
+  year    = {2017},
+  volume  = {14},
+  number  = {2},
+  pages   = {88--103},
+}
+
+@PhdThesis{pennings2017phd,
+  author    = {Pennings, Helena Jo M},
+  title     = {Interpersonal dynamics in Teacher-student interactions and relationships},
+  year      = {2017},
+  publisher = {Enschede: Ipskamp drukkers.},
+}
+
+@Article{locke2007selfefficacy,
+  author  = {Locke, Kenneth D and Sadler, Pamela},
+  title   = {Self-efficacy, values, and complementarity in dyadic Interactions: Integrating Interpersonal and social-cognitive theory},
+  journal = {Personality and Social Psychology Bulletin},
+  year    = {2007},
+  volume  = {33},
+  pages   = {94--109},
+  doi     = {10.1177/0146167206293375},
+}
+
+@Article{want2018selfefficacy,
+  author  = {{\VANDER{Want}{Van der}{van der}} Want, Anna C and Den Brok, Perry and Beijaard, Douwe and Brekelmans, Mieke and Claessens, Luce CA and Pennings, Helena Jo M},
+  title   = {The relation between teachers’ interpersonal role identity and their self-efficacy, burnout and work engagement},
+  journal = {Professional Development in Education},
+  year    = {Advance Online Publication},
+  doi     = {10.1080/19415257.2018.1511453},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
-
-@Comment{jabref-meta: fileDirectory-Kees@Tomcat:C:\\Dropbox\\Masterthesis\\Articles;}
-
-@Comment{jabref-meta: grouping:
-0 AllEntriesGroup:;
-1 StaticGroup:General Bayesian Circular Data\;0\;1\;\;\;\;;
-2 StaticGroup:embedding approach\;0\;1\;\;\;\;;
-2 StaticGroup:intrinsic approach\;0\;1\;\;\;\;;
-2 StaticGroup:wrapping approach\;0\;1\;\;\;\;;
-1 StaticGroup:Latent variable augmentation\;0\;1\;\;\;\;;
-1 StaticGroup:Bayesian methods (explanations)\;0\;1\;\;\;\;;
-1 StaticGroup:Frequentist stuff\;0\;1\;\;\;\;;
-}
-
-@Comment{jabref-meta: groupsversion:
-3;
-}
