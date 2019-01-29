@@ -6,7 +6,7 @@ author:
   - name          : "Jolien Cremers"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
+    address       : ""
     email         : "joliencremers@gmail.com"
   - name          : "Helena J.M. Pennings"
     affiliation   : "2,3"
@@ -24,9 +24,7 @@ affiliation:
     institution   : "Department of Applied Mathematics, Computer Science and Statistics, Ghent University"
 
 authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
+  
 
 abstract: |
   Cylindrical data are multivariate data which consist of a directional,
@@ -108,34 +106,34 @@ interest [@chrastil2017rotational] or in eye-tracking, the saccade data also
 consist of both the direction (i.e., the circular variable) and the duration
 (i.e., the linear variable)(e.g., @rayner200935th). Apart from the social
 sciences data with a circular and linear outcome more commonly occur in
-meteorology meteorology [@garcia2013exploring], ecology [@garcia2014test] or
+meteorology [@garcia2013exploring], ecology [@garcia2014test] or
 marine research [@lagona2015hidden]
 \newline
-\indent Up until now researchers studying cylindrical data had to rely on the linear
-statistical methods to analyze their research results. Focusing on only the
-circular variable or only on the linear variable. However, lately more and more
+\indent Up until now researchers studying cylindrical data had to rely on linear
+statistical methods to analyze their research results. However, lately more and more
 of these researchers acknowledge that linear methods are not sufficient and call
 for new methods [@gurtman2011reasoning; @pennings2017complexity;
 @wright2009integrating] that take into account both the circular and the linear
 component of these data.
 \newline
-\indent The aim in the present paper is twofold. Firstly, we intend to fill this gap in
-the literature on cylindrical models by adapting four existing cylindrical
-models in such a way that they include a regression of both the linear and
-circular component of a cylindrical variable onto a set of covariates. From now
-on we will therefore refer to the components of the cylindrical variable as
-outcome components. Secondly, we will show how using these models can benefit
-the analysis of circumplex data and cylindrical data in psychology in general.
-More specifically we will show these benefits for interpersonal teacher data
-from the field of educational psychology. Apart from modelling the dependence
-between the linear and circular component of a cylindrical variable we would
-also like to predict the two components from a set of covariates in a regression
-model. In our analysis, we will show how this can be done in four different ways
-using the adapted cylindrical models.
+\indent The aim in the present paper is twofold. Firstly, we we intend to fill
+the above mentioned gap in the literature by showing the use of cylindrical
+models can benefit the analysis of circumplex data and cylindrical data in
+psychology in general. More specifically we will show these benefits for
+interpersonal teacher data from the field of educational psychology. Apart from
+modelling the dependence between the linear and circular component of a
+cylindrical variable we would also like to predict the two components from a set
+of covariates in a regression model. Our second aim therefore is to adapt
+several existing cylindrical models in such a way that they include a regression
+of both the linear and circular component of a cylindrical variable onto a set
+of covariates. From now on we will therefore refer to the components of the
+cylindrical variable as outcome components. These adapted circular models are
+then used  to analyse the teacher data.
+
 
 \subsection{Cylindrical data}
 
-Thus, data that consist of a variable and a circular variable is called
+Data that consist of a variable and a circular variable is called
 cylindrical data. A circular variable is different from the linear variable in
 the sense that it is measured on a different scale. Figure \ref{circline} shows
 the difference between a circular scale (right) and a linear scale (left). The
@@ -204,12 +202,12 @@ to the degree of power or control a teacher exerts in interaction with his/her
 students. Communion refers to the degree of friendliness or affiliation a
 teacher conveys in interaction with his/her students. The loadings on the two
 dimensions of the QTI can be placed in a two-dimensional space formed by Agency
-(vertical) and Communion (horizontal), see Figure \ref{QTI}. Different parts of
-this space are characterized by different teacher behavior, e.g. 'helpful' or
-'uncertain'. This two-dimensional space is called the interpersonal
-circle/circumplex (IPC). The IPC is ``a continuous order with no beginning or
-end'' [@gurtman2009exploring, p. 2]. We call such ordering a circumplex ordering
-and the IPC is therefore often called the interpersonal circumplex. The ordering
+(vertical) and Communion (horizontal), see Figure \ref{QTI}. This space is
+called the interpersonal circle/circumplex (IPC) and different parts of this
+space are characterized by different teacher behavior, e.g. 'helpful' or
+'uncertain'. The IPC is ``a continuous order with no beginning or end''
+[@gurtman2009exploring, p. 2]. We call such ordering a circumplex ordering and
+the IPC is therefore often called the interpersonal circumplex. The ordering
 also implies that scores on the IPC could be viewed as a circular variable. This
 circular variable represents the type of interpersonal behavior that a teacher
 shows towards his/her students.\newline
@@ -218,15 +216,15 @@ analyze them as such using a circular regression model. The two dimension
 scores, Agency and Communion, can be converted to a circular score using the
 two-argument arctangent function in \eqref{PredVal}\footnote{The selection of
 the origin in circumplex data depends on the scaling of the Agency and Communion
-scores; their respective 0 scores form the origin. Agency and Communion are
-measured on a scale from 1 to 5 and for analysis purposes they are later
-converted to scale ranging from -1 to 1. Scaling is however only considered an
-issue in those instances where cylindrical data is derived from measurements in
-bivariate space.}, where \(A\) represents a
-score on the Agency dimension and \(C\) represents a score on the Communion
-dimension. Note that when placing a unit circle on Figure \ref{QTI} we see that
-the Agency dimension is related to the sine of the circular score and the
-Communion dimension is related to the cosine of the circular score.
+scores. Agency and Communion are measured on a scale from 1 to 5 and for
+analysis purposes they are later converted to scale ranging from -1 to 1.  Their
+respective 0 scores form the origin. Scaling is however only considered an issue
+in those instances where cylindrical data is derived from measurements in
+bivariate space.}, where \(A\) represents a score on the Agency dimension and
+\(C\) represents a score on the Communion dimension. Note that when placing a
+unit circle on Figure \ref{QTI} we see that the Agency dimension is related to
+the sine of the circular score and the Communion dimension is related to the
+cosine of the circular score.
 \begin{equation}\label{PredVal}
 \theta          = \text{atan2}\left(A, \: C\right)  =
 \left\{{\begin{array}{lcl}
@@ -245,20 +243,22 @@ brackets mean that $2\pi$ and $360^\circ$ are not included in the interval since
 these represent the same value as 0 as a result of periodicity. \newline
 \indent A circular analysis of circumplex data has several benefits: it is more
 in line with its theoretical definition and it allows us to analyse the blend of
-the two dimensions Agency and Communion instead of both dimensions separately
-providing us with new insights compared to a separate analysis of the two
-dimensions that is standard in the literature (see e.g. @pennings2018interpersonal, @wright2009integrating or @wubbels2006interpersonal). There is however one main drawback: when two-dimensional
-data are converted to the circle we lose some information, namely the length of
-the two-dimensional vector \((A, C)^t\), \emph{i.e.}, its Euclidean norm
-\(\mid\mid (A, C)^t \mid\mid\). This length represents the strength of the
-interpersonal behavior a teacher shows towards his/her students. In a
-cylindrical model this strength (the linear outcome) can be modeled together
-with the type of interpersonal behavior of a teacher (the circular outcome).
-This leads to an improved analysis of interpersonal circumplex data, over either
-analyzing the two dimensions separately or using a circular model, because we
-take all information, circular and linear, into account. In the next section we
-introduce several cylindrical models that can be used to analyze the teacher
-data. First however we will provide descriptives for the teacher data.
+the two dimensions Agency and Communion instead of both dimensions separately.
+This provides us with new insights compared to a separate analysis of the two
+dimensions that is standard in the literature (see e.g.
+@pennings2018interpersonal, @wright2009integrating or
+@wubbels2006interpersonal). There is however one main drawback: when
+two-dimensional data are converted to the circle we lose some information,
+namely the length of the two-dimensional vector \((A, C)^t\), \emph{i.e.}, its
+Euclidean norm \(\mid\mid (A, C)^t \mid\mid\). This length represents the
+strength of the interpersonal behavior a teacher shows towards his/her students.
+In a cylindrical model this strength (the linear outcome) can be modeled
+together with the type of interpersonal behavior of a teacher (the circular
+outcome). This leads to an improved analysis of interpersonal circumplex data,
+over either analyzing the two dimensions separately or using a circular model,
+because we take all information, circular and linear, into account. In the next
+section we introduce several cylindrical models that can be used to analyze the
+teacher data. First however we will provide descriptives for the teacher data.
 
 
 \subsection{Data Description}\label{DataDescriptives}
@@ -354,25 +354,27 @@ The teacher data was collected between 2010 and 2015 and contains several
 repeated measures on the IPC of 161 teachers. Measurements were obtained using
 the QTI and taken in different years and classes. For this paper we only
 consider one measurement, the first occasion (2010) and largest class if data
-for multiple classes were available. This results in a sample of 151 teachers. In addition to the type of interpersonal
-behavior (IPC), the circular outcome, and the strength of interpersonal behavior
-(IPC strength), the linear outcome, a teachers' self-efficacy (\verb|SE|)
-concerning classroom management is used as covariate in the analysis.
-In previous research, in psychology and education it had been shown that higher self-efficacy is related to the quality of interpersonal interactions [@locke2007selfefficacy; @want2018selfefficacy]. After listwise
-deletion of missings ($3$ in total, only for the self-efficacy) we have a sample
-of 148 teachers. Table \ref{Tableteacherdescriptives} shows descriptives for the
-dataset. For the circular variable IPC we show sample estimates for the circular
-mean $\bar{\theta}$ and concentration $\hat{\rho}$. The circular concentration
-lies between 0, meaning the data is not concentrated at all \emph{i.e.} spread
-over the entire circle, and 1, meaning all data is concentrated at a single
-point on the circle The population values of these parameters are usually, and
-also in this paper, referred to as $\mu$ (circular location) and $\kappa$
-(circular concentration). For the linear variables (strength IPC and SE) we show
-sample estimates of the linear mean and standard deviation. Figure
-\ref{dataplot} is a scatterplot showing the relation between the linear and
-circular outcome of the teacher data for teachers with low SE (below 1 sd below
-the mean), average SE (between 1 sd below and 1 sd above the mean) and high SE
-(above 1 sd above the mean).
+for multiple classes were available. This results in a sample of 151 teachers.
+In addition to the type of interpersonal behavior (IPC), the circular outcome,
+and the strength of interpersonal behavior (IPC strength), the linear outcome, a
+teachers' self-efficacy (\verb|SE|) concerning classroom management is used as
+covariate in the analysis. In previous research, in psychology and education it
+has been shown that higher self-efficacy is related to the quality of
+interpersonal interactions [@locke2007selfefficacy; @want2018selfefficacy].
+After listwise deletion of missings ($3$ in total, only for the self-efficacy)
+we have a sample of 148 teachers. Table \ref{Tableteacherdescriptives} shows
+descriptives for the dataset. For the circular variable IPC we show sample
+estimates for the circular mean $\bar{\theta}$ and concentration $\hat{\rho}$.
+The circular concentration lies between 0, meaning the data is not concentrated
+at all \emph{i.e.} spread over the entire circle, and 1, meaning all data is
+concentrated at a single point on the circle The population values of these
+parameters are usually, and also in this paper, referred to as $\mu$ (circular
+location) and $\kappa$ (circular concentration). For the linear variables
+(strength IPC and SE) we show sample estimates of the linear mean and standard
+deviation (sd). Figure \ref{dataplot} is a scatterplot showing the relation between
+the linear and circular outcome of the teacher data for teachers with low SE
+(below 1 sd below the mean), average SE (between 1 sd below and 1 sd above the
+mean) and high SE (above 1 sd above the mean).
 
 \begin{figure}
 \centering
@@ -411,14 +413,14 @@ general. To do so we decide to focus on four cylindrical models. The models were
 selected for their relatively low complexity and the ease with which a
 regression structure could be incorporated. But also because they show different
 ways of modelling the the linear and circular outcome and thereby illustrate a
-wider range of cylindrical models available in the literature. All four
+wider range of cylindrical models available in the literature. The
 cylindrical models contain a set of $q$ predictors $\boldsymbol{x} = x_1, \dots,
 x_q$ and $p$ predictors $\boldsymbol{z} = z_1, \dots, z_q$ for the linear and
 circular outcomes, \(Y\) and \(\Theta\), respectively. The first two models are
 based on a construction by @mastrantonio2015bayesian, while the other models are
 extensions of the models from @abe2017tractable and @mastrantonio2018joint. The
 four cylindrical  models are introduced separately in the subsections below.
-However, to provide a more succinct overview and comparison of the four models,
+However, to provide a more succinct overview and comparison of the four models, Table
 \ref{TableModels} gives an overview of the similarities and differences between
 the models.
 
@@ -977,7 +979,7 @@ the starting  values for the maximum likelihood based Abe-Ley model: \(\eta_0 =
 2000. After convergence checks via traceplots we concluded that some of the
 parameters of the GPN-SSN model did not converge. Therefore we set the number of
 iterations of the MCMC models to 20,000 and subtracted a burn-in of 5000 to
-reach convergence (the geweke diagnostics show absolute z-scores over 1.96 in
+reach convergence (the Geweke diagnostics show absolute z-scores over 1.96 in
 6\% of the estimated parameters). Note that we choose the same number of
 iterations for all three models models estimated using MCMC prodedures to make
 their comparison via the PLSL as fair as possible. Lastly, the predictor
@@ -2033,17 +2035,16 @@ in classroom management. Although we do not find any strong effects of
 self-efficacy on either the type or strength of behavior, the four cylindrical
 models do provide a way of analyzing and interpreting this effect. This is
 beneficial for future research in which we may want to investigate the effect of
-further covariates on data from the circumplex. Furthermore, in addition to
-being able to assess the influence of covariates, the cylindrical models also
-provide information about the dependence between the type and strength of
-interpersonal behavior. We found that stronger behavior is associated with those
-types of behavior that show higher scores on the Communion dimension (and also
-on the Agency dimension). This translates to stronger behavior being shown by
-teachers whose type of interpersonal behavior ranges between 0$^\circ$ and
-90$^\circ$, the 'helpful' and 'directing' subtypes according to Figure
-\ref{QTI}. \textcolor{red}{Is dit nieuw/zijn er papers die hier iets over
-zeggen?}\newline
-\indent As mentioned in the introducion data from the interpersonal circumplex
+further covariates on data from the circumplex. \newline
+\indent Furthermore, in addition to being able to assess the influence of
+covariates, the cylindrical models also provide information about the dependence
+between the type and strength of interpersonal behavior. We found that stronger
+behavior is associated with higher scores on the Communion and in some models
+also the Agency dimension. This implies that teachers whose type of
+interpersonal behavior ranges between 0$^\circ$ and 90$^\circ$, the 'helpful'
+and 'directing' subtypes are stronger in their behavior than teachers of the
+other subtypes.\newline
+\indent As mentioned in the introduction, data from the interpersonal circumplex
 is not the only type of cylindrical data that occurs in psychology. The methods
 presented in this paper are also of use for research on human navigation and
 eye-tracking research. Furthermore, even though cylindrical models are already

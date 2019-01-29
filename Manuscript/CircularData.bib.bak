@@ -2708,7 +2708,7 @@ They provide a method for estimating the mean and kappa and drawing samples from
   editor    = {Horowitz, Leonard M and Strack, Stephen},
 }
 
-@Book{leary1957,
+@Book{Leary1957a,
   title     = {An interpersonal diagnosis of personality},
   publisher = {New York: Ronald Press Company},
   year      = {1957},
@@ -2777,7 +2777,8 @@ They provide a method for estimating the mean and kappa and drawing samples from
   author  = {{\VANDER{Want}{Van der}{van der}} Want, Anna C and Den Brok, Perry and Beijaard, Douwe and Brekelmans, Mieke and Claessens, Luce CA and Pennings, Helena Jo M},
   title   = {The relation between teachers’ interpersonal role identity and their self-efficacy, burnout and work engagement},
   journal = {Professional Development in Education},
-  year    = {Advance Online Publication},
+  year    = {2018},
+  note    = {Advance Online Publication},
   doi     = {10.1080/19415257.2018.1511453},
 }
 
