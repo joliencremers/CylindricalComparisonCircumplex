@@ -44,7 +44,7 @@ post.gamma.sig <- function(N, X, y, sig, p.gamma.mu, p.gamma.prec, p.sig.shape, 
   
 }
 
-# Sample rho, element of sigma, the variance-covariance matrix of the circular 
+# Sample xi, element of sigma, the variance-covariance matrix of the circular 
 # outcome
 
 # input
@@ -54,19 +54,19 @@ post.gamma.sig <- function(N, X, y, sig, p.gamma.mu, p.gamma.prec, p.sig.shape, 
 # Beta.I = regression coefficients for the first component (starting value / previous iteration)
 # Beta.II = regression coefficients for the second component (starting value / previous iteration)
 # tau = element of sigma (starting value / previous iteration)
-# p.rho.mu = prior mean rho
-# p.rho.var = prior variance rho
+# p.xi.mu = prior mean xi
+# p.xi.var = prior variance xi
 
 
-post.rho <- function(Y, Z, Beta.I, Beta.II, tau, p.rho.mu, p.rho.var){
+post.xi <- function(Y, Z, Beta.I, Beta.II, tau, p.xi.mu, p.xi.var){
   
-  num <- tau^(-1) * t(Y[,1] - Z%*%Beta.I)%*%(Y[,2] - Z%*%Beta.II) + p.rho.mu*p.rho.var^(-1)
-  den <- tau^(-1) * t(Y[,2] - Z%*%Beta.II)%*%(Y[,2] - Z%*%Beta.II) + p.rho.var^(-1)
+  num <- tau^(-1) * t(Y[,1] - Z%*%Beta.I)%*%(Y[,2] - Z%*%Beta.II) + p.xi.mu*p.xi.var^(-1)
+  den <- tau^(-1) * t(Y[,2] - Z%*%Beta.II)%*%(Y[,2] - Z%*%Beta.II) + p.xi.var^(-1)
   
-  mu.rho.post <- num/den
-  var.rho.post <- 1/(tau^(-1)*(t(Y[,2] - Z%*%Beta.II)%*%(Y[,2] - Z%*%Beta.II)) + p.rho.var^(-1))
+  mu.xi.post <- num/den
+  var.xi.post <- 1/(tau^(-1)*(t(Y[,2] - Z%*%Beta.II)%*%(Y[,2] - Z%*%Beta.II)) + p.xi.var^(-1))
   
-  rho <- rnorm(1, mu.rho.post, var.rho.post)
+  xi <- rnorm(1, mu.xi.post, var.xi.post)
   
 }
 
@@ -80,15 +80,15 @@ post.rho <- function(Y, Z, Beta.I, Beta.II, tau, p.rho.mu, p.rho.var){
 # Y = augmented circular outcome
 # Beta.I = regression coefficients for the first component (starting value / previous iteration)
 # Beta.II = regression coefficients for the second component (starting value / previous iteration)
-# rho = element of sigma (starting value / previous iteration)
+# xi = element of sigma (starting value / previous iteration)
 # p.tau.shape = prior shape parameter tau
 # p.tau.scale = prior scale parameter tau
 
 
-post.tau <- function(N, Y, Z, Beta.I, Beta.II, rho, p.tau.shape, p.tau.scale){
+post.tau <- function(N, Y, Z, Beta.I, Beta.II, xi, p.tau.shape, p.tau.scale){
   
 tau.shape.post <- N/2 + p.tau.shape
-comp <- Y[,1]-((Z%*%Beta.I) + rho*(Y[,2] - Z%*%Beta.II))
+comp <- Y[,1]-((Z%*%Beta.I) + xi*(Y[,2] - Z%*%Beta.II))
 tau.scale.lik <- 0.5*sum(t(comp)%*%comp)
 tau.scale.post <- tau.scale.lik + p.tau.scale
   
@@ -266,8 +266,8 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
   p.tau.scale <- 0.01
   p.tau.shape <- 0.01
   
-  p.rho.mu <- 0
-  p.rho.var <- 10000
+  p.xi.mu <- 0
+  p.xi.var <- 10000
   
   #Set starting values
   Beta.I <- c(0,0)
@@ -278,8 +278,8 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
   sig <- c(1)
   gamma <- c(0,0,0,0)
   tau <- 1
-  rho <- 0
-  sigma <- matrix(c(tau + rho^2, rho, rho, 1), 2, 2)
+  xi <- 0
+  sigma <- matrix(c(tau + xi^2, xi, xi, 1), 2, 2)
   
   #Compute the "latent" outcome (circular)
   Y <- cbind(cos(theta)*r, sin(theta)*r)
@@ -323,10 +323,10 @@ CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
     Beta.I <- beta[1,]
     Beta.II <- beta[2,]
     
-    rho <-   post.rho(Y, Z, Beta.I, Beta.II, tau, p.rho.mu, p.rho.var) 
-    tau <- post.tau(N, Y, Z, Beta.I, Beta.II, rho, p.tau.shape, p.tau.scale)
+    xi <-   post.xi(Y, Z, Beta.I, Beta.II, tau, p.xi.mu, p.xi.var) 
+    tau <- post.tau(N, Y, Z, Beta.I, Beta.II, xi, p.tau.shape, p.tau.scale)
     
-    sigma <- matrix(c(tau + rho^2, rho, rho, 1), 2, 2)
+    sigma <- matrix(c(tau + xi^2, xi, xi, 1), 2, 2)
     
     #Sample r (only in case of non-circumplex data)  
     r <- post.r(theta, Beta.I, Beta.II, Z, N, r, sigma)
