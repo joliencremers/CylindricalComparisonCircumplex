@@ -190,13 +190,13 @@ llik.circ <- function(theta, Z, beta.I, beta.II, r, tau, Sigma){
   mu <- cbind(mub1, mub2)
   u <- cbind(cos(theta), sin(theta))
   
-  ll <- 0
+  ll <- length(theta)*(log(1) - log(2*pi*sqrt(tau)))
   
   for(i in 1: length(theta)){
     
     Dbd <- cbind(r[i]*cos(theta[i]) - mub1[i], r[i]*sin(theta[i]) - mub2[i])
     
-    ll <- ll + log(r[i]) + log(1) - log(2*pi+sqrt(tau)) - (Dbd%*%solve(Sigma)%*%t(Dbd))/(2*tau)
+    ll <- ll + log(r[i]) - (Dbd%*%solve(Sigma)%*%t(Dbd))/(2*tau)
 
   }
   
@@ -240,13 +240,6 @@ llik.circ <- function(theta, Z, beta.I, beta.II, r, tau, Sigma){
 # theta_pred.max = posterior predictive values for theta in the holdout set (using the maximum covariate value)
 # theta_pred.mean = posterior predictive values for theta in the holdout set (using the mean covariate value)
 # theta_pred.median = posterior predictive values for theta in the holdout set (using the median covariate value)
-
-return(list("Gamma"= Gamma, "BI" = BI, "BII" = BII, "Sig" = Sig, "Sigma" = Sigma,
-            "ll.circ" = ll.circ, "ll.lin" = ll.lin,
-            "theta_pred" = theta_pred, "y_pred" = y_pred,
-            "theta_pred.hold" = theta_pred.hold, "y_pred.hold" = y_pred.hold,
-            "theta_pred.min" = theta_pred_min,  "theta_pred.max" = theta_pred_max,
-            "theta_pred.mean" = theta_pred_mean, "theta_pred.meadian" = theta_pred_median))
 
 CLGPN <- function(theta, y, X, Z, its, p, theta.hold, y.hold, X.hold, Z.hold){
   

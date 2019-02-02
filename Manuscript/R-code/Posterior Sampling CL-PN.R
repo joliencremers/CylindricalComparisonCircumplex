@@ -121,13 +121,13 @@ llik.circ <- function(theta, ZI, ZII, beta.I, beta.II, r){
   mub2 <- ZII%*%beta.II
   
   mu <- cbind(mub1, mub2)
-  ll <- 0
+  ll <- length(theta) * (log(1) - log(2*pi))
   
   for(i in 1: length(theta)){
     
     Dbd <- cos(theta[i])*mub1[i] + sin(theta[i])*mub2[i]
     
-    ll <- ll + log(1) - log(2*pi) + (-t(mu[i,])%*%mu[i,])/2 + (-r[i]^2 + 2*r[i]*Dbd)/2
+    ll <- ll + (-t(mu[i,])%*%mu[i,])/2 + 0.5*(-r[i]^2 + 2*r[i]*Dbd)
     
   }
  

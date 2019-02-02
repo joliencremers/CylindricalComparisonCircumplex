@@ -39,7 +39,7 @@ abstract: |
   interpersonal behavior of teachers.
 
 keywords          : "cylindrical data, regression, interpersonal behavior"
-wordcount         : "X"
+#wordcount         : "X"
 
 bibliography      : ["CircularData.bib"]
 
@@ -1983,7 +1983,7 @@ rownames(PLSL) <- c("CL-PN", "CL-GPN", "Abe-Ley", "GPN-SSN")
 colnames(PLSL) <- c("mean", "sd", "mean", "sd")
 
 #kable(PLSL, "latex", booktabs = T, escape = FALSE,
-#      caption = "PLSL criteria, cross-validation mean and standard deviation, for the circular and linear outcome in the four cylindrical models")%>%
+#      caption = "PLSL criteria, cross-validation mean and standard deviation, for the circular and linear outcome in #the four cylindrical models")%>%
 #add_header_above(c("Model" = 1, "Circular" = 2, "Linear" = 2))
 
 ```
@@ -2000,7 +2000,7 @@ colnames(PLSL) <- c("mean", "sd", "mean", "sd")
   & mean & sd & mean & sd\\
 \midrule
 CL-PN & 82.96 & (9.47) & -17.65 & (3.70)\\
-CL-GPN & 86.05 & (16.63) & -18.30 & (3.00)\\
+CL-GPN & 78.21 & (14.53) & -18.30 & (3.00)\\
 Abe-Ley & 31.97 & (22.07) & 25.49 & (17.46)\\
 GPN-SSN & 107.10 & (10.52) & -2.37 & (7.01)\\
 \bottomrule
