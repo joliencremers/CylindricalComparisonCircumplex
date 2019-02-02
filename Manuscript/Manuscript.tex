@@ -97,6 +97,8 @@ Pennings\textsuperscript{2,3}, \& Christophe Ley\textsuperscript{4}}
 
 \linenumbers
 \DeclareRobustCommand{\VANDER}[3]{#2}
+\DeclareRobustCommand{\VAN}[3]{#2}
+\DeclareRobustCommand{\DEN}[3]{#2}
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{color}
@@ -150,40 +152,40 @@ component). Many established models in psychology are often referred to
 as circular or circumplex models, but those models are cylindrical.
 Examples of such cylindrical models are the interpersonal
 circle/circumplex (Leary, 1957; Wiggins, 1996; Wubbels, Brekelmans,
-Brok, \& Tartwijk, 2006), the circumplex of affect (Russell, 1980), the
-circumplex of human emotion (Plutchik, 1997) or the model of human
-values (Schwartz, 1992). \newline \indent Also, many of the more recent
-types of data that are studied in psychology are cylindrical. For
-example, research on human navigation uses data where distance (i.e.,
-linear component) and direction (i.e., the linear component) are of
-interest (Chrastil \& Warren, 2017) or in eye-tracking, the saccade data
-also consist of both the direction (i.e., the circular variable) and the
-duration (i.e., the linear variable)(e.g., Rayner (2009)). Apart from
-the social sciences data with a circular and linear outcome more
-commonly occur in meteorology (García-Portugués, Crujeiras, \&
-González-Manteiga, 2013), ecology (García-Portugués, Barros, Crujeiras,
-González-Manteiga, \& Pereira, 2014) or marine research (Lagona, Picone,
-Maruotti, \& Cosoli, 2015) \newline \indent Up until now researchers
-studying cylindrical data had to rely on linear statistical methods to
-analyze their research results. However, lately more and more of these
-researchers acknowledge that linear methods are not sufficient and call
-for new methods (Gurtman, 2011; Pennings, 2017b; Wright, Pincus, Conroy,
-\& Hilsenroth, 2009) that take into account both the circular and the
-linear component of these data. \newline \indent The aim in the present
-paper is twofold. Firstly, we we intend to fill the above mentioned gap
-in the literature by showing the use of cylindrical models can benefit
-the analysis of circumplex data and cylindrical data in psychology in
-general. More specifically we will show these benefits for interpersonal
-teacher data from the field of educational psychology. Apart from
-modelling the dependence between the linear and circular component of a
-cylindrical variable we would also like to predict the two components
-from a set of covariates in a regression model. Our second aim therefore
-is to adapt several existing cylindrical models in such a way that they
-include a regression of both the linear and circular component of a
-cylindrical variable onto a set of covariates. From now on we will
-therefore refer to the components of the cylindrical variable as outcome
-components. These adapted circular models are then used to analyse the
-teacher data.
+\DEN{Brok}{Den}{den} Brok, \& \VAN{Tartwijk}{Van}{van} Tartwijk, 2006),
+the circumplex of affect (Russell, 1980), the circumplex of human
+emotion (Plutchik, 1997) or the model of human values (Schwartz, 1992).
+\newline \indent Also, many of the more recent types of data that are
+studied in psychology are cylindrical. For example, research on human
+navigation uses data where distance (i.e., linear component) and
+direction (i.e., the linear component) are of interest (Chrastil \&
+Warren, 2017) or in eye-tracking, the saccade data also consist of both
+the direction (i.e., the circular variable) and the duration (i.e., the
+linear variable)(e.g., Rayner (2009)). Apart from the social sciences
+data with a circular and linear outcome more commonly occur in
+meteorology (García-Portugués, Crujeiras, \& González-Manteiga, 2013),
+ecology (García-Portugués, Barros, Crujeiras, González-Manteiga, \&
+Pereira, 2014) or marine research (Lagona, Picone, Maruotti, \& Cosoli,
+2015) \newline \indent Up until now researchers studying cylindrical
+data had to rely on linear statistical methods to analyze their research
+results. However, lately more and more of these researchers acknowledge
+that linear methods are not sufficient and call for new methods
+(Gurtman, 2011; Pennings, 2017b; Wright, Pincus, Conroy, \& Hilsenroth,
+2009) that take into account both the circular and the linear component
+of these data. \newline \indent The aim in the present paper is twofold.
+Firstly, we we intend to fill the above mentioned gap in the literature
+by showing the use of cylindrical models can benefit the analysis of
+circumplex data and cylindrical data in psychology in general. More
+specifically we will show these benefits for interpersonal teacher data
+from the field of educational psychology. Apart from modelling the
+dependence between the linear and circular component of a cylindrical
+variable we would also like to predict the two components from a set of
+covariates in a regression model. Our second aim therefore is to adapt
+several existing cylindrical models in such a way that they include a
+regression of both the linear and circular component of a cylindrical
+variable onto a set of covariates. From now on we will therefore refer
+to the components of the cylindrical variable as outcome components.
+These adapted circular models are then used to analyse the teacher data.
 
 \subsection{Cylindrical data}
 
@@ -1134,6 +1136,10 @@ study.\newline
 
 \section*{References}
 
+\DeclareRobustCommand{\VANDER}[3]{#3}
+\DeclareRobustCommand{\VAN}[3]{#3}
+\DeclareRobustCommand{\DEN}[3]{#3}
+
 \hypertarget{refs}{}
 \leavevmode\hypertarget{ref-abe2017tractable}{}%
 Abe, T., \& Ley, C. (2017). A tractable, parsimonious and flexible model
@@ -1305,9 +1311,9 @@ and Education}, \emph{14}(2), 88--103.
 
 \leavevmode\hypertarget{ref-pennings2018interpersonal}{}%
 Pennings, H. J. M., Brekelmans, M., Sadler, P., Claessens, L. C.,
-\VANDER{Want}{Van der}{van der} Want, A. C., \& Tartwijk, J. van.
-(2018). Interpersonal adaptation in teacher-student interaction.
-\emph{Learning and Instruction}, \emph{55}, 41--57.
+\VANDER{Want}{Van der}{van der} Want, A. C., \& \VAN{Tartwijk}{Van}{van}
+Tartwijk, J. (2018). Interpersonal adaptation in teacher-student
+interaction. \emph{Learning and Instruction}, \emph{55}, 41--57.
 doi:\href{https://doi.org/10.1016/j.learninstruc.2017.09.005}{10.1016/j.learninstruc.2017.09.005}
 
 \leavevmode\hypertarget{ref-plutchik1997general}{}%
@@ -1353,10 +1359,10 @@ doi:\href{https://doi.org/10.1016/j.stamet.2012.07.005}{10.1016/j.stamet.2012.07
 interpersonal role identity.} (PhD thesis).
 
 \leavevmode\hypertarget{ref-want2018selfefficacy}{}%
-\VANDER{Want}{Van der}{van der} Want, A. C., Den Brok, P., Beijaard, D.,
-Brekelmans, M., Claessens, L. C., \& Pennings, H. J. M. (2018). The
-relation between teachers' interpersonal role identity and their
-self-efficacy, burnout and work engagement. \emph{Professional
+\VANDER{Want}{Van der}{van der} Want, A. C., \DEN{Brok}{Den}{den} Brok,
+P., Beijaard, D., Brekelmans, M., Claessens, L. C., \& Pennings, H. J.
+M. (2018). The relation between teachers' interpersonal role identity
+and their self-efficacy, burnout and work engagement. \emph{Professional
 Development in Education}, Advance Online Publication.
 doi:\href{https://doi.org/10.1080/19415257.2018.1511453}{10.1080/19415257.2018.1511453}
 
@@ -1373,11 +1379,12 @@ comparison of groups. \emph{Journal of Personality Assessment},
 doi:\href{https://doi.org/10.1080/00223890902935696}{10.1080/00223890902935696}
 
 \leavevmode\hypertarget{ref-wubbels2006interpersonal}{}%
-Wubbels, T., Brekelmans, M., Brok, P. den, \& Tartwijk, J. van. (2006).
-Handbook of classroom management: Research practice and contemporary
-issues. In C. Evertson \& C. S. Weinstein (Eds.), \emph{Handbook of
-classroom management: Research, practice, and contemporary issues} (pp.
-1161--1191). Malwah, NJ: Lawrence Erlbaum Associates.
+Wubbels, T., Brekelmans, M., \DEN{Brok}{Den}{den} Brok, P., \&
+\VAN{Tartwijk}{Van}{van} Tartwijk, J. (2006). Handbook of classroom
+management: Research practice and contemporary issues. In C. Evertson \&
+C. S. Weinstein (Eds.), \emph{Handbook of classroom management:
+Research, practice, and contemporary issues} (pp. 1161--1191). Malwah,
+NJ: Lawrence Erlbaum Associates.
 
 
 \end{document}

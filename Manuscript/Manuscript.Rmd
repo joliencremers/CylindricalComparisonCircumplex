@@ -57,6 +57,8 @@ output            : papaja::apa6_pdf
 
 header-includes:
   - \DeclareRobustCommand{\VANDER}[3]{#2} 
+  - \DeclareRobustCommand{\VAN}[3]{#2}
+  - \DeclareRobustCommand{\DEN}[3]{#2}
   - \usepackage{multirow}
   - \usepackage{rotating}
   - \usepackage{color}
