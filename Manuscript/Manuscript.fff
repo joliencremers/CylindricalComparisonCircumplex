@@ -36,7 +36,7 @@ behavior located in each part of the IPC.}
 \ifnextchar[{\eatarg}{}
 []
   \includegraphics[width = \textwidth]{Plots/circregline.pdf}
-  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression live.}
+  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression line.}
   \label{circregline}
 \end{figure*}
 \begin{figure*}[hbt]

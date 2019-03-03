@@ -28,12 +28,12 @@ SE & 5.04 & 1.00 & 1.5 - 7.0 & Linear\\
 $\Theta$ & &&&\\
 $\:\:$Distribution& PN & GPN & Sine-skewed vM & GPN\\
 $\:\:$Domain & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$\\
-$\:\:$Shape & symmetric, & assymetric, & assymetric, & assymetric, \\
+$\:\:$Shape & symmetric, & asymmetric, & asymmetric, & asymmetric, \\
             & unimodal  & multimodal & unimodal   & multimodal \\\hline\noalign{\smallskip}
 $Y$& &&&\\
 $\:\:$Distribution & Normal & Normal & Weibull & skewed-Normal\\
-$\:\:$Domain & $(-\infty, + \infty)$ & $(-\infty, + \infty)$ & $(0, + \infty)$ & $(0, + \infty)$\\
-$\:\:$Shape & symmetric, & symmetric, & assymetric, & assymetric, \\
+$\:\:$Domain & $(-\infty, + \infty)$ & $(-\infty, + \infty)$ & $(0, + \infty)$ & $(-\infty, + \infty)$\\
+$\:\:$Shape & symmetric, & symmetric, & asymmetric, & asymmetric, \\
             & unimodal  & unimodal  & unimodal   & unimodal\\\hline\noalign{\smallskip}
 $\Theta$-$Y$ dependence &                                   &                                   & & \\
                         & $y$ regressed on                  & $y$ regressed on                  & $\alpha$ and $\kappa$ & multivariate \\
@@ -74,7 +74,7 @@ $\sum_{2,2}$ & NA (NA) & NA (NA) & NA (NA) & 1.00 (0.00) & 1.00 (0.00) & 1.00 (0
 \multicolumn{7}{l}{Note: $\beta_0^{I}$, $\beta_0^{II}$ and $\gamma_0$ inform us about the type and strength of interpersonal behavior}\\
 \multicolumn{7}{l}{at the average self-efficacy. $\beta_1^{I}$, $\beta_1^{II}$ and $\gamma_1$ inform us about the effect of self-efficacy on the}\\
 \multicolumn{7}{l}{type and strength of interpersonal behavior. $\gamma_{cos}$ and $\gamma_{sin}$ inform us about the dependence}\\
-\multicolumn{7}{l}{ between the type and strength of interpersonal behavior. $\sum_{1,1}$, $\sum_{1,2}$ and $\sum_{2,2}$ are are}\\
+\multicolumn{7}{l}{ between the type and strength of interpersonal behavior. $\sum_{1,1}$, $\sum_{1,2}$ and $\sum_{2,2}$ are}\\
 \multicolumn{7}{l}{elements of the variance-covariance matrix of the type of interpersonal behavior in the}\\
 \multicolumn{7}{l}{CL-GPN model and $\sigma$ is the error standard deviation of the strength of interpersonal behavior.}\\
 
@@ -90,7 +90,7 @@ $\sum_{2,2}$ & NA (NA) & NA (NA) & NA (NA) & 1.00 (0.00) & 1.00 (0.00) & 1.00 (0
 \toprule
 & $\beta_0$ & $\beta_1$ & $\gamma_0$  & $\gamma_1$ & $\alpha$ & $\kappa$ & $\lambda$\\
 Mean & 0.36 & -0.03 & 1.17 & 0.04 & 3.66 & 1.51 & 0.70 \\
-SD & 0.02) & 0.01 & 0.02 & 0.02 & 0.12 & 0.08 & 0.05\\
+SD & 0.02 & 0.01 & 0.02 & 0.02 & 0.12 & 0.08 & 0.05\\
 \bottomrule
 \multicolumn{8}{l}{Note: $\beta_0$  and $\gamma_0$ inform us about the type and strength }\\
 \multicolumn{8}{l}{of interpersonal behavior at the average self-efficacy. $\beta_1$ }\\
@@ -132,7 +132,7 @@ $\lambda$ & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01) & 0.16 (0.01) & 0.14 (0.01) 
 \multicolumn{7}{l}{Note: $\beta_{0_s^{I}}$, $\beta_{0_s^{II}}$ and $\beta_{0_y}$ inform us about the type and strength of interpersonal behavior}\\
 \multicolumn{7}{l}{at the average self-efficacy. $\beta_{1_s^{I}}$, $\beta_{1_s^{II}}$ and $\beta_{1_y}$ inform us about the effect of self-efficacy }\\
 \multicolumn{7}{l}{on the type and strength of interpersonal behavior. $\sum_{s_{1,1}}$, $\sum_{s_{1,2}}$, $\sum_{s_{2,2}}$, $\sum_{y_{3,3}}$, $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ }\\
-\multicolumn{7}{l}{are elements of the variance-covariance matrix of which $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ inform us about}\\
+\multicolumn{7}{l}{are elements of the variance-covariance matrix of which $\sum_{sy_{1,3}}$ and $\sum_{sy_{2,3}}$ inform us about}\\
 \multicolumn{7}{l}{the dependence between the type and strength of interpersonal behavior.}\\
 \multicolumn{7}{l}{$\lambda$ is the skewness parameter of the distribution of the strengths of interpersonal behavior.}\\
 \end{tabular}

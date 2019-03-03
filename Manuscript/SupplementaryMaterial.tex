@@ -191,9 +191,7 @@ way via covariates as for the modified CL-PN distribution.
 Both cylindrical models introduced here are estimated using Markov Chain
 Monte Carlo (MCMC) methods based on Nuñez-Antonio et al. (2011), Wang \&
 Gelfand (2013) and Hernandez-Stumpfhauser et al. (2016) for the
-regression of the circular outcome. A detailed description of the
-Bayesian estimation and MCMC samplers can be found in the Supplementary
-Material.
+regression of the circular outcome.
 
 \subsection{The modified Abe-Ley model}\label{WeiSSVM}
 
@@ -234,9 +232,9 @@ parameter \((\nu y)^\alpha\tanh(\kappa)\). The log-likelihood for this
 model equals \begin{align}\label{WeiSSVMLikelihood}
 l(\alpha, \boldsymbol{\gamma}, \lambda, \kappa, \boldsymbol{\beta}) 
    &= n[\ln(\alpha) - \ln(2\pi\cosh(\kappa))] + \alpha \sum^{n}_{i = 1} \boldsymbol{x}_i^t\boldsymbol{\gamma} \nonumber\\
-   &\:\:\:\:+\sum^{n}_{i = 1} \ln(1 +\lambda\sin(\theta_i - \beta_0 - 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta}))) 
+   &\:\:\:\:+\sum^{n}_{i = 1} \ln(1 +\lambda\sin(\theta_i - (\beta_0 + 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta})))) 
    +(\alpha-1)\sum^{n}_{i = 1} \ln(y_i) \nonumber\\
-   &\:\:\:\:-\sum^{n}_{i = 1}( \exp(\boldsymbol{x}_i^t\boldsymbol{\gamma})y_i)^{\alpha}(1-\tanh(\kappa)\cos(\theta_i - \beta_0 - 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta}))).\nonumber
+   &\:\:\:\:-\sum^{n}_{i = 1}( \exp(\boldsymbol{x}_i^t\boldsymbol{\gamma})y_i)^{\alpha}(1-\tanh(\kappa)\cos(\theta_i - (\beta_0 + 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta})))).\nonumber
 \end{align} \noindent We can use numerical optimization (Nelder-Mead) to
 find solutions for the maximum likelihood (ML) estimates for the
 parameters of the model.
@@ -308,27 +306,25 @@ in the density in \eqref{YDThetarjoint} then becomes
 \(\boldsymbol{B}\) is a \((g + 1) \times (2m + w)\) matrix with
 regression coefficients and intercepts and \(\boldsymbol{x}_i\) is a
 \(g + 1\) dimensional vector containing the value 1 to estimate an
-intercept and the \(g\) covariate values. \newline \indent We estimate
-the model using MCMC methods. A detailed description of these methods is
-given in the Supplementary Material.
+intercept and the \(g\) covariate values. \newline
 
 \section{Model fit}
 
-\indent We use the following loglikelihoods for the computation of the
-PLSL in the teacher data:
+\indent We use the following (conditional) loglikelihoods for the
+computation of the PLSL in the teacher data:
 
 \begin{itemize}
 \item For the modified CL-PN model:
 
-$$l(y) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
+$$l(y \mid \theta, r) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
 \gamma_{sin}\sin(\theta_i)r_i + \gamma_1\text{SE}_i))^2/2\sigma^2$$
 
-$$l(\theta) = \log(1) - \log(2\pi) + \sum -0.5\hat{\mu}_i^2 - 0.5(r_i^2 - 2r_iu_i^t\hat{\mu}_i)$$
+$$l(\theta, r) = \log(1) - \log(2\pi) + \sum -0.5\hat{\mu}_i^2 - 0.5(r_i^2 - 2r_iu_i^t\hat{\mu}_i)$$
 where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
 
 \item For the modified CL-GPN model:
 
-$$l(y) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
+$$l(y \mid \theta, r) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
 \gamma_{sin}\sin(\theta_i)r_i + \gamma_1\text{SE}_i))^2/2\sigma^2$$
 
 $$l(\theta) =  \log(1) - \log(2\pi+\tau) - \sum \log(r_i) + (u_i^t\hat{\mu}_i\Sigma^{-1}(u_i^t\hat{\mu}_i)^t)/2\tau^2$$
@@ -338,13 +334,13 @@ where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \be
 \item For the modified Abe-Ley model:
 
 
-$$l(y) = \log\alpha + \sum\log h_i^\alpha + \sum\log y_i^{\alpha - 1} - \sum(h_iy_i)^\alpha$$
+$$l(y \mid \theta) = \log\alpha + \sum\log h_i^\alpha + \sum\log y_i^{\alpha - 1} - \sum(h_iy_i)^\alpha$$
 
-where $h_i = \exp\{\hat{y}_i\}\{1-\tanh(\kappa)\cos(\theta_i - \hat{\theta}_i)\}^{1/\alpha}$, $\hat{y}_i = \gamma_0 + \gamma_1\text{SE}_i$ and $\hat{\theta}_i = \beta_0 +  2\tan^{-1}(\beta_1\text{SE}_i))$ .
+where $h_i = \exp(\hat{y}_i)\{1-\tanh(\kappa)\cos(\theta_i - \hat{\theta}_i)\}^{1/\alpha}$, $\hat{y}_i = \gamma_0 + \gamma_1\text{SE}_i$ and $\hat{\theta}_i = \beta_0 +  2\tan^{-1}(\beta_1\text{SE}_i))$ .
 
-$$l(\theta) = \log(1) - \sum\log 2\pi I_0(c_i) + \sum\log\{1 + \lambda \sin(\theta_i - \hat{\theta}_i\} + \sum c_i\cos(\theta_i - \hat{\theta}_i)$$
+$$l(\theta \mid y) = \log(1) - \sum\log 2\pi I_0(c_i) + \sum\log\{1 + \lambda \sin(\theta_i - \hat{\theta}_i\} + \sum c_i\cos(\theta_i - \hat{\theta}_i)$$
 
-where $c_i = y_i^{\alpha}\exp(\hat{y}_i)^{\alpha}\tanh\kappa$, and $I_{0}$ is a Bessel function of order $0$.
+where $c_i = y_i^{\alpha}\exp(\hat{y}_i)^{\alpha}\tanh\kappa$, and $I_{0}$ is a modified Bessel function of order $0$.
 
 
 \item For the modified joint projected and skew normal model we take the loglikelihoods of the following distributions:
@@ -513,7 +509,7 @@ $$\boldsymbol{\mu} = \boldsymbol{C}\tilde{\boldsymbol{\mu}}$$
 $$\boldsymbol{\Sigma} = \boldsymbol{C}\tilde{\boldsymbol{\Sigma}}\boldsymbol{C}.$$
 
 \end{enumerate}
-
+\newpage
 \section*{References}
 
 \hypertarget{refs}{}

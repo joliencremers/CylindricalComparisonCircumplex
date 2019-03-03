@@ -93,7 +93,7 @@ library(coda) #geweke diagnostic
 In social sciences the use of cylindrical data is very common. Such data consist
 of a linear and a circular component. @gurtman2011reasoning refers to such data
 as vectors, with a directional measure (i.e., the circular component) and a
-measure indicating the magnitude (i.e., linear component). Many established
+measure indicating the magnitude (i.e., the linear component). Many established
 models in psychology are often referred to as circular or circumplex models, but
 those models are cylindrical. Examples of such cylindrical models are the
 interpersonal circle/circumplex
@@ -103,11 +103,11 @@ affect [@russell1980circumplex], the circumplex of human emotion
 \newline
 \indent Also, many of the more recent types of data that are studied in psychology are
 cylindrical. For example, research on human navigation uses data where distance
-(i.e., linear component) and direction (i.e., the linear component) are of
+(i.e., linear component) and direction (i.e., the circular component) are of
 interest [@chrastil2017rotational] or in eye-tracking, the saccade data also
 consist of both the direction (i.e., the circular variable) and the duration
-(i.e., the linear variable)(e.g., @rayner200935th). Apart from the social
-sciences data with a circular and linear outcome more commonly occur in
+(i.e., the linear variable) (e.g., @rayner200935th). Apart from the social
+sciences, data with a circular and linear outcome more commonly occur in
 meteorology [@garcia2013exploring], ecology [@garcia2014test] or
 marine research [@lagona2015hidden]
 \newline
@@ -118,8 +118,8 @@ for new methods [@gurtman2011reasoning; @pennings2017complexity;
 @wright2009integrating] that take into account both the circular and the linear
 component of these data.
 \newline
-\indent The aim in the present paper is twofold. Firstly, we we intend to fill
-the above mentioned gap in the literature by showing the use of cylindrical
+\indent The aim in the present paper is twofold. Firstly, we intend to fill
+the above mentioned gap in the literature by showing that the use of cylindrical
 models can benefit the analysis of circumplex data and cylindrical data in
 psychology in general. More specifically we will show these benefits for
 interpersonal teacher data from the field of educational psychology. Apart from
@@ -129,13 +129,13 @@ of covariates in a regression model. Our second aim therefore is to adapt
 several existing cylindrical models in such a way that they include a regression
 of both the linear and circular component of a cylindrical variable onto a set
 of covariates. From now on we will therefore refer to the components of the
-cylindrical variable as outcome components. These adapted circular models are
+cylindrical variable as outcome components. These adapted cylindrical models are
 then used  to analyse the teacher data.
 
 
 \subsection{Cylindrical data}
 
-Data that consist of a variable and a circular variable is called
+Data that consist of a linear variable and a circular variable is called
 cylindrical data. A circular variable is different from the linear variable in
 the sense that it is measured on a different scale. Figure \ref{circline} shows
 the difference between a circular scale (right) and a linear scale (left). The
@@ -216,14 +216,14 @@ shows towards his/her students.\newline
 \indent @Cremers2018Assessing explain the circular nature of the IPC data and
 analyze them as such using a circular regression model. The two dimension
 scores, Agency and Communion, can be converted to a circular score using the
-two-argument arctangent function in \eqref{PredVal}\footnote{The selection of
+two-argument arctangent function in \eqref{PredVal}, where \(A\) represents a score on the Agency dimension and
+\(C\) represents a score on the Communion dimension \footnote{The selection of
 the origin in circumplex data depends on the scaling of the Agency and Communion
 scores. Agency and Communion are measured on a scale from 1 to 5 and for
 analysis purposes they are later converted to scale ranging from -1 to 1.  Their
 respective 0 scores form the origin. Scaling is however only considered an issue
 in those instances where cylindrical data is derived from measurements in
-bivariate space.}, where \(A\) represents a score on the Agency dimension and
-\(C\) represents a score on the Communion dimension. Note that when placing a
+bivariate space.}. Note that when placing a
 unit circle on Figure \ref{QTI} we see that the Agency dimension is related to
 the sine of the circular score and the Communion dimension is related to the
 cosine of the circular score.
@@ -369,7 +369,7 @@ descriptives for the dataset. For the circular variable IPC we show sample
 estimates for the circular mean $\bar{\theta}$ and concentration $\hat{\rho}$.
 The circular concentration lies between 0, meaning the data is not concentrated
 at all \emph{i.e.} spread over the entire circle, and 1, meaning all data is
-concentrated at a single point on the circle The population values of these
+concentrated at a single point on the circle. The population values of these
 parameters are usually, and also in this paper, referred to as $\mu$ (circular
 location) and $\kappa$ (circular concentration). For the linear variables
 (strength IPC and SE) we show sample estimates of the linear mean and standard
@@ -414,10 +414,10 @@ for the analysis of circumplex data and cylindrical data in psychology in
 general. To do so we decide to focus on four cylindrical models. The models were
 selected for their relatively low complexity and the ease with which a
 regression structure could be incorporated. But also because they show different
-ways of modelling the the linear and circular outcome and thereby illustrate a
+ways of modelling the linear and circular outcome and thereby illustrate a
 wider range of cylindrical models available in the literature. The
 cylindrical models contain a set of $q$ predictors $\boldsymbol{x} = x_1, \dots,
-x_q$ and $p$ predictors $\boldsymbol{z} = z_1, \dots, z_q$ for the linear and
+x_q$ and $p$ predictors $\boldsymbol{z} = z_1, \dots, z_p$ for the linear and
 circular outcomes, \(Y\) and \(\Theta\), respectively. The first two models are
 based on a construction by @mastrantonio2015bayesian, while the other models are
 extensions of the models from @abe2017tractable and @mastrantonio2018joint. The
@@ -435,12 +435,12 @@ the models.
 $\Theta$ & &&&\\
 $\:\:$Distribution& PN & GPN & Sine-skewed vM & GPN\\
 $\:\:$Domain & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$ & $[0, 2\pi)$\\
-$\:\:$Shape & symmetric, & assymetric, & assymetric, & assymetric, \\
+$\:\:$Shape & symmetric, & asymmetric, & asymmetric, & asymmetric, \\
             & unimodal  & multimodal & unimodal   & multimodal \\\hline\noalign{\smallskip}
 $Y$& &&&\\
 $\:\:$Distribution & Normal & Normal & Weibull & skewed-Normal\\
-$\:\:$Domain & $(-\infty, + \infty)$ & $(-\infty, + \infty)$ & $(0, + \infty)$ & $(0, + \infty)$\\
-$\:\:$Shape & symmetric, & symmetric, & assymetric, & assymetric, \\
+$\:\:$Domain & $(-\infty, + \infty)$ & $(-\infty, + \infty)$ & $(0, + \infty)$ & $(-\infty, + \infty)$\\
+$\:\:$Shape & symmetric, & symmetric, & asymmetric, & asymmetric, \\
             & unimodal  & unimodal  & unimodal   & unimodal\\\hline\noalign{\smallskip}
 $\Theta$-$Y$ dependence &                                   &                                   & & \\
                         & $y$ regressed on                  & $y$ regressed on                  & $\alpha$ and $\kappa$ & multivariate \\
@@ -481,17 +481,17 @@ outcome \(\Theta\) in the right plot. Mathematically the relation between
 \noindent where \(R = \mid\mid \boldsymbol{S} \mid\mid\), the Euclidean norm of
 \(\boldsymbol{S}\); the lines connecting the bivariate datapoints to the origin
 in the middle plot. We call $\boldsymbol{S}$ the augmented representation of the
-circular outcome, it is a variable that in contrast to \(\Theta\) is not
+circular outcome. It is a variable that in contrast to \(\Theta\) is not
 observed and thus considered latent or auxiliary. This then means that we do not
 model \(\Theta\) directly but indirectly through $\boldsymbol{S}$. \newline
-\indent For both the PN and GPN distribution the circular location parameter
+\indent For both the PN and GPN distributions the circular location parameter
 \(\mu\in [0, 2\pi)\) is modeled as \(\hat{\mu}_i =
 \mbox{atan2}(\hat{\mu}_i^{II}, \hat{\mu}_i^{I}) =
 \mbox{atan2}(\boldsymbol{\beta}^{II}\boldsymbol{z}_i,
 \boldsymbol{\beta}^{I}\boldsymbol{z}_i)\)\footnote{Note that for the CL-GPN
 model the circular location parameter also depends on the variance-covariance
 matrix and the circular predicted values should be computed using numerical
-integretion or Monte Carlo methods because a closed form expression for the mean
+integration or Monte Carlo methods because a closed form expression for the mean
 direction is not available.} where $\boldsymbol{\beta}^{I}$ and
 $\boldsymbol{\beta}^{II}$ are vectors with intercepts and regression
 coefficients for the prediction of $\boldsymbol{S}$ and $\boldsymbol{z}_i$ is a
@@ -506,7 +506,7 @@ non-linear character meaning that the effect of a covariate is different at
 different values of the covariate. A circular regression line is usually
 described by the slope at the inflection point, the point at which the slope of
 the regression line starts flattening off (indicated with a square in Figure
-\ref{circregline}). By default, the parameters from the PN and GPN model do not
+\ref{circregline}). By default, the parameters from the PN and GPN models do not
 directly describe this inflection point. For the PN distribution however,
 @CremersMulderKlugkist2017 solved this interpretation problem and introduce new
   circular regression coefficients. They introduce a new parameter $b_c$ that
@@ -516,8 +516,8 @@ directly describe this inflection point. For the PN distribution however,
 definition of their covariance matrix. For the PN distribution this is an
 identity matrix, causing the distribution to be unimodal and symmetric, whereas
 for the GPN distribution \(\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2
-& \xi\\ \xi & 1 \end{bmatrix}\), allowing for multimodality and
-assymetry/skewness.\newline
+& \xi\\ \xi & 1 \end{bmatrix}\) where \(\xi,\tau \in (-\infty, +\infty)\), allowing for multimodality and
+asymetry/skewness.\newline
 \indent For the teacher dataset the predicted linear outcome, strengths of
 interpersonal behavior, in the CL-PN and CL-GPN model is the following:
 \[\hat{y}_i = \gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
@@ -535,7 +535,7 @@ in \eqref{circlinlink} we can assess the effect of the type of interpersonal
 behavior on the strength through the parameters $\gamma_{sin}$ and
 $\gamma_{cos}$. In the teacher data these are the regression coefficients for
 the effect of the sine and cosine of the type of behavior which are related to
-the scores on the Agency an Communion dimensions respectively.\newline
+the scores on the Agency and Communion dimensions respectively.\newline
 \indent Both the CL-PN and CL-GPN models are estimated using Markov Chain Monte
 Carlo (MCMC) methods based on @nunez2011bayesian, @wang2012directional and
 @hernandez2016general for the regression of the circular outcome. A detailed
@@ -639,7 +639,7 @@ tools::texi2dvi("Plots/circregline.tex",pdf=TRUE)
 
 \begin{figure}[]
   \includegraphics[width = \textwidth]{Plots/circregline.pdf}
-  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression live.}
+  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression line.}
   \label{circregline}
 \end{figure}
 
@@ -683,7 +683,7 @@ the linear shape parameter \(\alpha\) regulate the circular-linear dependence in
 the Abe-Ley model. The Abe-Ley model thus allows us to assess the average type
 and strength of interpersonal behavior through the parameters $\beta_{0}$ and
 $\gamma_0$ as well as the effect of self-efficacy on type and strength of
-teacher behavior through the parameters, $\beta_{1}$ and $\gamma_1$.\newline
+teacher behavior through the parameters $\beta_{1}$ and $\gamma_1$.\newline
 \indent We can use numerical optimization (Nelder-Mead) to find solutions for
 the maximum likelihood (ML) estimates for the parameters of the model.
 
@@ -697,12 +697,11 @@ This model is an extension of the cylindrical model introduced by
   \boldsymbol{\Theta}_m)\) are modelled together by a multivariate GPN
   distribution. The linear outcomes \(\boldsymbol{Y} = (\boldsymbol{Y}_1, \dots,
   \boldsymbol{Y}_w)\) are modelled together by a multivariate skew normal
-  distribution [@sahu2003new]. Thus also in this model the linear outcome is
-  defined constrained to be positive. Because the GPN distribution is modelled
+  distribution [@sahu2003new]. Because the GPN distribution is modelled
   using a so-called augmented representation (see also the description of the
   CL-PN and CL-GPN models) it is convenient to use a similar tactic for
   modelling the multivariate skew normal distribution. As in
-@mastrantonio2018joint dependence between the linear and circular outcome is
+@mastrantonio2018joint, dependence between the linear and circular outcome is
   created by modelling the augmented representations of \(\boldsymbol{\Theta}\)
   and \(\boldsymbol{Y}\) together in a \(2m + w\) dimensional normal
   distribution.\newline
@@ -720,7 +719,7 @@ to the other three models, we have to use the same set of predictors for the
 circular and linear outcome.\newline
 \indent For the teacher data, \(\boldsymbol{B} = \begin{bmatrix}
 \beta_{0_{s^{I}}} & \beta_{0_{s^{II}}} & \beta_{0_{y}}\\ \beta_{1_{s^{I}}} &
-\beta_{1_{s^{II}}} & \beta_{1_{y}} \end{bmatrix}\). The predicted circular\footnote{Note that for the  GPN-SSN model the predicted circular outcome also depends on the variance-covariance matrix and the circular predicted values should be computed using numerical integretion or Monte Carlo methods because a closed form expression for the mean direction is not available.} and
+\beta_{1_{s^{II}}} & \beta_{1_{y}} \end{bmatrix}\). The predicted circular\footnote{Note that for the  GPN-SSN model the predicted circular outcome also depends on the variance-covariance matrix and the circular predicted values should be computed using numerical integration or Monte Carlo methods because a closed form expression for the mean direction is not available.} and
 linear outcomes in the GPN-SSN model are
 \[\hat{\theta_i} = \mbox{atan2}(\beta_{0_{s^{II}}} +
 \beta_{1_{s^{II}}}\text{SE}_i,\beta_{0_{s^{I}}} +
@@ -734,11 +733,11 @@ linear outcomes in the GPN-SSN model are
 \noindent The GPN-SSN model thus allows us to assess the average type and
 strength of interpersonal behavior through the parameters $\beta_{0_{s^{I}}}$,
 $\beta_{0_{s^{II}}}$ and $\beta_{0_{y}}$ as well as the effect of self-efficacy
-on type and strength of teacher behavior through the parameters,
+on type and strength of teacher behavior through the parameters
 $\beta_{1_{s^{I}}}$, $\beta_{1_{s^{II}}}$ and $\beta_{1_{y}}$. In addition,
 because the type and strength of interpersonal behavior are modelled together
-using a multivariate normal distribution we can through its variance-covariance
-matrix also assess the dependence between the type and strength of interpersonal
+using a multivariate normal distribution we can, through its variance-covariance
+matrix, also assess the dependence between the type and strength of interpersonal
 behavior. \newline
 \indent We estimate the model using MCMC methods. A detailed description of these
 methods is given in the Supplementary Material.
@@ -983,13 +982,13 @@ parameters of the GPN-SSN model did not converge. Therefore we set the number of
 iterations of the MCMC models to 20,000 and subtracted a burn-in of 5000 to
 reach convergence (the Geweke diagnostics show absolute z-scores over 1.96 in
 6\% of the estimated parameters). Note that we choose the same number of
-iterations for all three models models estimated using MCMC prodedures to make
+iterations for all three models estimated using MCMC procedures to make
 their comparison via the PLSL as fair as possible. Lastly, the predictor
 \verb|SE| was centered before inclusion in the analysis as this allows the
 intercepts to bear the classical meaning of average behavior.\newline
 \indent Tables \ref{tab:estCLGPN}, \ref{tab:estAL} and \ref{tab:estCLGPNM} show
 the results for the four cylindrical models that were fit to the teacher data.
-For the models estimated using MCMC methods, CL-PN, CL-GPN and GPN-SSN we show
+For the models estimated using MCMC methods, CL-PN, CL-GPN and GPN-SSN, we show
 descriptives of the posterior of the estimated parameters (posterior mode and
 lower and upper bound of the 95\% highest posterior density (HPD) interval). For
 the Abe-Ley model we show the maximum likelihood estimates of the parameters. To
@@ -1181,7 +1180,7 @@ $\sum_{2,2}$ & NA (NA) & NA (NA) & NA (NA) & 1.00 (0.00) & 1.00 (0.00) & 1.00 (0
 \multicolumn{7}{l}{Note: $\beta_0^{I}$, $\beta_0^{II}$ and $\gamma_0$ inform us about the type and strength of interpersonal behavior}\\
 \multicolumn{7}{l}{at the average self-efficacy. $\beta_1^{I}$, $\beta_1^{II}$ and $\gamma_1$ inform us about the effect of self-efficacy on the}\\
 \multicolumn{7}{l}{type and strength of interpersonal behavior. $\gamma_{cos}$ and $\gamma_{sin}$ inform us about the dependence}\\
-\multicolumn{7}{l}{ between the type and strength of interpersonal behavior. $\sum_{1,1}$, $\sum_{1,2}$ and $\sum_{2,2}$ are are}\\
+\multicolumn{7}{l}{ between the type and strength of interpersonal behavior. $\sum_{1,1}$, $\sum_{1,2}$ and $\sum_{2,2}$ are}\\
 \multicolumn{7}{l}{elements of the variance-covariance matrix of the type of interpersonal behavior in the}\\
 \multicolumn{7}{l}{CL-GPN model and $\sigma$ is the error standard deviation of the strength of interpersonal behavior.}\\
 
@@ -1223,7 +1222,7 @@ rownames(ALres.tab.new) <- c("$\\beta_0$", "$\\beta_1$",
 \toprule
 & $\beta_0$ & $\beta_1$ & $\gamma_0$  & $\gamma_1$ & $\alpha$ & $\kappa$ & $\lambda$\\
 Mean & 0.36 & -0.03 & 1.17 & 0.04 & 3.66 & 1.51 & 0.70 \\
-SD & 0.02) & 0.01 & 0.02 & 0.02 & 0.12 & 0.08 & 0.05\\
+SD & 0.02 & 0.01 & 0.02 & 0.02 & 0.12 & 0.08 & 0.05\\
 \bottomrule
 \multicolumn{8}{l}{Note: $\beta_0$  and $\gamma_0$ inform us about the type and strength }\\
 \multicolumn{8}{l}{of interpersonal behavior at the average self-efficacy. $\beta_1$ }\\
@@ -1486,7 +1485,7 @@ $\lambda$ & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01) & 0.16 (0.01) & 0.14 (0.01) 
 \multicolumn{7}{l}{Note: $\beta_{0_s^{I}}$, $\beta_{0_s^{II}}$ and $\beta_{0_y}$ inform us about the type and strength of interpersonal behavior}\\
 \multicolumn{7}{l}{at the average self-efficacy. $\beta_{1_s^{I}}$, $\beta_{1_s^{II}}$ and $\beta_{1_y}$ inform us about the effect of self-efficacy }\\
 \multicolumn{7}{l}{on the type and strength of interpersonal behavior. $\sum_{s_{1,1}}$, $\sum_{s_{1,2}}$, $\sum_{s_{2,2}}$, $\sum_{y_{3,3}}$, $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ }\\
-\multicolumn{7}{l}{are elements of the variance-covariance matrix of which $\sum_{sy_{1,3}}$,  and $\sum_{sy_{2,3}}$ inform us about}\\
+\multicolumn{7}{l}{are elements of the variance-covariance matrix of which $\sum_{sy_{1,3}}$ and $\sum_{sy_{2,3}}$ inform us about}\\
 \multicolumn{7}{l}{the dependence between the type and strength of interpersonal behavior.}\\
 \multicolumn{7}{l}{$\lambda$ is the skewness parameter of the distribution of the strengths of interpersonal behavior.}\\
 \end{tabular}
@@ -1497,7 +1496,7 @@ $\lambda$ & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01) & 0.16 (0.01) & 0.14 (0.01) 
 The parameters $\gamma_0$ in the CL-PN, CL-GPN and Abe-Ley model and the
 parameter $\beta_{0_y}$ in the GPN-SSN model inform us about the strength of
 interpersonal behavior at the average self-efficacy. For the CL-PN, CL-GPN and
-GPN-SSN model the parameters are estimated at 0.38, 0.37 and 0.30 respectively
+GPN-SSN models the parameters are estimated at 0.38, 0.37 and 0.33 respectively
 and are a direct prediction of the strength of interpersonal behavior at the
 average self-efficacy. The estimate for the GPN-SSN model is notably lower and
 likely to be caused by its skewed distribution for the strengths of
@@ -1676,7 +1675,7 @@ GPN-SSN & 35.53 & 28.40 & 43.30\\
 
 \subsubsection{The effect of self-efficacy}
 
-The parameters $\gamma_1$ in the CL-PN, CL-GPN, Abe-Ley model and $\beta_{1_y}$
+The parameters $\gamma_1$ in the CL-PN, CL-GPN, Abe-Ley models and $\beta_{1_y}$
 in the GPN-SSN model inform us about the effect of self-efficacy on the strength
 of interpersonal behavior. For the CL-PN, CL-GPN and GPN-SSN model the
 parameters are estimated at 0.03, 0.03 and 0.09 respectively and are a direct
@@ -1686,7 +1685,7 @@ increase of 0.09 units in the strength of interpersonal behavior according to
 the GPN-SSN model. These estimates are however quite small and only different
 from 0 (the HPD interval does not contain 0) in the GPN-SSN model. It is hard to
 say which of the three models, CL-PN, CL-GPN or GPN-SSN, to use to base our
-conclusions on. The model CL-GPN and CL-PN fit the linear outcome best according
+conclusions on. The models CL-GPN and CL-PN fit the linear outcome best according
 to the model fit in Table \ref{tab:ModelFit}. In these models the linear outcome has a
 symmetric distribution whereas in the GPN-SSN the distribution of the linear
 outcome is skewed. However, the effect of self-efficacy is different from 0 only
@@ -1704,25 +1703,26 @@ lowest for average self-efficacy.\newline
 \indent The parameters $\beta_1^{I}$, $\beta_1^{II}$, $\beta_1$,
 $\beta_{1_{s^{I}}}$ and $\beta_{1_{s^{II}}}$ inform us about the effect of
 self-efficacy on the type of interpersonal behavior in the CL-PN, CL-GPN,
-Abe-Ley and GPN-SSN model respectively. For the CL-PN and Abe-Ley model we have
+Abe-Ley and GPN-SSN model respectively. For the CL-PN and Abe-Ley models we have
 drawn the circular regression lines for this effect in Figure \ref{regline} (see
-the description of the CL-PN and CL-GPN models). For the CL-PN model the
-inflection point is indicated with a square in Figure \ref{regline}. The
-inflection point for the Abe-Ley model falls outside the bounds of the plot and
-is therefore not displayed. The slope at the inflection point, $b_c$, for the
-CL-PN model is computed by using methods from @CremersMulderKlugkist2017 and is
-equal to 1.67 (-24.66, 29.33)\footnote{Note that this is a linear approximation
-to the circular regression line representing the slope at a specific point.
-Therefore it is possible for the HPD interval to be wider than $2\pi$. In this
-case the interval is much wider and covers 0, indicating there is no evidence
-for an effect.} The parameter $\beta_1$ is the slope at the inflection point for
-the Abe-Ley model and is equal to -0.03. Even though these slopes are quite
+the description of the CL-PN and CL-GPN models for a detailed explanation of
+circular regression lines). For the CL-PN model the inflection point is
+indicated with a square in Figure \ref{regline}. The inflection point for the
+Abe-Ley model falls outside the bounds of the plot and is therefore not
+displayed. The slope at the inflection point, $b_c$, for the CL-PN model is
+computed by using methods from @CremersMulderKlugkist2017 and is equal to 1.67
+(-24.66, 29.33)\footnote{Note that this is a linear approximation to the
+circular regression line representing the slope at a specific point. Therefore
+it is possible for the HPD interval to be wider than $2\pi$. In this case the
+interval is much wider and covers 0, indicating there is no evidence for an
+effect.}. The parameter $\beta_1$ is the slope at the inflection point for the
+Abe-Ley model and is equal to -0.03. Even though these slopes are
 different, the regression lines in Figure \ref{regline} are quite similar in the
 data range. Both the regression line of the Abe-Ley model and the CL-PN model
 show slopes that are not very steep in the range of the data indicating that the
 effect of self-efficacy on the type of interpersonal behavior is not large.
 \newline
-\indent In the CL-GPN and GPN-SSN model we cannot compute circular regression
+\indent In the CL-GPN and GPN-SSN models we cannot compute circular regression
 coefficients due to the fact that not only the mean vector of the GPN
 distribution but also the covariance matrix influences the predicted value on
 the circle. Instead, we will compute posterior predictive distributions for the
@@ -1737,7 +1737,7 @@ interval $[0^\circ, 360^\circ)$ and that $44.49^\circ = 404.49^\circ$ due to the
 periodicity of a circular variable. The posterior mode estimate of
 $215.74^\circ$ thus lies within its HPD interval $(147.36^\circ, \:
 44.49^\circ)$. For the GPN-SSN model the modes and 95\% HPD intervals of the
-posterior predictive distributiona are \(\hat{\theta}_{SE_{min}} = 206.87^\circ
+posterior predictive distributions are \(\hat{\theta}_{SE_{min}} = 206.87^\circ
 (117.12^\circ, \: 72.02^\circ)\), \(\hat{\theta}_{SE_{median}} = 24.68^\circ
 (334.73^\circ, \: 128.27^\circ)\), \(\hat{\theta}_{SE_{max}} = 29.81^\circ
 (0.74^\circ, \: 80.61^\circ)\). For both the CL-GPN and GPN-SSN model the HPD
@@ -1856,14 +1856,14 @@ the CL-PN model.}
 \subsubsection{Dependence between type and strength of interpersonal behavior.}
 
 The relation between the type and strength of interpersonal behavior in the
-CL-PN and CL-GPN model, is described by the parameters $\gamma_{\cos}$ and
+CL-PN and CL-GPN models is described by the parameters $\gamma_{\cos}$ and
 $\gamma_{\sin}$. The HPD interval of \(\gamma_{\cos}\) does not include 0 for
 both the CL-PN and CL-GPN models, meaning that the cosine component of the type
 of interpersonal behavior has an effect on the strength of interpersonal
 behavior.\newline
 \indent In the teacher data the sine and cosine components have a substantive
 meaning. This is illustrated in Figure \ref{QTI}. In a unit circle the
-horizontal axis (Communion) represents the cosine of and the vertical axis
+horizontal axis (Communion) represents the cosine and the vertical axis
 (Agency) represents the sine of an angle. For the teacher data this means that
 the Communion (cosine) dimension of the IPC positively effects the strength of a
 teachers' type of interpersonal behavior, in plain words: teachers exhibiting
@@ -1875,7 +1875,7 @@ outcome and the sine and cosine of the circular outcome \(\sum_{sy_{2,3}}\) and
 \(\sum_{sy_{1,3}}\). Both covariances, \(\sum_{sy_{2,3}} = 0.09\) and
 \(\sum_{sy_{1,3}} = 0.23\), are different from zero, but the one of the cosine
 component, and thus the correlation with the Communion dimension, is larger.
-This mean that teachers scoring both high on Communion and Agency show stronger
+This means that teachers scoring both high on Communion and Agency show stronger
 behavior. Together with the results from the CL-PN and CL-GPN models in the
 previous paragraph this translates to the conclusion that teachers with the
 strongest interpersonal behavior have a type of interpersonal behavior between
@@ -1916,7 +1916,7 @@ performance because they model the linear outcome in the same way. We should
 note that even though the predictive performance of the Abe-Ley model for the
 linear outcome is worst on average, the standard deviation of the
 cross-validation estimates is rather large. This means that in some samples, the
-Abe-Ley model shows a lower PLSL value than the average of 25.49\newline
+Abe-Ley model shows a lower PLSL value than the average of 25.49.\newline
 \indent The Abe-Ley model has the best out-of-sample predictive performance for
 the circular outcome. This would suggest that for the circular variable a
 slightly skewed distribution fits best. However, both the GPN-SSN  and the
@@ -1933,8 +1933,8 @@ we should choose. In this case the results for the CL-PN /CL-GPN and Abe-Ley
 model are quite different regarding the effect of self-efficacy on the linear
 outcome (strength of interpersonal behavior). Because the Abe-Ley fit for the
 linear part is worst we would choose to trust the results for the CL-PN and
-CL-GPN model here. For the circular part however the results of the CL-PN/CL-GPN
-model do not differ as much from the Abe-Ley model and we reach the same
+CL-GPN models here. For the circular part however the results of the CL-PN/CL-GPN
+models do not differ as much from the Abe-Ley model and we reach the same
 conclusion for both models, namely that the effect of self-efficacy on type of
 interpersonal behavior is not very strong. Therefore we would prefer the
 CL-PN/CL-GPN models in this case because where it matters in terms of
