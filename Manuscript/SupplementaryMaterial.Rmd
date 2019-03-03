@@ -248,7 +248,7 @@ where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \be
 $$l(y \mid \theta, r) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
 \gamma_{sin}\sin(\theta_i)r_i + \gamma_1\text{SE}_i))^2/2\sigma^2$$
 
-$$l(\theta) =  \log(1) - \log(2\pi+\tau) - \sum \log(r_i) + (u_i^t\hat{\mu}_i\Sigma^{-1}(u_i^t\hat{\mu}_i)^t)/2\tau^2$$
+$$l(\theta, r) =  \log(1) - \log(2\pi+\tau) - \sum \log(r_i) + (u_i^t\hat{\mu}_i\Sigma^{-1}(u_i^t\hat{\mu}_i)^t)/2\tau^2$$
 where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
 
 
