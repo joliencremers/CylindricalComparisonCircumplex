@@ -63,6 +63,7 @@ header-includes:
   - \usepackage{rotating}
   - \usepackage{color}
   - \usepackage{subcaption}
+  - \raggedbottom
    #% set up for citation (in .tex %  place \DeclareRobustCommand{\VANDER}[3]{#3} before bibliography)
 
 ---
@@ -86,10 +87,7 @@ library(plotrix)
 library(caret) #cross-validation
 library(coda) #geweke diagnostic
 ```
-
-
-\section{Introduction}\label{Introduction}
-
+\vspace{-0.75cm}
 In social sciences the use of cylindrical data is very common. Such data consist
 of a linear and a circular component. @gurtman2011reasoning refers to such data
 as vectors, with a directional measure (i.e., the circular component) and a
@@ -103,7 +101,7 @@ affect [@russell1980circumplex], the circumplex of human emotion
 \newline
 \indent Also, many of the more recent types of data that are studied in psychology are
 cylindrical. For example, research on human navigation uses data where distance
-(i.e., linear component) and direction (i.e., the circular component) are of
+(i.e., the linear component) and direction (i.e., the circular component) are of
 interest [@chrastil2017rotational] or in eye-tracking, the saccade data also
 consist of both the direction (i.e., the circular variable) and the duration
 (i.e., the linear variable) (e.g., @rayner200935th). Apart from the social
@@ -132,9 +130,9 @@ of covariates. From now on we will therefore refer to the components of the
 cylindrical variable as outcome components. These adapted cylindrical models are
 then used  to analyse the teacher data.
 
-
-\subsection{Cylindrical data}
-
+\vspace{-0.75cm}
+\subsection{Cylindrical Data}
+\vspace{-0.75cm}
 Data that consist of a linear variable and a circular variable is called
 cylindrical data. A circular variable is different from the linear variable in
 the sense that it is measured on a different scale. Figure \ref{circline} shows
@@ -174,9 +172,9 @@ linear component are regressed.
 \end{figure}
 
 
-
+\vspace{-0.75cm}
 \section{Teacher Data}\label{Example}
-
+\vspace{-0.75cm}
 \begin{figure}
 \centering
 \includegraphics[width = 0.8\textwidth]{Plots/IPC-T.png}
@@ -262,9 +260,9 @@ because we take all information, circular and linear, into account. In the next
 section we introduce several cylindrical models that can be used to analyze the
 teacher data. First however we will provide descriptives for the teacher data.
 
-
+\vspace{-0.75cm}
 \subsection{Data Description}\label{DataDescriptives}
-
+\vspace{-0.75cm}
 ```{r loaddata, return = FALSE, echo = FALSE, results = FALSE}
 Dat <- read_spss("Data Heleen/mergeddata.sav")
 
@@ -406,9 +404,9 @@ SE & 5.04 & 1.00 & 1.5 - 7.0 & Linear\\
 
 
 
-
+\vspace{-0.75cm}
 \section{Four Cylindrical Regression Models}\label{Models}
-
+\vspace{-0.75cm}
 One of the goals of this paper is to show the benefits of cylindrical methods
 for the analysis of circumplex data and cylindrical data in psychology in
 general. To do so we decide to focus on four cylindrical models. The models were
@@ -452,9 +450,9 @@ $\Theta$-$Y$ dependence &                                   &                   
 \label{TableModels}
 \end{sidewaystable}
 
-
+\vspace{-0.75cm}
 \subsection{The Modified Circular-Linear Projected Normal (CL-PN) and Modified Circular-Linear General Projected Normal (CL-GPN) Models}\label{CL-(G)PN}
-
+\vspace{-0.75cm}
 Following @mastrantonio2015bayesian we consider two models where
 the relation between \(\Theta \in [0, 2\pi)\) and \(Y\in (-\infty, + \infty)\)
 and $q$ covariates is specified as
@@ -517,7 +515,7 @@ definition of their covariance matrix. For the PN distribution this is an
 identity matrix, causing the distribution to be unimodal and symmetric, whereas
 for the GPN distribution \(\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2
 & \xi\\ \xi & 1 \end{bmatrix}\) where \(\xi,\tau \in (-\infty, +\infty)\), allowing for multimodality and
-asymetry/skewness.\newline
+asymmetry/skewness.\newline
 \indent For the teacher dataset the predicted linear outcome, strengths of
 interpersonal behavior, in the CL-PN and CL-GPN model is the following:
 \[\hat{y}_i = \gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
@@ -643,8 +641,9 @@ tools::texi2dvi("Plots/circregline.tex",pdf=TRUE)
   \label{circregline}
 \end{figure}
 
+\vspace{-0.75cm}
 \subsection{The Modified Abe-Ley Model}\label{WeiSSVM}
-
+\vspace{-0.75cm}
 This model is an extension of the cylindrical model introduced in
 @abe2017tractable to the regression context. It concerns a combination
 of a Weibull distribution, with scale parameter \(\nu>0\) and shape parameter
@@ -687,9 +686,9 @@ teacher behavior through the parameters $\beta_{1}$ and $\gamma_1$.\newline
 \indent We can use numerical optimization (Nelder-Mead) to find solutions for
 the maximum likelihood (ML) estimates for the parameters of the model.
 
-
+\vspace{-0.75cm}
 \subsection{Modified Joint Projected and Skew Normal Model (GPN-SSN)}\label{CL-GPN_multivariate}
-
+\vspace{-0.75cm}
 This model is an extension of the cylindrical model introduced by
 @mastrantonio2018joint to the regression context. The model contains \(m\)
   independent circular outcomes and \(w\) independent linear outcomes. The
@@ -738,14 +737,13 @@ $\beta_{1_{s^{I}}}$, $\beta_{1_{s^{II}}}$ and $\beta_{1_{y}}$. In addition,
 because the type and strength of interpersonal behavior are modelled together
 using a multivariate normal distribution we can, through its variance-covariance
 matrix, also assess the dependence between the type and strength of interpersonal
-behavior. \newline
+behavior. \newpage
 \indent We estimate the model using MCMC methods. A detailed description of these
 methods is given in the Supplementary Material.
 
-
+\vspace{-0.75cm}
 \subsection{Model Fit Criterion}\label{Modelfit}
-
-
+\vspace{-0.75cm}
 For the four cylindrical models we focus on their out-of-sample predictive
 performance to determine the fit of the model. To do so we use k-fold
 cross-validation and split our data into 10 folds. Each of these folds (10 \(\%\)
@@ -790,9 +788,9 @@ means of the standard deviations of the PLSL criteria.
 
 
 
-
-\section{Data Analysis}\label{DataAnalysis}
-
+\vspace{-0.75cm}
+\section{Results}\label{DataAnalysis}
+\vspace{-0.75cm}
 In this section we analyze the teacher data with the help of the four
 cylindrical models from the previous section. We will present the results,
 posterior estimates and their interpretation for all four models.
@@ -970,8 +968,9 @@ for(i in 1:10){
 
 ```
 
-\subsection{Results \& Analysis}\label{DataResults}
-
+\vspace{-0.75cm}
+\subsection{Analysis}\label{DataResults}
+\vspace{-0.75cm}
 In the Supplementary Material we have described the starting values for the MCMC
 procedures for the CL-PN, CL-GPN and GPN-SSN models, hence it remains to specify
 the starting  values for the maximum likelihood based Abe-Ley model: \(\eta_0 =
@@ -1491,8 +1490,8 @@ $\lambda$ & 0.16 (0.01) & 0.14 (0.01) & 0.18 (0.01) & 0.16 (0.01) & 0.14 (0.01) 
 \end{tabular}
 \end{table}
 
-
-\subsubsection{Average type and strength of interpersonal behavior} 
+\vspace{-0.5cm}
+\subsubsection{Average type and strength of interpersonal behavior}
 The parameters $\gamma_0$ in the CL-PN, CL-GPN and Abe-Ley model and the
 parameter $\beta_{0_y}$ in the GPN-SSN model inform us about the strength of
 interpersonal behavior at the average self-efficacy. For the CL-PN, CL-GPN and
@@ -1672,9 +1671,8 @@ GPN-SSN & 35.53 & 28.40 & 43.30\\
 \end{tabular}
 \end{table}
 
-
+\vspace{-0.5cm}
 \subsubsection{The effect of self-efficacy}
-
 The parameters $\gamma_1$ in the CL-PN, CL-GPN, Abe-Ley models and $\beta_{1_y}$
 in the GPN-SSN model inform us about the effect of self-efficacy on the strength
 of interpersonal behavior. For the CL-PN, CL-GPN and GPN-SSN model the
@@ -1746,7 +1744,7 @@ scoring the minimum, median and maximum self-efficacy overlap. This indicates
 that the effect of self-efficacy, if there is any, on the type of interpersonal
 behavior a teacher shows is not expected to be strong. Had the HPD intervals not
 overlapped we could have concluded that as the self-efficacy increases, the
-score of the teacher on the IPC moves counterclockwise.\newline
+score of the teacher on the IPC moves counterclockwise.
 
 ```{r ppreg, echo = FALSE, results = FALSE, eval = FALSE}
 theta_pred_GPN.min <- simplify2array(lapply(res_CLGPN, "[[", "theta_pred.min"))
@@ -1810,6 +1808,7 @@ tools::texi2dvi("Plots/reglinediffSE.tex", pdf=TRUE)
 
 ```
 
+
 ```{r reg.coef, cache = TRUE, echo = FALSE, results = FALSE}
 
 
@@ -1842,6 +1841,7 @@ rowMeans(apply(SAM, 2, hpd_est))
 
 ```
 
+
 \begin{figure}
 \centering
 \includegraphics[width = \textwidth]{Plots/reglinediffSE.pdf}
@@ -1851,10 +1851,8 @@ black square indicates the inflection point of the circular regression line for
 the CL-PN model.}
 \label{regline}
 \end{figure}
-
-
+\vspace{-0.5cm}
 \subsubsection{Dependence between type and strength of interpersonal behavior.}
-
 The relation between the type and strength of interpersonal behavior in the
 CL-PN and CL-GPN models is described by the parameters $\gamma_{\cos}$ and
 $\gamma_{\sin}$. The HPD interval of \(\gamma_{\cos}\) does not include 0 for
@@ -1905,9 +1903,8 @@ cosh(1.58)
 
 ```
 
-
+\vspace{-0.5cm}
 \subsubsection{Model fit}
-
 Table \ref{tab:ModelFit} shows the values fof the PLSL criterion for the linear
 and circular outcomes of the four cylindrical models fit to the teacher
 data.\newline \indent The CL-PN and CL-GPN models have the best out-of-sample
@@ -2009,9 +2006,9 @@ GPN-SSN & 107.10 & (10.52) & -2.37 & (7.01)\\
 \end{tabular}
 \end{table}
 
-
+\vspace{-0.75cm}
 \section{Discussion}\label{Discussion}
-
+\vspace{-0.75cm}
 In this paper we modified four models for cylindrical data in such a way that
 they include a regression of both the linear and circular outcome onto a set of
 covariates. Subsequently we have shown how these four methods can be used to
@@ -2087,12 +2084,13 @@ complexity of the models and ease of implementing a regression
 structure. In future research however it would be interesting to
 investigate other types of cylindrical distributions as well in order to
 compare the interpretability, flexibility and model fit to the models
-developed in the present study.\newline
+developed in the present study.
 
 
 
 
-
-
-\section*{References}
+\newpage
+\vspace{-0.75cm}
+\section*{{\normalfont References}}
+\vspace{-0.75cm}
 <div id="refs"></div>
