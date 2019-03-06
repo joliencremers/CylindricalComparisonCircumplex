@@ -23,6 +23,8 @@ affiliation:
   - id            : "4"
     institution   : "Department of Applied Mathematics, Computer Science and Statistics, Ghent University"
 
+
+
 authornote: |
   
 
@@ -47,7 +49,7 @@ figurelist        : no
 tablelist         : no
 footnotelist      : no
 linenumbers       : yes
-mask              : no
+mask              : yes
 draft             : no
 
 documentclass     : "apa6"
