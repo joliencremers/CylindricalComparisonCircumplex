@@ -7,7 +7,7 @@ author:
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
     address       : ""
-    email         : "joliencremers@gmail.com"
+    email         : "jcre@sund.ku.dk"
   - name          : "Helena J.M. Pennings"
     affiliation   : "2,3"
   - name          : "Christophe Ley"
@@ -15,7 +15,7 @@ author:
 
 affiliation:
   - id            : "1"
-    institution   : "Department of Methodology and Statistics, Utrecht University"
+    institution   : "Department of Biostatistics, University of Copenhagen"
   - id            : "2"
     institution   : "TNO"
   - id            : "3"

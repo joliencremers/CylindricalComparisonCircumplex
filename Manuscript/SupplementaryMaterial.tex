@@ -89,6 +89,9 @@
 \usepackage{setspace}
 
 \doublespacing
+\DeclareRobustCommand{\VANDER}[3]{#2}
+\DeclareRobustCommand{\VAN}[3]{#2}
+\DeclareRobustCommand{\DEN}[3]{#2}
 
 \begin{document}
 
@@ -147,10 +150,10 @@ GPN we assume
 \(\boldsymbol{\mu} \in \mathbb{R}^2\),
 \(\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2 & \xi\\ \xi & 1 \end{bmatrix}\),
 and \(\xi,\tau \in (-\infty, +\infty)\) (as in Hernandez-Stumpfhauser,
-Breidt, \& Woerd (2016)). This leads to the circular-linear PN (CL-PN)
-and circular-linear GPN (CL-GPN) distributions. We will now detail how
-we modify both cylindrical distributions to also incorporate covariates
-for the circular part.
+Breidt, \& \VANDER{Woerd}{Van der}{van der} Woerd (2016)). This leads to
+the circular-linear PN (CL-PN) and circular-linear GPN (CL-GPN)
+distributions. We will now detail how we modify both cylindrical
+distributions to also incorporate covariates for the circular part.
 
 \subsubsection{The modified CL-PN distribution}
 
@@ -512,6 +515,10 @@ $$\boldsymbol{\Sigma} = \boldsymbol{C}\tilde{\boldsymbol{\Sigma}}\boldsymbol{C}.
 \newpage
 \section*{References}
 
+\DeclareRobustCommand{\VANDER}[3]{#3}
+\DeclareRobustCommand{\VAN}[3]{#3}
+\DeclareRobustCommand{\DEN}[3]{#3}
+
 \hypertarget{refs}{}
 \leavevmode\hypertarget{ref-abe2017tractable}{}%
 Abe, T., \& Ley, C. (2017). A tractable, parsimonious and flexible model
@@ -520,10 +527,10 @@ Statistics}, \emph{4}, 91--104.
 doi:\href{https://doi.org/10.1016/j.ecosta.2016.04.001}{10.1016/j.ecosta.2016.04.001}
 
 \leavevmode\hypertarget{ref-hernandez2016general}{}%
-Hernandez-Stumpfhauser, D., Breidt, F. J., \& Woerd, M. J. van der.
-(2016). The general projected normal distribution of arbitrary
-dimension: Modeling and Bayesian inference. \emph{Bayesian Analysis},
-\emph{12}(1), 113--133.
+Hernandez-Stumpfhauser, D., Breidt, F. J., \&
+\VANDER{Woerd}{Van der}{van der} Woerd, M. J. (2016). The general
+projected normal distribution of arbitrary dimension: Modeling and
+Bayesian inference. \emph{Bayesian Analysis}, \emph{12}(1), 113--133.
 doi:\href{https://doi.org/10.1214/15-BA989}{10.1214/15-BA989}
 
 \leavevmode\hypertarget{ref-mastrantonio2018joint}{}%

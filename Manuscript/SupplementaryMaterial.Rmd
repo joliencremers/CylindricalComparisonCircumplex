@@ -19,6 +19,9 @@ header-includes:
   - \usepackage{subcaption}
   - \setlength\parindent{24pt}
   - \usepackage{setspace}\doublespacing
+  - \DeclareRobustCommand{\VANDER}[3]{#2} 
+  - \DeclareRobustCommand{\VAN}[3]{#2}
+  - \DeclareRobustCommand{\DEN}[3]{#2}
 documentclass: article
 pandoc_args: --natbib
 ---
