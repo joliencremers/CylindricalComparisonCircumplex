@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.26)  18 JUN 2019 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.26)  18 JUN 2019 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Plots/circregline.tex
-(./Plots/circregline.tex
+**Plots/plotGPN.tex
+(./Plots/plotGPN.tex
 LaTeX2e <2018-12-01>
 (c:/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -336,9 +336,8 @@ Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 \pr@snippet=\count109
 \pr@box=\box39
 \pr@output=\toks27
-)
-(./circregline.aux)
-\openout1 = `circregline.aux'.
+) (./plotGPN.aux)
+\openout1 = `plotGPN.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
@@ -352,7 +351,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
- ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros
 (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count110
@@ -420,7 +419,7 @@ e
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 
-Overfull \hbox (88.62pt too wide) in paragraph at lines 416--416
+Overfull \hbox (305.43pt too wide) in paragraph at lines 9089--9089
 [][] 
  []
 
@@ -430,18 +429,18 @@ Non-PDF special ignored!
 <special> psfile=/dev/null
 Non-PDF special ignored!
 <special> psfile=/dev/null
-] (./circregline.aux) ) 
+] (./plotGPN.aux) ) 
 Here is how much of TeX's memory you used:
- 11762 strings out of 492625
- 239594 string characters out of 6133507
- 316048 words of memory out of 5000000
- 15467 multiletter control sequences out of 15000+600000
- 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 11764 strings out of 492625
+ 239579 string characters out of 6133507
+ 1464446 words of memory out of 5000000
+ 15468 multiletter control sequences out of 15000+600000
+ 3948 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,52p,398b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb>
-Output written on circregline.pdf (1 page, 25539 bytes).
+ 55i,7n,52p,394b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb>
+Output written on plotGPN.pdf (1 page, 284501 bytes).
 PDF statistics:
  15 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
