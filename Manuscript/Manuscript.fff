@@ -10,6 +10,29 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
+\includegraphics[width = \textwidth]{Plots/plotprojecting.pdf}
+\caption{Plot showing the projection of datapoints in bivariate space, $\boldsymbol{S}$, (left) to the circle (right). The lines connecting the bivariate datapoints to the circular datapoints represent the euclidean norms of the bivariate datapoints, realizations of the random variable $R$.}
+\label{projection}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[]
+  \includegraphics[width = \textwidth]{Plots/circregline.pdf}
+  \caption{Circular regression line for the relation between a covariate and a circular component with the simulated data the regression line was fit to. The square indicates the inflection point of the regression line.}
+  \label{circregline}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = \textwidth]{Plots/plotGPN.pdf}
+\caption{Plot showing 1000 samples from three GPN distributions with mean vector $(2,2)$ and $\tau = 1,5,10$ and $\xi = 0, 0.9, -0.5$ from left to right}
+\label{plotGPN}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
 \includegraphics[width = 0.8\textwidth]{Plots/IPC-T.png}
 \caption{The interpersonal circle for teachers (IPC-T). The words presented in
 the circumference of the circle are anchor words to describe the type of
@@ -28,23 +51,8 @@ behavior located in each part of the IPC.}
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics[width = \textwidth]{Plots/plotprojecting.pdf}
-\caption{Plot showing the projection of datapoints in bivariate space, $\boldsymbol{S}$, (left) to the circle (right). The lines connecting the bivariate datapoints to the circular datapoints represent the euclidean norm of the bivariate datapoints, the random variable $R$.}
-\label{projection}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-[]
-  \includegraphics[width = \textwidth]{Plots/circregline.pdf}
-  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression line.}
-  \label{circregline}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-\centering
 \includegraphics[width = \textwidth]{Plots/survivaldiffSE.pdf}
-\caption{Plot showing the probability of having a particular strength of interpersonal behavior (survival plot) for the minimum, mean and maximum self-efficacy in the data.}
+\caption{Plot showing the probability of having a particular intensity of interpersonal behavior (survival plot) for the minimum, mean and maximum self-efficacy in the data.}
 \label{reglineweib}
 \end{figure*}
 \begin{figure*}[hbt]
