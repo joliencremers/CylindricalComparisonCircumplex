@@ -1,0 +1,5 @@
+\DeclareRobustCommand{\VANDER}[3]{#2}
+\DeclareRobustCommand{\VAN}[3]{#2}
+\DeclareRobustCommand{\DEN}[3]{#2}
+
+set up for citation (in .tex %  place \DeclareRobustCommand{\VANDER}[3]{#3} before bibliography)

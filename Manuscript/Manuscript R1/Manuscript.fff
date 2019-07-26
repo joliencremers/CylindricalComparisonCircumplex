@@ -1,0 +1,60 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = 0.8\textwidth]{Plots/circline.pdf}
+\caption{The difference between a linear scale (left) and a circular scale (right).}
+\label{circline}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = 0.8\textwidth]{Plots/IPC-T.png}
+\caption{The interpersonal circle for teachers (IPC-T). The words presented in
+the circumference of the circle are anchor words to describe the type of
+behavior located in each part of the IPC.}
+\label{QTI}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = \textwidth]{Plots/dataplot.pdf}
+\caption{Plot showing the relation between the linear and circular outcome component (in degrees) of the teacher data.}
+\label{dataplot}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = \textwidth]{Plots/plotprojecting.pdf}
+\caption{Plot showing the projection of datapoints in bivariate space, $\boldsymbol{S}$, (left) to the circle (right). The lines connecting the bivariate datapoints to the circular datapoints represent the euclidean norm of the bivariate datapoints, the random variable $R$.}
+\label{projection}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[]
+  \includegraphics[width = \textwidth]{Plots/circregline.pdf}
+  \caption{Circular regression line for the relation between a covariate and a circular outcome with the data the regression line was fit to. The square indicates the inflection point of the regression line.}
+  \label{circregline}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = \textwidth]{Plots/survivaldiffSE.pdf}
+\caption{Plot showing the probability of having a particular strength of interpersonal behavior (survival plot) for the minimum, mean and maximum self-efficacy in the data.}
+\label{reglineweib}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics[width = \textwidth]{Plots/reglinediffSE.pdf}
+\caption{Plot showing circular regression lines for the effect of self-efficacy
+as predicted by the Abe-Ley model (solid line) and CL-PN model (dashed line). The
+black square indicates the inflection point of the circular regression line for
+the CL-PN model.}
+\label{regline}
+\end{figure*}
