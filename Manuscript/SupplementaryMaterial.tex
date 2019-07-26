@@ -104,25 +104,23 @@ can be found here:
 \url{https://github.com/joliencremers/CylindricalComparisonCircumplex}.
 Note that the dimensions of the objects (design matrices, mean vectors,
 etc.) are those that were used in the analysis of the teacher data where
-we have 1 circular outcome, 1 linear outcome and estimate an intercept
-and regression coefficient for the covariate self-efficacy. Note that
-for the regression of the linear component in the CL-PN and CL-GPN
-models we also have the sine and cosine of the circular outcome in the
-regression equation, this makes the vector with regression coefficients,
-\(\boldsymbol{\gamma}\), four-dimensional.
+we have 1 circular component, 1 linear component and estimate an
+intercept and regression coefficient for the covariate self-efficacy.
+Note that for the regression of the linear component in the CL-PN and
+CL-GPN models we also have the sine and cosine of the circular component
+in the regression equation, this makes the vector with regression
+coefficients, \(\boldsymbol{\gamma}\), four-dimensional.
 
 \section{Four cylindrical regression models}\label{Models}
 
 \subsection{The modified CL-PN and modified CL-GPN  models}\label{CL-(G)PN}
 
 Following Mastrantonio, Maruotti, \& Jona-Lasinio (2015) we consider in
-this section two models where the relation between
-\(\Theta \in [0, 2\pi)\) and \(Y\in (-\infty, + \infty)\) and \(q\)
-covariates is specified as \begin{equation}\label{circlinlink}
-Y = \gamma_0 + \gamma_{cos}*\cos(\Theta)*R + \gamma_{sin}*\sin(\Theta)*R + \gamma_1*x_1 + \dots + \gamma_q*x_q +  \epsilon,
-\end{equation} \noindent where the random variable \(R\geq0\) will be
-introduced below, the error term \(\epsilon \sim N(0, \sigma^2)\) with
-variance \(\sigma^2>0\),
+this section two models where the prediction equation for the linear
+component is specified as \begin{equation}\label{linpredCLPNCLGPN}
+\hat{y_i} = \gamma_0 + \gamma_{cos}*\cos(\theta_i)*r_i + \gamma_{sin}*\sin(\theta_i)*r_i + \gamma_1*x_1 + \dots + \gamma_q*x_q,
+\end{equation} \noindent where \(r_i\) is a realization of the
+unobserved the random variable \(R\geq0\) that will be introduced below,
 \(\gamma_0, \gamma_{cos}, \gamma_{sin}, \gamma_1, \dots, \gamma_q\) are
 the intercept and regression coefficients and \(x_1, \dots, x_q\) are
 the \(q\) covariates. In both of these models the conditional
@@ -131,14 +129,14 @@ distribution of \(Y\) given \(\Theta=\theta\) and \(R = r\) is given by
 f(y \mid \theta, r) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{(y - (\gamma_0 + \gamma_1x_1 + \dots + \gamma_qx_q+c))^{2}}{2\sigma^2}\right],\nonumber
 \end{equation} \noindent where
 \(c = \begin{bmatrix} r \cos(\theta) \\ r\sin(\theta) \end{bmatrix}^t \begin{bmatrix} \gamma_{cos} \\ \gamma_{sin} \end{bmatrix}\),
-\(r \geq 0\). The linear outcome thus has a normal distribution
+\(r \geq 0\). The linear component thus has a normal distribution
 conditional on \(\Theta\) and \(R\) and contains already linear
 covariates \(x_1, \dots, x_q\) in its location part.\newline \indent For
-the circular outcome we assume either a projected normal (PN) or a
+the circular component we assume either a projected normal (PN) or a
 general projected normal (GPN) distribution. These distributions arise
 from the radial projection of a distribution defined on the plane onto
 the circle. The relation between a bivariate vector \(\boldsymbol{S}\)
-in the plane and the circular outcome \(\Theta\) is defined as follows
+in the plane and the circular component \(\Theta\) is defined as follows
 \begin{equation}\label{projection}
 \boldsymbol{S} = \begin{bmatrix} S^{I} \\ S^{II} \end{bmatrix} = R\boldsymbol{u} = \begin{bmatrix} R \cos (\Theta) \\  R\sin (\Theta) \end{bmatrix},
 \end{equation} \noindent where \(R = \mid\mid \boldsymbol{S} \mid\mid\),
@@ -160,15 +158,14 @@ distributions to also incorporate covariates for the circular part.
 Following Nuñez-Antonio, Gutiérrez-Peña, \& Escarela (2011), the joint
 density of \(\Theta\) and \(R\) for the PN distribution equals
 \begin{equation}\label{pnreg}
-f(\theta,r \mid \boldsymbol{\mu}, \boldsymbol{I}) = \frac{1}{2\pi} \exp\{-0.5 \mid\mid\mu^2\mid\mid\}\exp\{-0.5\left[r^2 -2r(u^t\mu) \right]\},
+f(\theta,r \mid \boldsymbol{\mu}, \boldsymbol{I}) = \frac{1}{2\pi} \exp\{-0.5 \mid\mid\boldsymbol{\mu}^2\mid\mid\}\exp\{-0.5\left[r^2 -2r(\boldsymbol{u}^t\boldsymbol{\mu}) \right]\},
 \end{equation} \noindent where
 \(\boldsymbol{u}= \begin{bmatrix} \cos (\theta) \\ \sin (\theta) \end{bmatrix}\)
-and \(r\) is the same as in \eqref{circlinlink} and \eqref{ycondtheta}
-and is defined in \eqref{projection}. In a regression setup the outcomes
-\(\theta_i,r_i\) for each individual \(i = 1, \dots, n\), where \(n\) is
-the sample size, are generated independently from the distribution with
-density \eqref{pnreg}. The mean vector
-\(\boldsymbol{\mu}_i \in \mathbb{R}^2\) is then defined as
+and \(r\) is defined in \eqref{projection}. In a regression setup the
+outcome components \(\theta_i,r_i\) for each individual
+\(i = 1, \dots, n\), where \(n\) is the sample size, are generated
+independently from the distribution with density \eqref{pnreg}. The mean
+vector \(\boldsymbol{\mu}_i \in \mathbb{R}^2\) is then defined as
 \(\boldsymbol{\mu}_i = \boldsymbol{B}^t\boldsymbol{z}_i\) where the
 vector \(\boldsymbol{z}_i\) is a vector of dimension \(p + 1\) that
 contains the covariate values and the value 1 to estimate an intercept
@@ -184,17 +181,17 @@ distribution equals \begin{equation}\label{gpnreg}
 f(\theta, r \mid \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \frac{r}{2\pi\tau} \exp\left[ -\frac{(r\boldsymbol{u}-\boldsymbol{\mu})^{t}\boldsymbol{\Sigma}^{-1}(r\boldsymbol{u}-\boldsymbol{\mu})}{2\tau^2}\right],
 \end{equation} \noindent where we recall that
 \(\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2 & \xi\\ \xi & 1 \end{bmatrix}\).
-In a regression setup the outcomes \(\theta_i\) and \(r_i\) for each
-individual are generated independently from \eqref{gpnreg}. The mean
-vector \(\boldsymbol{\mu}_i \in \mathbb{R}^2\) is defined in the same
-way via covariates as for the modified CL-PN distribution.
+In a regression setup the outcome components \(\theta_i\) and \(r_i\)
+for each individual are generated independently from \eqref{gpnreg}. The
+mean vector \(\boldsymbol{\mu}_i \in \mathbb{R}^2\) is defined in the
+same way via covariates as for the modified CL-PN distribution.
 
 \subsubsection{Parameter estimation}
 
 Both cylindrical models introduced here are estimated using Markov Chain
 Monte Carlo (MCMC) methods based on Nuñez-Antonio et al. (2011), Wang \&
 Gelfand (2013) and Hernandez-Stumpfhauser et al. (2016) for the
-regression of the circular outcome.
+regression of the circular component.
 
 \subsection{The modified Abe-Ley model}\label{WeiSSVM}
 
@@ -203,17 +200,17 @@ Ley (2017) to the regression context. The joint density of \(\Theta\)
 and \(Y\), in this model defined only on the positive real half-line
 \([0, + \infty)\), reads \begin{equation}\label{WeiSSVMdensity}
 f(\theta, y) = \frac{\alpha\nu^\alpha}{2\pi\cosh(\kappa)}
-                 (1 +\lambda\sin(\theta - \mu))
+                 (1 +\lambda\sin(\theta - \mu_c))
                  y^{\alpha-1}
-                 \exp[-(\nu y)^{\alpha}(1-\tanh(\kappa)\cos(\theta - \mu))],
+                 \exp[-(\nu y)^{\alpha}(1-\tanh(\kappa)\cos(\theta - \mu_c))],
 \end{equation} \noindent where \(\alpha > 0\) is a linear shape
 parameter, \(\kappa > 0\) and \(\lambda \in [-1, 1]\) are circular
 concentration and skewness parameters with \(\kappa\) also regulating
 the circular-linear dependence. Our modification occurs at the level of
 the linear scale parameter \(\nu>0\) and circular location parameter
-\(\mu\in [0, 2\pi)\), both of which we express in terms of covariates:
+\(\mu_c\in [0, 2\pi)\), both of which we express in terms of covariates:
 \(\nu_i = \exp(\boldsymbol{x}_i^t\boldsymbol{\gamma}) > 0\) and
-\(\mu_i = \beta_0 + 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta})\).
+\(\mu_{c,i} = \beta_0 + 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta})\).
 The parameter \(\boldsymbol{\gamma}\) is a vector of \(q\) regression
 coefficients \(\gamma_j \in (-\infty, +\infty)\) for the prediction of
 \(y\) where \(j = 0, \dots, q\) and \(\nu_0\) is the intercept. The
@@ -223,16 +220,17 @@ parameter \(\beta_0 \in [0, 2\pi)\) is the intercept and
 where \(j = 1, \dots, p\). The vector \(\boldsymbol{x}_i\) is a vector
 of predictor values for the prediction of \(y\) and \(\boldsymbol{z}_i\)
 is a vector of predictor values for the prediction of \(\theta\). In a
-regression setup the outcome vector \((\theta_i, y_i)^t\) for each
-individual is generated independently from the modified density
+regression setup the outcome component vector \((\theta_i, y_i)^t\) for
+each individual is generated independently from the modified density
 \eqref{WeiSSVMdensity}.\newline \indent As in Abe \& Ley (2017), the
 conditional distribution of \(Y\) given \(\Theta=\theta\) is a Weibull
 distribution with shape \(\alpha\) and scale
-\(\nu(1-\tanh(\kappa)\cos(\theta - \mu))^{1/\alpha}\) and the
+\(\nu(1-\tanh(\kappa)\cos(\theta - \mu_c))^{1/\alpha}\) and the
 conditional distribution of \(\Theta\) given \(Y=y\) is a sine skewed
-von Mises distribution with location parameter \(\mu\) and concentration
-parameter \((\nu y)^\alpha\tanh(\kappa)\). The log-likelihood for this
-model equals \begin{align}\label{WeiSSVMLikelihood}
+von Mises distribution with location parameter \(\mu_c\) and
+concentration parameter \((\nu y)^\alpha\tanh(\kappa)\). The
+log-likelihood for this model equals
+\begin{align}\label{WeiSSVMLikelihood}
 l(\alpha, \boldsymbol{\gamma}, \lambda, \kappa, \boldsymbol{\beta}) 
    &= n[\ln(\alpha) - \ln(2\pi\cosh(\kappa))] + \alpha \sum^{n}_{i = 1} \boldsymbol{x}_i^t\boldsymbol{\gamma} \nonumber\\
    &\:\:\:\:+\sum^{n}_{i = 1} \ln(1 +\lambda\sin(\theta_i - (\beta_0 + 2\tan^{-1}(\boldsymbol{z}_i^t\boldsymbol{\beta})))) 
@@ -246,23 +244,23 @@ parameters of the model.
 
 This model is an extension of the cylindrical model introduced by
 Mastrantonio (2018) to the regression context. Both models contain \(m\)
-independent circular outcomes and \(w\) independent linear outcomes. The
-circular outcomes
+independent circular components and \(w\) independent linear components.
+The circular components
 \(\boldsymbol{\Theta} = (\boldsymbol{\Theta}_1, \dots,  \boldsymbol{\Theta}_m)\)
 are modelled together by a multivariate GPN distribution. The joint
 distribution of \(\boldsymbol{\Theta}\) and \(\boldsymbol{R}\) can thus
 be modeled as the product of (\ref{gpnreg}) for each of the \(m\)
-circular outcomes. The linear outcomes
+circular components. The linear components
 \(\boldsymbol{Y} = (\boldsymbol{Y}_1,  \dots, \boldsymbol{Y}_w)\) are
 modelled together by a multivariate skew normal distribution (Sahu, Dey,
 \& Branco, 2003). Because the GPN distribution is modelled using a
 so-called augmented representation (as in \eqref{projection} and
 \eqref{gpnreg}) it is convenient to use a similar tactic for modelling
 the multivariate skew normal distribution. Following Mastrantonio (2018)
-the linear outcomes are represented as
+the linear components are represented as
 \[\boldsymbol{Y} = \boldsymbol{M}_y + \boldsymbol{\Lambda}\boldsymbol{D} + \boldsymbol{H},\]
 \noindent where \(\boldsymbol{M}_y\) is a mean vector for the linear
-outcome \(\boldsymbol{Y}\),
+component \(\boldsymbol{Y}\),
 \(\boldsymbol{\Lambda} = \text{diag}(\boldsymbol{\lambda})\) is a
 \(w \times w\) diagonal matrix with diagonal elements
 \(\lambda_1, \dots, \lambda_w\) (skewness parameters),
@@ -282,7 +280,7 @@ f(\boldsymbol{y}, \boldsymbol{d}) = 2^w\phi_w(\boldsymbol{y} \mid \boldsymbol{M}
 for the \(\ell\)-dimensional normal density with mean vector
 \(\boldsymbol{M}_\ell\) and covariance \(\boldsymbol{\Sigma}_\ell\). As
 in Mastrantonio (2018) dependence between the linear and circular
-outcome is created by modelling the augmented representations of
+component is created by modelling the augmented representations of
 \(\boldsymbol{\Theta}\) and \(\boldsymbol{Y}\) together in a \(2m + w\)
 dimensional normal distribution. The joint density of the model is then
 represented by: \begin{equation}\label{YDThetarjoint} 
@@ -299,12 +297,12 @@ the mean vector
 \(\boldsymbol{\Sigma} = \left ( \begin{matrix} \boldsymbol{\Sigma}_s & \boldsymbol{\Sigma}_{sy} \\ \boldsymbol{\Sigma}_{sy}^t & \boldsymbol{\Sigma}_y \\ \end{matrix} \right )\).
 The matrix \(\boldsymbol{\Sigma}_s\) is the covariance matrix for the
 variances of and covariances between the augmented representations of
-the circular outcome and the matrix \(\boldsymbol{\Sigma}_{sy}\)
+the circular component and the matrix \(\boldsymbol{\Sigma}_{sy}\)
 contains covariances between the augmented representations of the
-circular outcome and the linear outcome. \newline \indent In our
+circular component and the linear component. \newline \indent In our
 regression extension we have \(i = 1, \dots, n\) observations of \(m\)
-circular outcomes, \(w\) linear outcomes and \(g\) covariates. The mean
-in the density in \eqref{YDThetarjoint} then becomes
+circular components, \(w\) linear components and \(g\) covariates. The
+mean in the density in \eqref{YDThetarjoint} then becomes
 \(\boldsymbol{M}_i = \boldsymbol{B}^t\boldsymbol{x}_i\) where
 \(\boldsymbol{B}\) is a \((g + 1) \times (2m + w)\) matrix with
 regression coefficients and intercepts and \(\boldsymbol{x}_i\) is a
@@ -322,16 +320,16 @@ computation of the PLSL in the teacher data:
 $$l(y \mid \theta, r) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
 \gamma_{sin}\sin(\theta_i)r_i + \gamma_1\text{SE}_i))^2/2\sigma^2$$
 
-$$l(\theta, r) = \log(1) - \log(2\pi) + \sum -0.5\hat{\mu}_i^2 - 0.5(r_i^2 - 2r_iu_i^t\hat{\mu}_i)$$
-where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
+$$l(\theta, r) = \log(1) - \log(2\pi) + \sum -0.5\hat{\boldsymbol{\mu}}_i^2 - 0.5(r_i^2 - 2r_iu_i^t\hat{\boldsymbol{\mu}}_i)$$
+where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\boldsymbol{\mu}}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
 
 \item For the modified CL-GPN model:
 
 $$l(y \mid \theta, r) = \log(1) - \log(\sqrt{2\pi\sigma^2}) + \sum(\hat{y}_i-(\gamma_0 + \gamma_{cos}\cos(\theta_i)r_i +
 \gamma_{sin}\sin(\theta_i)r_i + \gamma_1\text{SE}_i))^2/2\sigma^2$$
 
-$$l(\theta, r) =  \log(1) - \log(2\pi+\tau) - \sum \log(r_i) + (u_i^t\hat{\mu}_i\Sigma^{-1}(u_i^t\hat{\mu}_i)^t)/2\tau^2$$
-where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\mu}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
+$$l(\theta, r) =  \log(1) - \log(2\pi+\tau) - \sum \log(r_i) + (u_i^t\hat{\boldsymbol{\mu}}_i\Sigma^{-1}(u_i^t\hat{\boldsymbol{\mu}}_i)^t)/2\tau^2$$
+where $u_i = (cos\theta_i, \sin \theta_i)$ and $\hat{\boldsymbol{\mu}}_i = (\beta_0^{I} + \beta_0^{I}\text{SE}_i, \beta_0^{II} + \beta_0^{II}\text{SE}_i)^t$.
 
 
 \item For the modified Abe-Ley model:
@@ -352,7 +350,7 @@ $y_i \mid \boldsymbol{M}_i, \boldsymbol{\Sigma}, \theta_i, r_i \sim SSN(M_{i_y} 
 
 $\theta_i \mid \boldsymbol{M}_i, \boldsymbol{\Sigma}, y_i, d_i \sim GPN(\boldsymbol{M}_{i_s} + \boldsymbol{\Sigma}_{sy}\sigma^{-2}_y(y_i - M_{i_y} - \lambda d_i), \boldsymbol{\Sigma}_s + \boldsymbol{\Sigma}_{sy}\sigma_y^{-2}\boldsymbol{\Sigma}_{sy}^t)$
 
-where $SSN$ is the skew normal distribution. Computationally this comes down to taking the log of the density values for a univariate and multivariate normal distribution (with mean and variance specified as above) for the linear and circular outcome respectively.
+where $SSN$ is the skew normal distribution. Computationally this comes down to taking the log of the density values for a univariate and multivariate normal distribution (with mean and variance specified as above) for the linear and circular component respectively.
 
 \end{itemize}
 
@@ -363,7 +361,7 @@ We use the following algorithm to obtain posterior estimates from the
 model:
 
 \begin{enumerate}
-\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}^k_{n \times 2}$ (for $k \in \{I,II\}$) and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear outcome respectively, in a training (90\%) and holdout (10\%) set. 
+\item Split the data, with the circular component $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear component $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}^k_{n \times 2}$ (for $k \in \{I,II\}$) and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear component respectively, in a training (90\%) and holdout (10\%) set. 
 \item Define the prior parameters for the training set. In this paper we use:
 
 \begin{itemize}
@@ -373,7 +371,7 @@ model:
 \end{itemize}
 
 \item Set starting values $\boldsymbol{\gamma} = (0,0,0,0)^t$, $\sigma^2 = 1$ and $\boldsymbol{\beta^{k}} = (0,0)^t$ for $k \in \{I,II\}$. Also set starting values $r_i = 1$ in the training and holdout set. 
-\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+\item Compute the latent bivariate scores $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular component for the holdout and training dataset as follows:
 $$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i)\\  r_i\sin (\theta_i)\end{bmatrix}.$$
 \item Sample $\boldsymbol{\gamma}$, $\sigma^2$ and $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$ for the training dataset from their conditional posteriors:
 
@@ -397,7 +395,7 @@ and the full conditional for $r_i$, $p(r_{i} \mid v_{i},\boldsymbol{\mu}_{i}, \t
 $$r_{i} \textbf{I}\left(b_{i} + \max\left\{-b_{i}, -\sqrt{-2\ln v_{i}}\right\} < r_{i} < b_{i} + \sqrt{-2\ln v_{i}}\right).$$
 \noindent We thus sample $v_{i}$ from the uniform distribution specified above. Independently we sample a value $m$ from $U(0,1)$. We obtain a new value for $r_{i}$ by computing $ r_{i} = \sqrt{(r_{i_{2}}^{2}-r_{i_{1}}^{2})m + r_{i_{1}}^{2}}$ where $r_{i_{1}}=b_{i} +\max\left\{-b_{i}, -\sqrt{-2\ln v_{i}}\right\}$ and $ r_{i_{2}}= b_{i} + \sqrt{-2\ln v_{i}}$.
 \end{itemize}
-\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$ and $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$ for the training dataset.
+\item Compute the PLSL for the circular and linear component on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$ and $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$ for the training dataset.
 \item Repeat steps 4 to 7 until the sampled parameter estimates have converged. We assess convergence visually using traceplots.
 \end{enumerate}
 
@@ -408,7 +406,7 @@ We use the following algorithm to obtain posterior estimates from the
 model:
 
 \begin{enumerate}
-\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}_{n \times 2}$  and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear outcome respectively, in a training (90\%) and holdout (10\%) set. 
+\item Split the data, with the circular component $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear component $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrices $\boldsymbol{Z}_{n \times 2}$  and $\boldsymbol{X}_{n \times 4}$ of the circular and the linear component respectively, in a training (90\%) and holdout (10\%) set. 
 \item Define the prior parameters for the training set. In this paper we use:
 
 \begin{itemize}
@@ -420,7 +418,7 @@ model:
 \end{itemize}
 
 \item Set starting values $\boldsymbol{\gamma} = (0,0,0,0)^t$, $\sigma^2 = 1$, $\boldsymbol{\beta}_j = (0,0)^t$ for $j \in \{0,1\}$, $\xi = 0$, $\tau = 1$ and $\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2 & \xi\\ \xi & 1 \end{bmatrix}$. Also set starting values $r_i = 1$ in the training and holdout set. 
-\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+\item Compute the latent bivariate scores $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular component for the holdout and training dataset as follows:
 $$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i) \\  r_i\sin (\theta_i)\end{bmatrix}.$$
 \item Sample $\boldsymbol{\gamma}$, $\sigma^2$, $\boldsymbol{\beta}_j$ for $j \in \{0,1\}$, $\xi$ and $\tau$ for the training dataset from their conditional posteriors:
 
@@ -447,7 +445,7 @@ $$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\f
 \item We thus sample $v_{i}$ from the uniform distribution specified above. Independently we sample a value $m$ from $U(0,1)$. We obtain a new value for $r_{i}$ by computing $r_{i} = \sqrt{(r_{i_{2}}^{2}-r_{i_{1}}^{2})m + r_{i_{1}}^{2}}$ where $r_{i_{1}}=\frac{B_i}{A_i} +\max\left\{-\frac{B_i}{A_i}, -\sqrt{\frac{-2\ln v_{i}}{A_i}}\right\}$ and $ r_{i_{2}}= \frac{B_i}{A_i} + \sqrt{\frac{-2\ln v_{i}}{A_i}}$.
 \end{itemize}
 
-\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$, $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$, $\xi$ and $\tau$ for the training dataset. 
+\item Compute the PLSL for the circular and linear component on the holdout set using the estimates of $\boldsymbol{\gamma}$, $\sigma^2$, $\boldsymbol{\beta^{k}}$ for $k \in \{I,II\}$, $\xi$ and $\tau$ for the training dataset. 
 \item Repeat steps 4 to 7 until the sampled parameter estimates have converged. We visually assess convergence using traceplots.
 \end{enumerate}
 
@@ -455,8 +453,8 @@ $$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\f
 \subsection{Bayesian Model and MCMC procedure for the modified GPN-SSN model}\label{A3}
 
 \begin{enumerate}
-\item Split the data, with the circular outcome $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear outcome $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrix $\boldsymbol{X}_{n \times 2}$ in a training (90\%) and holdout (10\%) set. Note that in this paper we have only one circular outcome and one linear outcome and the MCMC procedure outlined here is specified for this situation. It can however be generalized to a situation with multiple circular and linear outcomes without too much effort. 
-\item Define the prior parameters for the training set. Since we have only one circular outcome, one linear outcome and one covariate, we have $m = 1$, $w = 1$ and $g = 1$. In this paper we use the following priors:
+\item Split the data, with the circular component $\boldsymbol{\theta} = \theta_1, \dots, \theta_n$ and the linear component $\boldsymbol{y} = y_1, \dots, y_n$ where $n$ is the sample size, and the design matrix $\boldsymbol{X}_{n \times 2}$ in a training (90\%) and holdout (10\%) set. Note that in this paper we have only one circular component and one linear component and the MCMC procedure outlined here is specified for this situation. It can however be generalized to a situation with multiple circular and linear components without too much effort. 
+\item Define the prior parameters for the training set. Since we have only one circular component, one linear component and one covariate, we have $m = 1$, $w = 1$ and $g = 1$. In this paper we use the following priors:
 
 \begin{itemize}
 \item Prior for $\boldsymbol{\Sigma}$: $IW(\boldsymbol{\Psi}_0, \nu_0)$, an inverse Wishart with $\boldsymbol{\Psi}_0 = 10^{-4}\boldsymbol{I}_{2m + w}$ and $\nu_0 = 1$.   
@@ -465,9 +463,9 @@ $$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\f
 \end{itemize}
 
 \item Set starting values $\boldsymbol{\beta} = (0,0,0,0,0,0)^t$, $\boldsymbol{\Sigma} = \boldsymbol{I}_3$ and $\lambda = 0$. Also set starting values $r_i = 1$ and $d_i = 1$ in the training and holdout set. 
-\item Compute the latent bivariate outcome $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular outcome for the holdout and training dataset as follows:
+\item Compute the latent bivariate scores $\boldsymbol{s}_i = (s_i^{I}, s_i^{II})^t$ underlying the circular component for the holdout and training dataset as follows:
 $$\begin{bmatrix} s^{I}_{i} \\ s^{II}_{i} \end{bmatrix} = \begin{bmatrix} r_i \cos (\theta_i) \\  r_i\sin (\theta_i)\end{bmatrix}.$$
-\item Compute the latent outcomes $\tilde{y}_i$ underlying the linear outcome for the holdout and training dataset as follows:
+\item Compute the latent scores $\tilde{y}_i$ underlying the linear component for the holdout and training dataset as follows:
 $$\tilde{y}_i = \lambda d_i. $$
 \item Compute $\boldsymbol{\eta}_i$ defined as follows for each individual $i$:
 $$\boldsymbol{\eta}_i = (\boldsymbol{s}_i^t,y_i)^t - (\boldsymbol{0}_{2m}^t, \lambda d_i)^{t}.$$
@@ -488,7 +486,7 @@ $$N(m_{d_i}, v),$$
 \item Sample new $r_i$ for the training and holdout dataset from the following posterior
 $$f(r_i \mid \theta_i, \boldsymbol{\mu}_i) \propto r_i \exp{\left\{-0.5A_i\bigg(r_i-\frac{B_i}{A_i}\bigg)^2\right\}}$$ 
 where $B_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}_{s_i|y_i}^{-1}\boldsymbol{\mu}_{s_i|y_i}$, $\boldsymbol{\mu}_{s_i|y_i} = \boldsymbol{B}_{s_i|y_i}^t\boldsymbol{x}_i$ and $A_i = \begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}^t\boldsymbol{\Sigma}_{s_i| y_i}^{-1}\begin{bmatrix} \cos (\theta_i) \\ \sin (\theta_i)\end{bmatrix}$. The parameters $\boldsymbol{\mu}_{s_i|y_i}$ and $\boldsymbol{\Sigma}_{s_i| y_i}$ are the conditional mean and covariance matrix of $\boldsymbol{s}_i$ assuming that $(\boldsymbol{s}_i^t, y_i)^t \sim N_{2m+w}(\boldsymbol{\mu} + (\boldsymbol{0}_{2m}^t, \lambda d_i)^t, \boldsymbol{\Sigma})$. 
-Because in this paper $\boldsymbol{\theta}$ originates from a bivariate variable that is known we can in this model (where the variance-covariance matrix of the circular outcome is not constrained in the estimation procedure) simply define the $r_i$ as the Euclidean norm of the bivariate datapoints. However, for didactic purposes we continue with the explanation of the sampling procedure. We
+Because in this paper $\boldsymbol{\theta}$ originates from a bivariate variable that is known we can in this model (where the variance-covariance matrix of the circular component is not constrained in the estimation procedure) simply define the $r_i$ as the Euclidean norm of the bivariate datapoints. However, for didactic purposes we continue with the explanation of the sampling procedure. We
 can sample from the posterior for $r_i$ using a slice sampling technique (Hernandez-Stumpfhauser et al. 2018): 
 \begin{itemize}
 \item In a slice sampler the joint density for an auxiliary variable $v_{i}$ with $r_{i}$ is
@@ -501,7 +499,7 @@ $$r_{i} \textbf{I}\left(\frac{B_i}{A_i} + \max\left\{-\frac{B_i}{A_i}, -\sqrt{\f
 
 \end{itemize}
 
-\item Compute the PLSL for the circular and linear outcome on the holdout set using the estimates of $\boldsymbol{B}$, $\boldsymbol{\Sigma}$ and $\lambda$ for the training dataset.
+\item Compute the PLSL for the circular and linear component on the holdout set using the estimates of $\boldsymbol{B}$, $\boldsymbol{\Sigma}$ and $\lambda$ for the training dataset.
 
 \item Repeat steps 4 to 10 until the sampled parameter estimates have converged.
 
@@ -514,10 +512,6 @@ $$\boldsymbol{\Sigma} = \boldsymbol{C}\tilde{\boldsymbol{\Sigma}}\boldsymbol{C}.
 \end{enumerate}
 \newpage
 \section*{References}
-
-\DeclareRobustCommand{\VANDER}[3]{#3}
-\DeclareRobustCommand{\VAN}[3]{#3}
-\DeclareRobustCommand{\DEN}[3]{#3}
 
 \hypertarget{refs}{}
 \leavevmode\hypertarget{ref-abe2017tractable}{}%
