@@ -1,0 +1,30 @@
+---
+title: "Regression models for Cylindrical data in Psychology"
+author: |
+  | Jolien Cremers^[Corresponding author: jcre@sund.ku.dk]$^{\:\:1}$, Helena J.M. Pennings$^{2,3}$,  Christophe Ley $^{4}$
+  | $^1$Department of Biostatistics, Copenhagen University
+  | $^2$TNO
+  | $^3$Department of Education, Utrecht University
+  | $^4$Department of Applied Mathematics, Computer Science and Statistics, Ghent University
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    latex_engine: pdflatex
+    number_sections: yes
+  html_document: default
+  word_document: default
+fontsize: 12pt
+geometry: margin=1in
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+\section*{Acknowledgements}
+We thank Irene Klugkist for insightful remarks and comments on the present
+paper. Jolien Cremers acknowledges financial support from a Vidi grant awarded
+to I. Klugkist from the Dutch Organization for Scientific Research (NWO
+452‐12‐010).

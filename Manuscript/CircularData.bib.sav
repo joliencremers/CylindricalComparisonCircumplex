@@ -2794,7 +2794,7 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{cremers2019circular,
-  author  = {Cremers, J and Pennings, Helena Jo M and Mainhard, Tim and Klugkist, Irene},
+  author  = {Cremers, Jolien and Pennings, Helena JoM and Mainhard, Tim and Klugkist, Irene},
   title   = {Circular Modelling of Circumplex Measurements for Interpersonal Behavior},
   journal = {Assessment},
   year    = {2019},

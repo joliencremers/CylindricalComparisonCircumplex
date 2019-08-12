@@ -33,7 +33,7 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics[width = 0.8\textwidth]{Plots/IPC-T.png}
+\includegraphics[width = 0.8\textwidth]{Plots/IPC-T2.png}
 \caption{The interpersonal circle for teachers (IPC-T). The words presented in
 the circumference of the circle are anchor words to describe the type of
 behavior located in each part of the IPC.}

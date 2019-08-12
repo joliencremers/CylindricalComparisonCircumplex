@@ -1153,7 +1153,7 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{hernandez2016general,
-  author    = {Hernandez-Stumpfhauser, Daniel and Breidt, F Jay and van der Woerd, Mark J},
+  author    = {Hernandez-Stumpfhauser, Daniel and Breidt, F Jay and {\VANDER{Woerd}{Van der}{van der}} Woerd, Mark J},
   title     = {The general projected normal distribution of arbitrary dimension: Modeling and {Bayes}ian inference.},
   journal   = {Bayesian Analysis},
   year      = {2016},
@@ -2630,20 +2630,21 @@ They provide a method for estimating the mean and kappa and drawing samples from
 }
 
 @Article{wubbels2005two,
-  author =    {Wubbels, Theo and Brekelmans, Mieke},
-  title =     {Two decades of research on teacher--student relationships in class},
-  journal =   {International Journal of Educational Research},
-  year =      {2005},
-  volume =    {43},
-  number =    {1},
-  pages =     {6--24},
-  publisher = {Elsevier}
+  author    = {Wubbels, Theo and Brekelmans, Mieke},
+  title     = {Two decades of research on teacher--student relationships in class},
+  journal   = {International Journal of Educational Research},
+  year      = {2005},
+  volume    = {43},
+  number    = {1},
+  pages     = {6--24},
+  doi       = {10.1016/j.ijer.2006.03.003},
+  publisher = {Elsevier},
 }
 
 @InBook{wubbels2006interpersonal,
   chapter   = {An interpersonal perspective on classroom management in secondary classrooms in the {Netherlands}},
   pages     = {1161-1191},
-  title     = {Handbook of classroom management: Research practice and contemporary issues},
+  title     = {An interpersonal perspective on classroom management in secondary classrooms in the {Netherlands}},
   publisher = {Malwah, NJ: Lawrence Erlbaum Associates},
   year      = {2006},
   author    = {Wubbels, Theo and Brekelmans, Mieke and {\DEN{Brok}{Den}{den}} Brok, Perry and {\VAN{Tartwijk}{Van}{van}} Tartwijk, Jan},
@@ -2780,6 +2781,25 @@ They provide a method for estimating the mean and kappa and drawing samples from
   year    = {2018},
   pages   = {Advance Online Publication},
   doi     = {10.1080/19415257.2018.1511453},
+}
+
+@Article{pannasch2008duration,
+  author  = {Pannasch, Sebastian and Helmert, Jens R and Roth, Katharina and Herbold, Ann-Katrin and Walter, Henrik},
+  title   = {Visual Fixation Durations and Saccade Amplitudes: Shifting Relationship in a Variety of Conditions},
+  journal = {Journal of Eye Movement Research},
+  year    = {2008},
+  volume  = {2},
+  number  = {2},
+  doi     = {10.16910/jemr.2.2.4},
+}
+
+@Article{cremers2019circular,
+  author  = {Cremers, Jolien and Pennings, Helena Jo M and Mainhard, Tim and Klugkist, Irene},
+  title   = {Circular Modelling of Circumplex Measurements for Interpersonal Behavior},
+  journal = {Assessment},
+  year    = {2019},
+  pages   = {OnlineFirst},
+  doi     = {10.1177/1073191119858407},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

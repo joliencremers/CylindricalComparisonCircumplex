@@ -90,13 +90,13 @@ library(plotrix)
 library(caret) #cross-validation
 library(coda) #geweke diagnostic
 ```
-In the social sciences the use of cylindrical data is very common. Such data
-consist of a linear and a circular component. @gurtman2011reasoning refers to
-such data as vectors, with a directional measure (i.e., the circular component)
-and a measure indicating the magnitude (i.e., the linear component). Many
-established models in psychology are often referred to as circular or circumplex
-models, but those models are cylindrical. Examples of such cylindrical models
-are the interpersonal circle/circumplex
+In the social sciences the use of cylindrical data is very common. Cylindrical
+data consist of a linear and a circular component. @gurtman2011reasoning refers
+to cylindrical data as vectors, with a directional measure (i.e., the circular
+component) and a measure indicating the magnitude (i.e., the linear component).
+Many established models in psychology are often referred to as circular or
+circumplex models, but those models are cylindrical. Examples of such
+cylindrical models are the interpersonal circle/circumplex
 [@leary1957;@wiggins1996history;@wubbels2006interpersonal], the circumplex of
 affect [@russell1980circumplex], the circumplex of human emotion
 [@plutchik1997general] or the model of human values [@schwartz1992values].
@@ -149,7 +149,7 @@ analysis methods due to this periodicity in the scale of a circular variable
 @mardia2000directional, @jammalamadaka2001topics and @ley2017modern for a more
 elaborate overview).
 
-\hfil [Figure \ref{circline} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{circline} about here] \hfil
 
 \indent From now on we will refer to the circular random variable as $\Theta$,
 the circular component, and the linear random variable as $Y$, the linear
@@ -160,8 +160,8 @@ round brackets mean that $2\pi$ is not included in the interval since this
 represents the same value as 0 as a result of periodicity. Radians can be
 converted to degrees using the relation $1 \:\text{rad} =
 1*\frac{180^\circ}{\pi}$. A circular variable is usually described using its
-first two moments, circular location or mean $\mu$ and mean resultant length
-$\rho$\footnote{In the von Mises distribution, a common distribution for a
+first two moments; the circular location or mean $\mu$ (first moment) and mean resultant length
+$\rho$ (second moment)\footnote{In the von Mises distribution, a common distribution for a
 circular outcome, we have a concentration parameter $\kappa$ that is related to
 $\rho$ as $\rho = A_1(\kappa)$, where $A_1{\kappa} = I_1(\kappa)/I_0(\kappa)$
 and $I_0()$ and $I_1()$ are modified Bessel functions of order 0 and 1,
@@ -268,9 +268,9 @@ $\Theta$-$Y$ dependence &                                   &                   
 \label{TableModels}
 \end{sidewaystable}
 
-\hfil [Table \ref{TableModels} about here] \hfil
+\hfil \hspace{2cm}[Table \ref{TableModels} about here] \hfil
 
-\subsubsection{The Modified Circular-Linear Projected Normal (CL-PN) and Modified Circular-Linear General Projected Normal (CL-GPN) Models}\label{CL-(G)PN}
+\subsubsection{The modified Circular-Linear Projected Normal (CL-PN) and modified Circular-Linear General Projected Normal (CL-GPN) models}\label{CL-(G)PN}
 Following @mastrantonio2015bayesian we consider two models where the prediction
 equation for the linear component is specified by combining \eqref{linpredgen},
 with an identity link function and including $\sin(\theta_i)$ and
@@ -303,7 +303,7 @@ contrast to \(\Theta\) is not observed and thus considered latent or auxiliary.
 This then means that we do not model \(\Theta\) directly but indirectly through
 $\boldsymbol{S}$.
 
-\hfil [Figure \ref{projection} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{projection} about here] \hfil
 
 \indent For both the PN and GPN distributions the circular location parameter
 \(\mu_c\in [0, 2\pi)\) is modeled.\footnote{Note that for the CL-GPN
@@ -337,7 +337,7 @@ solved this interpretation problem. They introduce a new parameter $b_c$ that de
 the inflection point of the regression line. For the GPN distribution the
 interpretation problem however remains.
 
-\hfil [Figure \ref{circregline} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{circregline} about here] \hfil
 
 \indent The main difference between the PN and GPN distribution lies in the
 definition of their covariance matrix. For the PN distribution this is an
@@ -346,7 +346,7 @@ for the GPN distribution \(\boldsymbol{\Sigma} = \begin{bmatrix} \tau^2 + \xi^2
 & \xi\\ \xi & 1 \end{bmatrix}\) where \(\xi,\tau \in (-\infty, +\infty)\),
 allowing for multimodality and asymmetry/skewness as illustrated in Figure \ref{plotGPN}.
 
-\hfil [Figure \ref{plotGPN} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{plotGPN} about here] \hfil
 
 \indent Both the CL-PN and CL-GPN models are estimated using Markov Chain Monte
 Carlo (MCMC) methods based on @nunez2011bayesian, @wang2012directional and
@@ -501,7 +501,7 @@ tools::texi2dvi("Plots/plotGPN.tex",pdf=TRUE)
 \label{plotGPN}
 \end{figure}
 
-\subsubsection{The Modified Abe-Ley Model}\label{WeiSSVM}
+\subsubsection{The modified Abe-Ley model}\label{WeiSSVM}
 This model is an extension of the cylindrical model introduced in
 @abe2017tractable to the regression context. The circular dependence between the
   linear and circular component, $Y$ and $\Theta$, is defined through a joint
@@ -550,7 +550,7 @@ circular-linear dependence in the Abe-Ley model. In the exponent or power of the
 the maximum likelihood (ML) estimates for the parameters of the model.
 
 
-\subsubsection{Modified Joint Projected and Skew Normal Model (GPN-SSN)}\label{CL-GPN_multivariate}
+\subsubsection{The modified Joint Projected and Skew Normal model (GPN-SSN)}\label{CL-GPN_multivariate}
 This model is an extension of the cylindrical model introduced by
 @mastrantonio2018joint to the regression context. Although the model may contain
 several circular and linear components we will restrict ourselves to one
@@ -666,7 +666,7 @@ means of the standard deviations of the PLSL criteria.
 \section{Teacher Data}\label{Example}
 \begin{figure}
 \centering
-\includegraphics[width = 0.8\textwidth]{Plots/IPC-T.png}
+\includegraphics[width = 0.8\textwidth]{Plots/IPC-T2.png}
 \caption{The interpersonal circle for teachers (IPC-T). The words presented in
 the circumference of the circle are anchor words to describe the type of
 behavior located in each part of the IPC.}
@@ -686,32 +686,32 @@ overview of many such instruments).\newline
 Questionnaire on Teacher Interaction (QTI) [@wubbels2006interpersonal] which is
 one such circumplex measurement instrument. The QTI is designed to measure
 student perceptions of their teachers' interpersonal behavior and contains items
-that load on two interpersonal dimensions: Agency and Communion. Agency refers
-to the degree of power or control a teacher exerts in interaction with his/her
-students. Communion refers to the degree of friendliness or affiliation a
-teacher conveys in interaction with his/her students. The loadings on the two
-dimensions of the QTI can be placed in a two-dimensional space formed by Agency
-(vertical) and Communion (horizontal), see Figure \ref{QTI}. This space is
-called the interpersonal circle/circumplex (IPC) and different parts of this
-space are characterized by different teacher behavior, e.g. 'helpful' or
-'uncertain'. The IPC is ``a continuous order with no beginning or end''
-[@gurtman2009exploring, p. 2]. We call such ordering a circumplex ordering and
-the IPC is therefore often called the interpersonal circumplex. The ordering
-also implies that scores on the IPC could be viewed as a circular variable. This
-circular variable represents location on the IPC of the interpersonal behavior
-that a teacher shows towards his/her students.
+that load on two interpersonal dimensions: Agency and Communion. The item scores
+on the QTI are measured on a scale from 1 to 5 and are later converted to a
+scale ranging from -1 to 1. Subsequently they are converted to scores on Agency
+and Communion (see also footnote 2 of @wubbels2005two for more details on this
+procedure). Agency refers to the degree of power or control a teacher exerts in
+interaction with his/her students. Communion refers to the degree of
+friendliness or affiliation a teacher conveys in interaction with his/her
+students.  The loadings on the two dimensions of the QTI can be placed in a
+two-dimensional space formed by Agency (vertical) and Communion (horizontal),
+see Figure \ref{QTI}. This space is called the interpersonal circle/circumplex
+(IPC) and different parts of the IPC are characterized by different teacher
+behaviors, e.g. 'helpful' or 'uncertain'. The IPC is ``a continuous order with no
+beginning or end'' [@gurtman2009exploring, p. 2]. We call such ordering a
+circumplex ordering and the IPC is therefore often called the interpersonal
+circumplex. The circumplex ordering also implies that scores on the IPC could be viewed as
+a circular variable. This circular variable represents location on the IPC of
+the interpersonal behavior that a teacher shows towards his/her students.
 
-\hfil [Figure \ref{QTI} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{QTI} about here] \hfil
 
-\indent @Cremers2018Assessing explain the circular nature of the IPC data and
-analyze them as such using a circular regression model. The two dimension
+\indent @Cremers2018Assessing  and @cremers2019circular explain the circular nature of the IPC data and analyze them as such using a circular regression and mixed-effects model respectively. The two dimension
 scores, Agency and Communion, can be converted to a circular score using the
 two-argument arctangent function in \eqref{PredVal}, where \(A\) represents a
 score on the Agency dimension and \(C\) represents a score on the Communion
 dimension\footnote{The selection of the origin in circumplex data depends on
-the scaling of the Agency and Communion scores. Agency and Communion are
-measured on a scale from 1 to 5 and for analysis purposes they are later
-converted to a scale ranging from -1 to 1.  Their respective 0 scores form the
+the scaling of the Agency and Communion scores. Their respective 0 scores form the
 origin. Although the scaling influences the average score and spread on the IPC and the intensity, the difference between the individual measurements will be retained (albeit them being different in size). With regards to the intensity, scaling has the same effect as in a standard linear regression. With regards to the location on the IPC (the circular component) rescaling to -1,1 affects the size of the circular (as well as bivariate linear) regression coefficients. This has a positive effect if the original Agency and Communion scores are far from the origin in bivariate space. In that case the locations on the IPC are very concentrated before scaling (small variance). Such data are hard to estimate using circular models as the circular regression coefficients may be very small (high risk of bias, see Cremers, Mainhard, Klugkist (2018a)). Scaling will thus improve estimation. Finally note that scaling is only considered an issue in those instances where cylindrical data is derived from measurements in bivariate space.}. Note that
 when placing a unit circle on Figure \ref{QTI} we see that the Agency dimension
 is related to the sine of the circular score and the Communion dimension is
@@ -737,18 +737,19 @@ This provides us with new insights compared to a separate analysis of the two
 dimensions that is standard in the literature (see, e.g.,
 @pennings2018interpersonal, @wright2009integrating or
 @wubbels2006interpersonal). There is however one main drawback: when
-two-dimensional data are converted to the circle we lose some information,
-namely the length of the two-dimensional vector \((A, C)^t\), \emph{i.e.}, its
-Euclidean norm \(\mid\mid (A, C)^t \mid\mid\). This length represents the
-intensity of the interpersonal behavior a teacher shows towards his/her
-students. In a cylindrical model this intensity (the linear component) can be
-modeled together with the location of interpersonal behavior of a teacher on the
-IPC (the circular component). This leads to an improved analysis of interpersonal
-circumplex data, over either analyzing the two dimensions separately or using a
-circular model, because we take all information, circular and linear, into
-account. In the next section we introduce several cylindrical models that can be
-used to analyze the teacher data. First however we will provide descriptives for
-the teacher data and conduct a 'standard' analysis for these data that we can compare the results from the cylindrical models to.
+two-dimensional data are converted to the location on the circle we lose some
+information, namely the length of the two-dimensional vector \((A, C)^t\),
+\emph{i.e.}, its Euclidean norm \(\mid\mid (A, C)^t \mid\mid\). This length
+represents the intensity of the interpersonal behavior a teacher shows towards
+his/her students. In a cylindrical model this intensity (the linear component)
+can be modeled together with the location of interpersonal behavior of a teacher
+on the IPC (the circular component). This leads to an improved analysis of
+interpersonal circumplex data, over either analyzing the two dimensions
+separately or using a circular model, because we take all information, circular
+and linear, into account. In the next section we introduce several cylindrical
+models that can be used to analyze the teacher data. First however we will
+provide descriptives for the teacher data and conduct a 'standard' analysis for
+these data that we can compare the results from the cylindrical models to.
 
 
 \subsection{Data Description}\label{DataDescriptives}
@@ -853,15 +854,15 @@ IPC intensity. This means that $\boldsymbol{x}_i = \boldsymbol{z}_i = (1,\:
 $\boldsymbol{z}_i = \text{SE}_i$. In previous research, in psychology and
 education it has been shown that higher self-efficacy is related to the quality
 of interpersonal interactions [@locke2007selfefficacy; @want2018selfefficacy].
-After listwise deletion of missings ($3$ in total, only for the self-efficacy)
-we have a sample of 148 teachers. Note that we remove the missings here for
-simplicity, however, in general and especially when the number of missings is
-larger, the influence of listwise deletion should be investigated and necessary
-precaution (e.g. imputation of missing values) should be taken. Table
-\ref{Tableteacherdescriptives} shows descriptives for the dataset. Note that we
-also show the scores on the Agency and Communion component of the IPC before
-transformation to a circular score. For the circular variable IPC we show sample
-estimates for the circular mean $\bar{\theta}$ and mean resultant length
+After listwise deletion of missings ($3$ in total, only for self-efficacy) we
+have a sample of 148 teachers. We used listwise deletion of the missings in this
+paper for simplicity. However, in general and especially when the number of
+missings is larger, the influence of listwise deletion should be investigated
+and necessary precaution (e.g. imputation of missing values) should be taken.
+Table \ref{Tableteacherdescriptives} shows descriptives for the dataset. Note
+that we also show the scores on the Agency and Communion component of the IPC
+before transformation to a circular score. For the circular variable IPC we show
+sample estimates for the circular mean $\bar{\theta}$ and mean resultant length
 $\hat{\rho}$. For the linear variables (Agency, Communion, IPC intensity and the
 covariate SE) we show sample estimates of the linear mean and standard deviation
 (sd). Figure \ref{dataplot} is a scatterplot showing the relation between the
@@ -896,9 +897,9 @@ SE & 5.04 & 1.00 & 1.5 - 7.0 & Linear\\
 \label{Tableteacherdescriptives}
 \end{table}
 
-\hfil [Table \ref{Tableteacherdescriptives} about here] \hfil
+\hfil \hspace{2cm} [Table \ref{Tableteacherdescriptives} about here] \hfil
 
-\hfil [Figure \ref{dataplot} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{dataplot} about here] \hfil
 
 
 \subsection{Standard Analysis}\label{StandardAnalysis}
@@ -911,11 +912,11 @@ Coefficients and standard errors from the models are shown in Table
 of self-efficacy is significant for both the Agency and Communion component. An
 increase of 1 unit on self-efficacy leads to a 0.07 increase in Agency and a
 0.09 increase in Communion. Note that in this setup we can only model the effect
-of self-efficacy on the intensity (size of the score) on the Agency and
+of self-efficacy on the intensity, the size of the score, of the Agency and
 Communion component. We can not quantify the effect on the location and
 intensity on the IPC nor can we quantify their dependence.
 
-\hfil [Table \ref{Tableteacherstandardanalysis} about here] \hfil
+\hfil \hspace{2cm} [Table \ref{Tableteacherstandardanalysis} about here] \hfil
 
 ```{r standardanalysis, cache = TRUE, echo = FALSE, results = FALSE}
 A_res <- lm(lAgency ~ SEc, data = Dat)
@@ -1153,7 +1154,7 @@ the Abe-Ley model we show the maximum likelihood estimates of the parameters. To
 compare the results of the four models we focus on the following aspects: the
 estimated average scores (intercept) on the location and intensity on the IPC (1), the effect of self-efficacy on the location and intensity (2), the dependence between the location and intensity (3) and the model fit (4).
 
-\hfil [Table \ref{tab:estCLGPN}, \ref{tab:estAL} and \ref{tab:estCLGPNM} about here] \hfil
+\hfil \hspace{2cm} [Table \ref{tab:estCLGPN}, \ref{tab:estAL} and \ref{tab:estCLGPNM} about here] \hfil
 
 ```{r estCLPN, cache = TRUE, echo = FALSE}
 
@@ -1670,7 +1671,7 @@ interpersonal behavior is higher than having a high intensity. We however can no
 make any direct statement about the estimated intensity using the Abe-Ley
 model.
 
-\hfil [Figure \ref{reglineweib} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{reglineweib} about here] \hfil
 
 \indent The parameters $\beta_0^{I}$, $\beta_0^{II}$, $\beta_0$,
 $\beta_{0_{s^{I}}}$ and $\beta_{0_{s^{II}}}$ inform us about the location on the IPC at the average self-efficacy for the CL-PN, CL-GPN,
@@ -1684,7 +1685,7 @@ three models at 32.29$^\circ$, 33.70$^\circ$ and 35.53$^\circ$. In the Abe-Ley
 model the location on the IPC at the average self-efficacy is
 estimated at 0.36 radians or 20.63$^\circ$.
 
-\hfil [Table \ref{tab:means} about here] \hfil
+\hfil \hspace{2cm} [Table \ref{tab:means} about here] \hfil
 
 ```{r survivalplot, cache = TRUE, dev = "tikz",fig.ext="svg", echo = FALSE, results = FALSE}
 summary(Dat$SEc)
@@ -1851,7 +1852,7 @@ symmetric distribution whereas in the GPN-SSN the distribution of the linear
 component is skewed. However, the effect of self-efficacy is different from 0 only
 in the GPN-SSN model which does not seem to match with its lower model fit.
 
-\hfil [Table \ref{tab:ModelFit} about here] \hfil
+\hfil \hspace{2cm} [Table \ref{tab:ModelFit} about here] \hfil
 
 \indent In the Abe-Ley model, $\gamma_1$ influences the shape parameter of the distribution of
 the intensity of interpersonal behavior and does not directly estimate the effect
@@ -1885,7 +1886,7 @@ data range. Both the regression line of the Abe-Ley model and the CL-PN model
 show slopes that are not very steep in the range of the data indicating that the
 effect of self-efficacy on the location on the IPC is not large.
 
-\hfil [Figure \ref{regline} about here] \hfil
+\hfil \hspace{2cm} [Figure \ref{regline} about here] \hfil
 
 \indent In the CL-GPN and GPN-SSN models we cannot compute circular regression
 coefficients due to the fact that not only the mean vector of the GPN
@@ -2186,7 +2187,7 @@ is that we were able to analyze the information about the location and intensity
 on the IPC simultaneously. In previous research, the two components of the
 interpersonal circumplex (\emph{i.e.}, Agency and Communion) were analyzed
 separately. Such an approach only provides information about the intensity of a
-teachers' score on Agency and Communion and the information about the
+teachers' score on Agency and Communion separately and the information about the
 combination of Agency and Communion, which describes the location on the IPC,
 gets lost as was observed in the Standard Analysis section. A first solution to
 include both dimensions as a circular variable in data analysis was described by
@@ -2212,9 +2213,20 @@ stronger in their behavior than teachers of the other subtypes.\newline
 \indent As mentioned in the introduction, data from the interpersonal circumplex
 is not the only type of cylindrical data that occurs in psychology. The methods
 presented in this paper are also of use for research on human navigation and
-eye-tracking research. Furthermore, even though cylindrical models are already
-used in fields outside of psychology, the addition of a regression structure to
-the models is of use in these fields as well. \newline
+eye-tracking research. For example, in a study by @pannasch2008duration, the relation between
+saccade amplitudes and fixation duration is investigated in different
+experimental settings. The saccade amplitude is a circular outcome that measures
+the turning angle of the eye between fixations on different focal points, e.g.,
+an individual first looks at one object in a picture and then moves focus to
+another object. The outcome variables of interest are thus cylindrical in nature
+(saccade amplitude is a circular outcome and fixation duration a linear one).
+More importantly however, the researchers are interested in both the relation
+between the circular and linear outcome and how covariates (different
+experimental settings) affect the outcomes. These research questions can be
+answered using the cylindrical models introduced in this paper. Furthermore,
+even though cylindrical models are already used in fields outside of psychology,
+the addition of a regression structure to the models is of use in these fields
+as well. \newline
 \indent Out of the four cylindrical models investigated in this paper, the
 results from CL-PN and Abe-Ley models are most straightforward to interpret. In
 the CL-GPN and GPN-SSN models the interpretation of the parameters of the
@@ -2251,9 +2263,11 @@ investigate other types of cylindrical distributions as well in order to
 compare the interpretability, flexibility and model fit to the models
 developed in the present study.
 
-
-
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+\setlength{\parskip}{8pt}
 
 \newpage
 \section*{{\normalfont References}}
 <div id="refs"></div>
+
